@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "user" (
    "password" password NOT NULL,
    "role" TEXT NOT NULL DEFAULT "member",
    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-   "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+   "updated_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS "game" (
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS "palette" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    --We will dedide that the false status will correspond to the "NO" part of the palette and of course the true status will correspond to the in quote "YES" to the yes part
-   "status" BOOLEAN NOT NULL,
+   "status" BOOLEAN NOT NULL
    
 );
 
