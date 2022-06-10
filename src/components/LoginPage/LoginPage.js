@@ -1,4 +1,4 @@
-import Logo from '../App/Logo.svg';
+import Logo from '../../assets/Logo.svg';
 import './LoginPage.css';
 
 function LoginPage() {
