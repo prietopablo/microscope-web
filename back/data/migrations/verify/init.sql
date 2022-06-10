@@ -3,7 +3,7 @@
 BEGIN;
 
 
-SELECT * FROM "user", "game", "participation", "focus", "period", "events", "palette" WHERE false;
+SELECT * FROM "user", "game", "participation", "focus", "period", "event", "palette" WHERE false;
 
 
 ROLLBACK;
