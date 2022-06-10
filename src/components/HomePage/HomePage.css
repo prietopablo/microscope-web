@@ -1,3 +1,4 @@
+
 h1 {
     margin-bottom: 55px;
   }
@@ -18,12 +19,13 @@ h1 {
   }
   
 
-.buttons {
+.buttons-mobile {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   
-.button {
+.button-mobile {
     width: 70%;
     margin: 0 auto;
     margin-bottom: 10px;
