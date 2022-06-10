@@ -1,0 +1,23 @@
+{
+  "name": "projet-11-microscopeweb",
+  "version": "1.0.0",
+  "description": "Ceci est un Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Blob/projet-11-MicroscopeWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Blob/projet-11-MicroscopeWeb/issues"
+  },
+  "homepage": "https://github.com/O-clock-Blob/projet-11-MicroscopeWeb#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}

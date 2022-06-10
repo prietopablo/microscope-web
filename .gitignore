@@ -1,0 +1,8 @@
+# Sqitch
+./data/sqitch.conf
+
+# dotenv environment variables file
+.env
+
+# Dependency directories
+node_modules/
