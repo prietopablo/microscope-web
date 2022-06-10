@@ -1,9 +1,9 @@
 import Logo from '../App/Logo.svg';
 import './LoginPage.css';
 
-function ProfilPage() {
+function LoginPage() {
   return (
-    <div className="app">
+    <div className="login">
     
       <header className="App-header">
         <img src={Logo} className="App-logo" alt="logo" />
@@ -19,4 +19,4 @@ function ProfilPage() {
 }
 
 // == Export
-export default ProfilPage;
+export default LoginPage;
