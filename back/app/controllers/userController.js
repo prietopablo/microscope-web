@@ -1,12 +1,14 @@
 const userDatamapper = require('../models/userDatamapper');
 
 const userController = {
-    async get(request, response) {
-        const userList = await userDatamapper.getAllUsers();
+
+    async getAll(_, response) {
+        
+        const userList = await userDatamapper.findAll();
         response.json({ userList });
     },
 
-    async post(request, response) {
+    async create(request, response) {
         const newUser = request.body;
         await userDatamapper.insertNewUser(newUser);
         const userList = await userDatamapper.getAllUsers();

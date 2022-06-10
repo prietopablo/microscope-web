@@ -1,18 +1,24 @@
 const client = require('./client');
 
 const userDatamapper = {
-    async getAllUsers() {
-        const result = await client.query('SELECT * FROM user');
+
+    async findAll() {
+        
+        const result = await client.query('SELECT * FROM "user";');
+        
         return result.rows;
     },
 
-    async insertNewUser(newUser) {
+    async insertNewUser(content) {
+        console.log(content);
         const preparedQuery = {
-            text: `INSERT INTO user (newUser) VALUES($1)`,
-            values: [newUser],
+            text: `INSERT INTO "user" (username, email, password) VALUES($1)`,
+            values: [content],
         };
 
-        await client.query(preparedQuery);
+        const newUser = await client.query(preparedQuery);
+
+        return newUser.rows[0];
 
     },
 };
