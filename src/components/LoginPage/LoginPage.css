@@ -1,0 +1,32 @@
+.app {
+    width: 500px;
+    margin: 1em auto;
+    text-align: center;
+    
+  }
+  
+  .app img {
+    max-width: 150px;
+    margin-top: 10%;
+  }
+  
+  h1 {
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .form {
+    display:flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 25%;
+  
+  
+  }
+  
+  .input {
+    margin-bottom: 4%;
+  }
+  
+  

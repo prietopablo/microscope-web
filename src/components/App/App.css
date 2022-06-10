@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-
+h1 {
+  margin-bottom: 55px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -16,6 +18,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 @keyframes App-logo-spin {
