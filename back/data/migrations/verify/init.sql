@@ -2,6 +2,8 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+
+SELECT * FROM "user", "game", "participation", "focus", "period", "events", "palette" WHERE false;
+
 
 ROLLBACK;

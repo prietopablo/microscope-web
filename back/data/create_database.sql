@@ -50,14 +50,14 @@ CREATE TABLE IF NOT EXISTS "focus" (
 
 -- We will not constrain the position column to the UNIQUE contraint to make future datamapper methods easier to implement
 -- For instance, when we will create a new card it might takes a position already present on the game, it might generate bugs at first but we will take care of the problem in a future sprint
-CREATE TABLE IF NOT EXISTS "periods" (
+CREATE TABLE IF NOT EXISTS "period" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    "period_tone" BOOLEAN NOT NULL,
    "position" INT NOT NULL 
 );
 
-CREATE TABLE IF NOT EXISTS "events" (
+CREATE TABLE IF NOT EXISTS "event" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    "event_tone" BOOLEAN NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS "scene" (
    "position" INT NOT NULL 
 );
 
-CREATE TABLE IF NOT EXISTS "palettes" (
+CREATE TABLE IF NOT EXISTS "palette" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    --We will dedide that the false status will correspond to the "NO" part of the palette and of course the true status will correspond to the in quote "YES" to the yes part
