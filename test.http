@@ -1,10 +1,14 @@
 @endpoint = http://localhost:{{$dotenv PORT}}
+
+## Liste des users
+GET {{ endpoint }}/users
+
 ### Créer un utilisateur
 POST {{ endpoint }}/register
 content-type: application/json
 
 {
    "username": "george",
-   "email": "lucasgeorge@ilm.com",
+   "email": "lucasgeorge@gmail.com",
    "password": "THX1138_forever!"
 }
