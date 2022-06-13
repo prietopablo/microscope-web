@@ -1,14 +1,15 @@
 const userDatamapper = require('../models/userDatamapper');
 const bcrypt = require('bcrypt');
+
 const userController = {
 
-    async getAll(_, response) {
+    async getAll (_, response) {
         
         const userList = await userDatamapper.findAll();
         response.json({ userList });
     },
 
-    async getOne(request, response) {
+    async getOne (request, response) {
         console.log(request.params.id);
         const user = await userDatamapper.findByPk(request.params.id);
         
@@ -19,7 +20,7 @@ const userController = {
         return response.json({ user });
     },
 
-    async create(request, response) {
+    async create (request, response) {
         // We call for the body
         const user = await userDatamapper.isUnique(request.body);
         if (user) {
@@ -41,7 +42,7 @@ const userController = {
     
     },
 
-    async delete(request, response) {
+    async delete (request, response) {
         const user = await userDatamapper.findByPk(request.params.id);
 
         if (!user) {
@@ -52,7 +53,7 @@ const userController = {
         return response.status(204).json();
     },
 
-    async update(request, response) {
+    async update (request, response) {
         const user = await userDatamapper.findByPk(request.params.id);
 
         if (!user) {
