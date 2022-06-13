@@ -19,7 +19,7 @@ function HomePage() {
 					<button className="button-mobile" type="button">Jouer</button>
 					<button className="button-mobile" type="button">Parties archivées</button>
 					<button className="button-mobile" type="button" onClick={() => navigate('/login')} >Se connecter</button> 
-					<button className="button-mobile" type="button">Inscription</button>
+					<button className="button-mobile" type="button" onClick={() => navigate('/signup')} >Inscription</button>
 				</div>
 			}
 			{/* TODO: add desktop version 
