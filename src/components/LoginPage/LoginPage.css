@@ -1,7 +1,19 @@
 .App-logo {
   width: 50vh;
+  
 }
 
+.login {
+  height: 100vh;
+}
+.App-header {
+  margin: 0 auto;
+  
+}
+
+body {
+  background-color: #A2A0AB;
+}
 .login {
     text-align: center;
     

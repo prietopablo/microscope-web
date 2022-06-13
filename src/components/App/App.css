@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .App {
   text-align: center;
 }

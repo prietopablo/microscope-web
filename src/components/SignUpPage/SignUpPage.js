@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateLoginForm } from '../../actions/loginActions';
-import Logo from '../../assets/Logo.svg';
+import { updateSignupForm } from '../../actions/signupActions';
 import './SignUpPage.css';
+import Header from '../../Header/Header';
 
 function SignUpPage() {
 
@@ -14,15 +13,7 @@ function SignUpPage() {
 
     return (
         <div className="signup">
-            <header className="App-header">
-                <div className="header">
-                    <Link to="/">
-                        <img src={Logo} className="App-logo" alt="logo" />
-                    </Link>
-                    <h1>Microscope-Web</h1>
-                </div>
-            </header>
-
+            <Header />
             <form 
                 className="signup--form"
                 onSubmit={(event) => {
@@ -35,7 +26,7 @@ function SignUpPage() {
                 type="text"
                 value={pseudo}
                 onChange={(event) => {
-                    dispatch(updateLoginForm('pseudo', event.target.value));
+                    dispatch(updateSignupForm('pseudo', event.target.value));
 
                 }}
                 />
@@ -45,7 +36,7 @@ function SignUpPage() {
                 type="email"
                 value={email}
                 onChange={(event) => {
-                    dispatch(updateLoginForm('email', event.target.value));
+                    dispatch(updateSignupForm('email', event.target.value));
 
                 }}
                 />
@@ -55,7 +46,7 @@ function SignUpPage() {
                 type="password"
                 value={password}
                 onChange={(event) => {
-                    dispatch(updateLoginForm('password', event.target.value));
+                    dispatch(updateSignupForm('password', event.target.value));
 
                 }}
                 />

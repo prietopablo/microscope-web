@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, UPDATE_LOGIN_FORM } from '../actions/loginActions';
+import { UPDATE_LOGIN_FORM } from '../actions/loginActions';
 
 const initialState = {
     email: '',
@@ -8,11 +8,11 @@ const initialState = {
 
 function reducer(state = initialState, action = {}) {
     switch (action.type) {
-        case LOGIN_SUCCESS:
-            return {
-              ...state,
-              pseudo: action.payload.pseudo,
-            };
+        // case LOGIN_SUCCESS:
+        //     return {
+        //       ...state,
+        //       pseudo: action.payload.pseudo,
+        //     };
 
         // case UPDATE_EMAIL_VALUE:
         //     return {

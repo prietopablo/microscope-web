@@ -1,27 +1,18 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendLogin, updateLoginForm } from '../../actions/loginActions';
-import Logo from '../../assets/Logo.svg';
 import './LoginPage.css';
+import Header from '../../Header/Header';
 
 function LoginPage() {
 
   const dispatch = useDispatch();
   const email = useSelector((state) => state.email);
   const password = useSelector((state) => state.password);
+
   return (
     <div className="login">
-    
-      <header className="App-header">
-        <div className="header">
-          <Link to="/">
-            <img src={Logo} className="App-logo" alt="logo" />
-          </Link>
-          <h1>Microscope-Web</h1>
-        </div>
-      </header>
-
+      <Header />
       <form 
         className="login--form"
         onSubmit={(event) => {

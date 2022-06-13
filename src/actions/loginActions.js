@@ -1,18 +1,18 @@
-export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+// export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 // export const UPDATE_PASSWORD_VALUE = 'UPDATE_PASSWORD_VALUE';
 // export const UPDATE_EMAIL_VALUE = 'UPDATE_EMAIL_VALUE';
 
-export const actionSubmitLogin = () => ({
-      type: SUBMIT_LOGIN,
-});
-  
-  export const actionLoginSuccess = (pseudo) => ({
-      type: LOGIN_SUCCESS,
-      payload: {
-        pseudo 
-    },
-});
+// export const actionSubmitLogin = () => ({
+    //       type: SUBMIT_LOGIN,
+    // });
+    
+// export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+// export const actionLoginSuccess = (pseudo) => ({
+//     type: LOGIN_SUCCESS,
+//     payload: {
+//         pseudo 
+//     },
+// });
 
 // export const updateEmailValue = (value) => ({
 //     type: UPDATE_EMAIL_VALUE,
