@@ -17,7 +17,7 @@ content-type: application/json
 GET {{ endpoint }}/users/1
 
 ### Delete pablo profile
-DELETE {{ endpoint }}/users/4
+DELETE {{ endpoint }}/users/5
 
 ### Update victor profile
 PATCH {{ endpoint }}/users/3
