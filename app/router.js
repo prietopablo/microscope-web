@@ -8,7 +8,12 @@ const router = express.Router();
 router.get('/', mainController.homePage);
 
 router.get('/users', userController.getAll);
-router.get('/users/:id', userController.getOne);
+
+router
+   .route('/users/:id')
+   .get(userController.getOne)
+   .delete(userController.delete)
+   .patch(userController.update);
 
 router.post('/register', userController.create);
 
