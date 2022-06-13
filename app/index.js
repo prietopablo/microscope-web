@@ -2,12 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const router = require('./router');
 
-const passport = require('passport');
-const initializePassport = require('./middlewares/passport-config');
-
-const userDatamapper = require('./models/userDatamapper');
-
-initializePassport(passport, username => { userDatamapper.});
 
 const app = express();
 
