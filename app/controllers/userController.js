@@ -9,7 +9,7 @@ const userController = {
     },
 
     async create(request, response) {
-        // We call for the
+        // We call for the body
         const newUser = request.body;
         await userDatamapper.insert(newUser);
         // We display the user list with the new data
