@@ -36,3 +36,8 @@ export const updateLoginForm = (field, value) => ({
         value: value,
     },
 });
+
+export const SEND_LOGIN = 'SEND_LOGIN';
+export const sendLogin = () => ({
+    type: SEND_LOGIN,
+});

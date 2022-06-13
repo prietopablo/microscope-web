@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateLoginForm } from '../../actions/loginActions';
-import axios from 'axios';
+import { sendLogin, updateLoginForm } from '../../actions/loginActions';
 import Logo from '../../assets/Logo.svg';
 import './LoginPage.css';
 
@@ -11,20 +10,6 @@ function LoginPage() {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.email);
   const password = useSelector((state) => state.password);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('http://localhost:3001/login', {
-      email: email,
-      password: password,
-    })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  };
-
   return (
     <div className="login">
     
@@ -39,7 +24,10 @@ function LoginPage() {
 
       <form 
         className="login--form"
-        onSubmit={handleSubmit}
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(sendLogin());
+        }}
       >
         <input
           className="login--form-input"
