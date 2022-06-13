@@ -1,5 +1,5 @@
 const userDatamapper = require('../models/userDatamapper');
-
+const bcrypt = require('bcrypt');
 const userController = {
 
     async getAll(_, response) {
@@ -33,7 +33,10 @@ const userController = {
             
         }
 
-        const savedUser = await userDatamapper.insert(request.body);
+        // We use bcrypt module to hash our password value
+        const hashedPassword = await bcrypt.hash(request.body.password, 10);
+
+        const savedUser = await userDatamapper.insert(request.body, hashedPassword);
         return response.json(savedUser);
     
     },

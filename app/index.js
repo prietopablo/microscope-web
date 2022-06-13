@@ -1,5 +1,13 @@
 const express = require('express');
+const session = require('express-session');
 const router = require('./router');
+
+const passport = require('passport');
+const initializePassport = require('./middlewares/passport-config');
+
+const userDatamapper = require('./models/userDatamapper');
+
+initializePassport(passport, username => { userDatamapper.});
 
 const app = express();
 
@@ -7,6 +15,14 @@ const app = express();
 
 // We use the middleware to parse JSON payload
 app.use(express.json());
+
+
+app.use(session({
+   secret: process.env.SESSION_PASS || 'password par fort',
+   resave: false,
+   saveUninitialized: true
+}));
+
 // We use the middleware to parse urlencoded payload
 app.use(express.urlencoded({ extended: true }));
 

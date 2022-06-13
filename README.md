@@ -1,1 +1,3 @@
-Ceci est un Test
+Liste Extension
+- NPM init
+- Dotenv, Express, Express Session, pg, http

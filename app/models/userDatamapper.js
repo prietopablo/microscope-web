@@ -20,12 +20,22 @@ const userDatamapper = {
 
     },
 
-    async insert(content) {
+    async findUserByUsername(username) {
+        const result = await client.query('SELECT * FROM "user" WHERE "id" = $1', [username]);
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+        
+        return result.rows[0];
+    },
+
+    async insert(content, hashedPassword) {
         
         console.log(content);
         const preparedQuery = {
             text: `INSERT INTO "user" ("username", "email", "password") VALUES ($1, $2, $3)`,
-            values: [content.username, content.email, content.password]
+            values: [content.username, content.email, hashedPassword]
         };
 
         const newUser = await client.query(preparedQuery);
