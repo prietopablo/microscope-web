@@ -1,9 +1,9 @@
 @endpoint = http://localhost:{{$dotenv PORT}}
 
-## Liste des users
+## Users list
 GET {{ endpoint }}/users
 
-### Créer un utilisateur
+### Create a new profile
 POST {{ endpoint }}/register
 content-type: application/json
 
@@ -13,5 +13,24 @@ content-type: application/json
    "password": "THX1138_forever!"
 }
 
-### Voir un profil
+### Get a profile
 GET {{ endpoint }}/users/1
+
+### Delete pablo profile
+DELETE {{ endpoint }}/users/4
+
+### Update victor profile
+PATCH {{ endpoint }}/users/3
+content-type: application/json
+
+{
+   "username": "victordu38"
+}
+
+### Update victor an existing profile username
+PATCH {{ endpoint }}/users/3
+content-type: application/json
+
+{
+   "username": "adlen"
+}
