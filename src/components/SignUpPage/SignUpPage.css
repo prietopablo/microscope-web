@@ -1,0 +1,27 @@
+.App-logo {
+    width: 50vh;
+  }
+  
+  .signup {
+      text-align: center;
+      
+    }
+    
+    h1 {
+      font-size: 25px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    
+    .signup--form {
+      display:flex;
+      flex-direction: column;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 2rem;
+    
+    
+    }
+    
+    .signup--form-input {
+      margin-bottom: 4%;
+    }

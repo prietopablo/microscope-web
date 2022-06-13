@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../../assets/Logo.svg';
+import Header from '../../Header/Header';
 import './HomePage.css';
 
 function HomePage() {
@@ -11,21 +11,21 @@ function HomePage() {
     return(
 
     <div className="home"> 
-			<header className="App-header">
-			<img src={Logo} className="App-logo" alt="logo" />
-			<h1>Microscope-Web</h1>
+		<div className="page">
+			<Header />
 			{isMobile &&
 				<div className="buttons-mobile">
 					<button className="button-mobile" type="button">Jouer</button>
 					<button className="button-mobile" type="button">Parties archivées</button>
 					<button className="button-mobile" type="button" onClick={() => navigate('/login')} >Se connecter</button> 
-					<button className="button-mobile" type="button">Inscription</button>
+					<button className="button-mobile" type="button" onClick={() => navigate('/signup')} >Inscription</button>
 				</div>
 			}
+		</div>
 			{/* TODO: add desktop version 
 			<---   here   --->
 			*/}
-			</header>
+			
 			<h2>Règles du jeu</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum finibus arcu vel consequat. Duis tincidunt ac felis vel ullamcorper. Maecenas venenatis scelerisque elit. Nullam non tristique massa. Aenean semper enim imperdiet viverra porttitor. Integer rhoncus felis pulvinar mauris tincidunt aliquet. Etiam cursus non orci luctus consectetur. Aenean at sapien sapien. Etiam at ipsum tincidunt, semper sem in, tincidunt justo. Fusce congue neque purus, at viverra metus ullamcorper et. Vestibulum vitae lectus tempus, ultricies nisi ut, lobortis erat. Aliquam a justo mauris. Curabitur ut consectetur augue. Nulla vel condimentum nisi.
 

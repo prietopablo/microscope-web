@@ -1,3 +1,19 @@
+.App-logo {
+  width: 50vh;
+  
+}
+
+.login {
+  height: 100vh;
+}
+.App-header {
+  margin: 0 auto;
+  
+}
+
+body {
+  background-color: #A2A0AB;
+}
 .login {
     text-align: center;
     
@@ -8,17 +24,17 @@
     font-family: 'Times New Roman', Times, serif;
   }
   
-  .form {
+  .login--form {
     display:flex;
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
-    margin-top: 25%;
+    margin-top: 2rem;
   
   
   }
   
-  .input {
+  .login--form-input {
     margin-bottom: 4%;
   }
   
