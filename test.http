@@ -12,3 +12,6 @@ content-type: application/json
    "email": "lucasgeorge@gmail.com",
    "password": "THX1138_forever!"
 }
+
+### Voir un profil
+GET {{ endpoint }}/users/1

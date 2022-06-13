@@ -9,6 +9,17 @@ const userDatamapper = {
         return result.rows;
     },
 
+    async findByPk(userId) {
+        const result = await client.query('SELECT * FROM "user" WHERE "id" = $1', [userId]);
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+        
+        return result.rows[0];
+
+    },
+
     async insert(content) {
         
         console.log(content);
