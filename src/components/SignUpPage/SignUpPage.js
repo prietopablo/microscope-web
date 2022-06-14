@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSignupForm } from '../../actions/signupActions';
 import './SignUpPage.css';
-import Header from '../../Header/Header';
+import Header from '../Header/Header';
 
 function SignUpPage() {
 
