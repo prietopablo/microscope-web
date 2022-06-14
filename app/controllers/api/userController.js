@@ -60,27 +60,6 @@ const userController = {
             return response.status(404).json();
         }
 
-        /*if (request.body.username || request.body.email) {
-            const existingUser = await userDatamapper.isUnique(request.body, request.params.id);
-            
-            const existingStatus = {
-                usernameStatus: "no update",
-                emailStatus: "no update"
-            };
-
-            if (!existingUser.isUniqueUsername) {
-                existingStatus.usernameStatus = `Other user already exists with this username`;
-                
-            } if (!existingUser.isUniqueEmail) {
-                existingStatus.emailStatus = `Other user already exists with this email`;
-                
-            } else {
-                const savedUser = await userDatamapper.update(request.body, request.params.id);
-                return response.json(savedUser);
-            }
-            return response.json(existingStatus);            
-        }*/
-
         if (request.body.username || request.body.email) {
             const existingUser = await userDatamapper.isUnique(request.body, request.params.id);
             if (existingUser) {

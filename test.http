@@ -1,4 +1,4 @@
-@endpoint = http://localhost:{{$dotenv PORT}}
+@endpoint = http://localhost:{{$dotenv PORT}}/api
 
 ## Users list
 GET {{ endpoint }}/users
@@ -8,7 +8,7 @@ POST {{ endpoint }}/register
 content-type: application/json
 
 {
-   "username": "george",
+   "username": "amber",
    "email": "lucasgeorge@gmail.com",
    "password": "THX1138_forever!"
 }
@@ -19,18 +19,47 @@ GET {{ endpoint }}/users/1
 ### Delete pablo profile
 DELETE {{ endpoint }}/users/5
 
-### Update victor profile
-PATCH {{ endpoint }}/users/3
+
+### Update username an existing profile username
+PATCH {{ endpoint }}/users/2
 content-type: application/json
 
 {
-   "username": "victordu38"
+   "username": "amber"
 }
 
-### Update victor an existing profile username
-PATCH {{ endpoint }}/users/3
+### Create a new profile
+POST {{ endpoint }}/register
 content-type: application/json
 
 {
-   "username": "adlen"
+   "username": "jack",
+   "email": "jacksparrow@gmail.com",
+   "password": "THX1138_forever!"
+}
+
+### Login Attempt With Correct User
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "george" ,
+   "password": "THX1138_forever!"
+}
+
+### Login Attempt With Incorrect User
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "george" ,
+   "password": "Ceciestuntest"
+}
+
+### Login Attempt Without Password
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "george"
 }
