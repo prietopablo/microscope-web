@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendLogin, updateLoginForm } from '../../actions/loginActions';
+import { Input, Button } from 'semantic-ui-react'
 import './LoginPage.css';
 import Header from '../Header/Header';
 
@@ -20,7 +21,7 @@ function LoginPage() {
           dispatch(sendLogin());
         }}
       >
-        <input
+        <Input
           className="login--form-input"
           placeholder="Email"
           type="email"
@@ -30,7 +31,7 @@ function LoginPage() {
 
           }}
         />
-        <input
+        <Input
           className="login--form-input"
           placeholder="Mot de passe"
           type="password"
@@ -40,9 +41,9 @@ function LoginPage() {
 
           }}
         />
-        <button className="login--form-submit" type="submit">
+        <Button inverted className="login--form-submit" type="submit">
           Connexion
-        </button>
+        </Button>
       </form>
     </div>
   );

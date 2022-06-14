@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Input, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { sendSignup, updateSignupForm } from '../../actions/signupActions';
 import './SignUpPage.css';
@@ -21,7 +22,7 @@ function SignUpPage() {
                     dispatch(sendSignup());
                     }}
             >
-                <input
+                <Input
                 className="signup--form-input"
                 placeholder="Nom d'utilisateur"
                 type="text"
@@ -31,7 +32,7 @@ function SignUpPage() {
 
                 }}
                 />
-                <input
+                <Input
                 className="signup--form-input"
                 placeholder="Email"
                 type="email"
@@ -41,7 +42,7 @@ function SignUpPage() {
 
                 }}
                 />
-                <input
+                <Input
                 className="signup--form-input"
                 placeholder="Mot de passe"
                 type="password"
@@ -51,9 +52,9 @@ function SignUpPage() {
 
                 }}
                 />
-                <button className="signup--form-submit" type="submit">
+                <Button inverted className="signup--form-submit" type="submit">
                 Inscription
-                </button>
+                </Button>
             </form>
         </div>
     )

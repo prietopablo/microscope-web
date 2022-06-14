@@ -11,9 +11,6 @@
   
 }
 
-body {
-  background-color: #A2A0AB;
-}
 .login {
     text-align: center;
     
@@ -29,13 +26,23 @@ body {
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
-    margin-top: 2rem;
-  
-  
+    margin-top: 2rem; 
   }
   
-  .login--form-input {
+  .ui.input>input {
     margin-bottom: 4%;
+    border-radius: unset;
+  }
+
+  .ui.input>input:focus {
+    border-color: black;
   }
   
+  .ui.button {
+    margin: 0;
+  }
+
+  .ui.button.button {
+    border-radius: 0;
+  }
   
