@@ -1,4 +1,4 @@
-const userDatamapper = require('../models/userDatamapper');
+/*const userDatamapper = require('../models/userDatamapper');
 const bcrypt = require('bcrypt');
 
 const authenticationController = {
@@ -39,4 +39,4 @@ const authenticationController = {
    }
 }
 
-module.exports = authenticationController;
+module.exports = authenticationController;*/

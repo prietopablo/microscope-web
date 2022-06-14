@@ -1,13 +1,11 @@
 const express = require('express');
-const app = require('.');
 
-const mainController = require('./controllers/mainController');
-const userController = require('./controllers/userController');
-const authenticationController = require('./controllers/authenticationController');
+const userController = require('../../controllers/api/userController');
+//const authenticationController = require('../../controllers/authenticationController');
 
 const router = express.Router();
 
-router.get('/', mainController.homePage);
+
 
 router.get('/users', userController.getAll);
 
@@ -22,6 +20,6 @@ router
 router.post('/register', userController.create);
 
 // Login
-app.post("/login", authenticationController.login);
+//app.post("/login", authenticationController.login);
 
 module.exports = router;
