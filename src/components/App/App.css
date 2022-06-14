@@ -1,5 +1,9 @@
-@use '../../styles/vars';
-
+body{
+  margin: 0 auto;
+  width: 600px;
+  background-color: black;
+  color: white;
+}
 .App {
   text-align: center;
 }

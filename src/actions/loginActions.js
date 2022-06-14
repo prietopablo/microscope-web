@@ -6,27 +6,28 @@
     //       type: SUBMIT_LOGIN,
     // });
     
-// export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-// export const actionLoginSuccess = (pseudo) => ({
-//     type: LOGIN_SUCCESS,
-//     payload: {
-//         pseudo 
-//     },
-// });
-
-// export const updateEmailValue = (value) => ({
-//     type: UPDATE_EMAIL_VALUE,
-//     payload: {
-//         value: value,
-//     } 
-// });
-
-// export const updatePasswordValue = (value) => ({
-//     type: UPDATE_PASSWORD_VALUE,
-//     payload: {
-//         value: value,
-//     }
-// });
+    
+    // export const updateEmailValue = (value) => ({
+        //     type: UPDATE_EMAIL_VALUE,
+        //     payload: {
+            //         value: value,
+            //     } 
+            // });
+            
+            // export const updatePasswordValue = (value) => ({
+                //     type: UPDATE_PASSWORD_VALUE,
+                //     payload: {
+                    //         value: value,
+                    //     }
+                    // });
+                    
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const actionLoginSuccess = (pseudo) => ({
+    type: LOGIN_SUCCESS,
+    payload: {
+        pseudo 
+    },
+});
 
 export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 export const updateLoginForm = (field, value) => ({
