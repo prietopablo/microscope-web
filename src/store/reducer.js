@@ -1,9 +1,14 @@
 import { UPDATE_LOGIN_FORM } from '../actions/loginActions';
+import { UPDATE_SIGNUP_FORM } from '../actions/signupActions';
 
 const initialState = {
     email: '',
     password: '',
-    pseudo: null,
+
+    username: null,
+    emailSignup: '',
+    passwordSignup: '',
+    
 };
 
 function reducer(state = initialState, action = {}) {
@@ -24,7 +29,12 @@ function reducer(state = initialState, action = {}) {
         //         ...state,
         //         password: action.payload.value,
         //     };
-        
+        case UPDATE_SIGNUP_FORM:
+            return {
+                ...state,
+                [action.payload.field]: action.payload.value,
+            };
+
         case UPDATE_LOGIN_FORM:
             return {
                 ...state,
