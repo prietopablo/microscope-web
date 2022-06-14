@@ -1,3 +1,4 @@
+import { Button } from 'semantic-ui-react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -6,7 +7,8 @@ import './HomePage.css';
 function HomePage() {
 
 	const navigate = useNavigate();
-	const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+	const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 481px)'  });
 
     return(
 
@@ -21,6 +23,12 @@ function HomePage() {
 					<button className="button-mobile" type="button" onClick={() => navigate('/signup')} >Inscription</button>
 				</div>
 			}
+			{isDesktop &&
+                <div className="buttons-desktop">
+					<Button inverted color="black">Standard</Button>
+				</div>
+					}
+
 		</div>
 			{/* TODO: add desktop version 
 			<---   here   --->
