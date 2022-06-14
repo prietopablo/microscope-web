@@ -21,7 +21,7 @@ const userDatamapper = {
     },
 
     async findUserByUsername(username) {
-        const result = await client.query('SELECT * FROM "user" WHERE "id" = $1', [username]);
+        const result = await client.query('SELECT * FROM "user" WHERE "username" = $1', [username]);
 
         if (result.rowCount === 0) {
             return null;
@@ -57,11 +57,11 @@ const userDatamapper = {
         const savedUser = await client.query(
             `
                 UPDATE "user" SET
-                    ${fields}
+                    ${fields}, "updated_at" = $${fields.length + 2}
                 WHERE id = $${fields.length + 1}
                 RETURNING *
             `,
-            [...values, userId],
+            [...values, userId, Date.now()],
         );
 
         return savedUser.rows[0];

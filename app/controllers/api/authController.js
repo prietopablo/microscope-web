@@ -1,11 +1,15 @@
-/*const userDatamapper = require('../models/userDatamapper');
+const userDatamapper = require('../../models/userDatamapper');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const authenticationController = {
    async login (request, response) {
       try {
          // Validate user input
-         if (!request.body.username && !request.body.password) {
+         
+         const { username, password } = request.body;
+
+         if (!(username && password)) {
             return response.status(400).json({ errorMessage: `All input is required` });
          }
          // Validate if user exist in our database
@@ -15,18 +19,16 @@ const authenticationController = {
 
          if (user && passwordVerified) {
             // Create JSON token
-            const token =  jwt.sign(
-               { user_id: user.id, username },
+            const userToken =  jwt.sign(
+               { user_id: user.id },
                process.env.TOKEN_KEY,
                {
                   expiresIn: "2h",
                }
             );
-            // We need to store the token, but i'm not sure if we can do it by changing its value like this
-            user.token = token;
 
             // We send our user
-            response.status(200).json(user);
+            response.status(200).json({ user, userToken });
          }
          else {
             response.status(400).json({ errorMessage : "Invalid Credentials" });
@@ -39,4 +41,4 @@ const authenticationController = {
    }
 }
 
-module.exports = authenticationController;*/
+module.exports = authenticationController;
