@@ -7,7 +7,6 @@ export const debugMiddleware = (store) => (next) => (action) => {
     console.log(action, store, next);
     console.log(`L'action ${action.type} est appelée`);
     next(action);
-
 };
 
 export const authMiddleware = (store) => (next) => (action) => {
@@ -17,7 +16,7 @@ export const authMiddleware = (store) => (next) => (action) => {
             //récupération depuis le state les valeurs de l'input puis appel api
             const state = store.getState();
             const { email, password } = state;
-
+            console.log(email, password)
             axios
               .post('http://localhost:3001/login', {
               email: email,
@@ -42,13 +41,13 @@ export const signupMiddleware = (store) => (next) => (action) => {
     case SEND_SIGNUP: {
       //récupération depuis le state les valeurs de l'input puis appel api
       const state = store.getState();
-      const { email, password, pseudo } = state;
-
+      const { emailSignup, passwordSignup, username } = state;
+      console.log(emailSignup, passwordSignup, username)
       axios
         .post('http://localhost:3001/signup', {
-          email: email,
-          password: password,
-          pseudo: pseudo,
+          email: emailSignup,
+          password: passwordSignup,
+          username: username,
         })
         .then((res) => {
           console.log('les infos ici ->', res.data);
@@ -61,6 +60,6 @@ export const signupMiddleware = (store) => (next) => (action) => {
     default:
       next(action);
   }
-}
+};
 
 //console.log(`L'action ${action.type} est appelée`);

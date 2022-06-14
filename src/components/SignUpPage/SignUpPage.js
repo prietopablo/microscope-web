@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateSignupForm } from '../../actions/signupActions';
+import { sendSignup, updateSignupForm } from '../../actions/signupActions';
 import './SignUpPage.css';
 import Header from '../../Header/Header';
 
 function SignUpPage() {
 
     const dispatch = useDispatch();
-    const email = useSelector((state) => state.email);
-    const password = useSelector((state) => state.password);
-    const pseudo = useSelector((state) => state.pseudo);
+    const emailSignup = useSelector((state) => state.emailSignup);
+    const passwordSignup = useSelector((state) => state.passwordSignup);
+    const username = useSelector((state) => state.username);
 
     return (
         <div className="signup">
@@ -17,16 +17,17 @@ function SignUpPage() {
             <form 
                 className="signup--form"
                 onSubmit={(event) => {
-                event.preventDefault();
-                }}
+                    event.preventDefault();
+                    dispatch(sendSignup());
+                    }}
             >
                 <input
                 className="signup--form-input"
                 placeholder="Nom d'utilisateur"
                 type="text"
-                value={pseudo}
+                value={username}
                 onChange={(event) => {
-                    dispatch(updateSignupForm('pseudo', event.target.value));
+                    dispatch(updateSignupForm('username', event.target.value));
 
                 }}
                 />
@@ -34,9 +35,9 @@ function SignUpPage() {
                 className="signup--form-input"
                 placeholder="Email"
                 type="email"
-                value={email}
+                value={emailSignup}
                 onChange={(event) => {
-                    dispatch(updateSignupForm('email', event.target.value));
+                    dispatch(updateSignupForm('emailSignup', event.target.value));
 
                 }}
                 />
@@ -44,9 +45,9 @@ function SignUpPage() {
                 className="signup--form-input"
                 placeholder="Mot de passe"
                 type="password"
-                value={password}
+                value={passwordSignup}
                 onChange={(event) => {
-                    dispatch(updateSignupForm('password', event.target.value));
+                    dispatch(updateSignupForm('passwordSignup', event.target.value));
 
                 }}
                 />
@@ -61,7 +62,7 @@ function SignUpPage() {
 SignUpPage.propTypes = {
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    pseudo: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
 };
 
 // == Export
