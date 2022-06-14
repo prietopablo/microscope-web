@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendSignup, updateSignupForm } from '../../actions/signupActions';
 import './SignUpPage.css';
@@ -51,9 +52,8 @@ function SignUpPage() {
 
                 }}
                 />
-                <button className="signup--form-submit" type="submit">
-                Inscription
-                </button>
+                <Button id="signup--form-submit" inverted color="black" type="submit">Inscription</Button>
+                
             </form>
         </div>
     )

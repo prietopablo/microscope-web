@@ -20,7 +20,6 @@ body {
   }
   
   h1 {
-    font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
   }
   
@@ -29,7 +28,7 @@ body {
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 11rem;
   
   
   }
@@ -38,4 +37,8 @@ body {
     margin-bottom: 4%;
   }
   
-  
+  @media (min-width: 480px) {
+    .login--form {
+      margin-top: 15rem;
+  }
+}
