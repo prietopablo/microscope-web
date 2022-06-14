@@ -12,6 +12,7 @@ h1 {
   .page {
     height: 100vh;
   }
+  
   .App-header {
     display: flex;
     flex-direction: column;

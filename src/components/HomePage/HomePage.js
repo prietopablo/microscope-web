@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../Header/Header';
+import Header from '../Header/Header';
 import './HomePage.css';
 
 function HomePage() {
