@@ -14,13 +14,16 @@ const authenticationController = {
          }
          // Validate if user exist in our database
          const user = await userDatamapper.findUserByUsername(request.body.username);
+         if (!user) {
+            response.status(400).json({ errorMessage : "user not found" });
+         }
          // Validate if password is correct using bcrypt
          const passwordVerified = await bcrypt.compare(request.body.password, user.password);
 
          if (user && passwordVerified) {
             // Create JSON token
             const userToken =  jwt.sign(
-               { user_id: user.id },
+               { userId: user.id },
                process.env.TOKEN_KEY,
                {
                   expiresIn: "2h",

@@ -43,7 +43,7 @@ POST {{endpoint}}/login
 content-type: application/json
 
 {
-   "username": "george" ,
+   "username": "jack" ,
    "password": "THX1138_forever!"
 }
 
@@ -62,4 +62,12 @@ content-type: application/json
 
 {
    "username": "george"
+}
+
+### Access attempt profile page
+GET {{endpoint}}/profile/1
+content-type: application/json
+
+{
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTI4NTYzNSwiZXhwIjoxNjU1MjkyODM1fQ.4JbCdPchF16W5VkWeT6aW42h38AJAupdO6CfnqAMIEc"
 }
