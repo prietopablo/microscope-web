@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const router = require('./router');
-
+const cors = require('cors');
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // We will need to implement CORS restrictions (don't forget to require it !)
 // it will look like this:
-//app.use(cors(process.env.CORS_DOMAINS ?? '*'));
+app.use(cors(process.env.CORS_DOMAINS ?? '*'));
 
 app.use(router);
 
