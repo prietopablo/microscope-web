@@ -1,10 +1,11 @@
-import { LOGIN_SUCCESS, UPDATE_LOGIN_FORM } from '../actions/loginActions';
+import { LOGIN_SUCCESS, UPDATE_LOGIN_FORM, SAVE_USER, LOGOUT  } from '../actions/loginActions';
 import { UPDATE_SIGNUP_FORM } from '../actions/signupActions';
 
 const initialState = {
     email: '',
     password: '',
     isConnected: false,
+    token: null,
 
     username: null,
     emailSignup: '',
@@ -30,6 +31,25 @@ function reducer(state = initialState, action = {}) {
         //         ...state,
         //         password: action.payload.value,
         //     };
+        case SAVE_USER:
+            return {
+              ...state,
+              // user is connected,  isLogged=true
+              isConnected: true,
+              username: action.payload.username,
+              token: action.payload.token,
+              password: '', // empty password value (SECURITY)
+            };
+        
+        case LOGOUT:
+            return {
+                ...state,
+                isConnected: false,
+                username: '',
+                token: null,
+                email: '',
+            };
+
         case UPDATE_SIGNUP_FORM:
             return {
                 ...state,

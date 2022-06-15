@@ -42,3 +42,14 @@ export const SEND_LOGIN = 'SEND_LOGIN';
 export const sendLogin = () => ({
     type: SEND_LOGIN,
 });
+
+export const SAVE_USER = 'SAVE_USER';
+export const actionSaveUser = (username, token) => ({
+    type: SAVE_USER,
+    payload: {
+      username, token,
+    },
+  });
+
+export const LOGOUT = 'LOGOUT';
+export const actionLogout = () => ({ type: LOGOUT });

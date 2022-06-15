@@ -1,6 +1,6 @@
-import { actionLoginSuccess, SEND_LOGIN } from "../actions/loginActions";
+import { actionSaveUser, LOGOUT, SAVE_USER, SEND_LOGIN } from "../actions/loginActions";
 import { SEND_SIGNUP } from "../actions/signupActions";
-import { requestLogin, requestSignup } from '../requests';
+import { removeAuthorization, requestLogin, requestSignup, saveAuthorization } from '../requests';
 
 export const debugMiddleware = (store) => (next) => (action) => {
     console.log('debbug middleware');
@@ -9,28 +9,71 @@ export const debugMiddleware = (store) => (next) => (action) => {
     next(action);
 };
 
+// export const loginMiddleware = (store) => (next) => async (action) => {
+
+//   if (action.type === SEND_LOGIN) {
+//     console.log('le loginMiddleware a capturé l\'action SEND_LOGIN');
+//     const state = store.getState();
+//     const { username, password } = state;
+
+//     try {
+//       console.log('on déclenche la requete');
+//       const data = await requestLogin(username, password);
+
+//       console.log('on dispatch l\'action LOGIN_SUCCESS');
+//       store.dispatch(actionLoginSuccess(data.username));
+//     }
+//     catch (err) {
+//       console.error(err);
+//     }
+
+//     return; // on return pour ne pas faire le next, et ne pas transferer l'action SUBMIT_LOGIN aux reducer
+//   }
+
+//   next(action);
+// };
+
 export const loginMiddleware = (store) => (next) => async (action) => {
+  switch (action.type) {
+    case SEND_LOGIN: {
+      console.log("loginMiddleware: j'ai intercepté SEND_LOGIN");
 
-  if (action.type === SEND_LOGIN) {
-    console.log('le loginMiddleware a capturé l\'action SEND_LOGIN');
-    const state = store.getState();
-    const { username, password } = state;
+      const state = store.getState();
+      const { username, password } = state;
 
-    try {
-      console.log('on déclenche la requete');
-      const data = await requestLogin(username, password);
+      try {
+        console.log('je lance ma requete login');
+        const data = await requestLogin(username, password);
+        console.log("la requete est terminé et j'ai récupéré:", data);
 
-      console.log('on dispatch l\'action LOGIN_SUCCESS');
-      store.dispatch(actionLoginSuccess(data.username));
+        console.log("je dispatch SAVE_USER avec les infos de l'utilisateur connecté");
+        store.dispatch(
+          actionSaveUser(data.username, data.token),
+        );
+      }
+      catch (err) {
+        console.error(err);
+      }
+
+      return;
     }
-    catch (err) {
-      console.error(err);
+
+    case SAVE_USER: {
+      saveAuthorization(action.payload.token);
+      next(action);
+      break;
     }
 
-    return; // on return pour ne pas faire le next, et ne pas transferer l'action SUBMIT_LOGIN aux reducer
+    case LOGOUT: {
+      // delete token
+      removeAuthorization();
+      next(action);
+      break;
+    }
+
+    default:
+      next(action);
   }
-
-  next(action);
 };
 
 export const signupMiddleware = (store) => (next) => async (action) => {
