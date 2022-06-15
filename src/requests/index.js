@@ -16,10 +16,10 @@ export function removeAuthorization() {
   axiosInstance.defaults.headers.common.Authorization = '';
 }
 
-export async function requestLogin(email, password) {
+export async function requestLogin(username, password) {
   try {
     const response = await axiosInstance.post('/login', {
-      email,
+      username,
       password,
     });
     return response.data;

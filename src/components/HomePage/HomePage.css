@@ -1,7 +1,5 @@
 body {
-  background-color: gray;
-
-  
+  background-color: gray; 
 }
 
 h1 {
@@ -13,63 +11,81 @@ h2 {
   margin-top: 10rem;
   margin-bottom: 6rem;
 }
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .page {
-    height: 100vh;
-    border-bottom: 1px solid white;
-    
-  }
-  
-  .App-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    
-  
-  }
-  
 
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+  
+.page {
+  height: 100vh;  
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+  
 .buttons-mobile {
     margin-top: 11rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
-  }
+}
   
-#button-mobile {
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }
+.button-mobile.button {
+  width: 80%;
+  height: 4rem;
+  margin: 10px auto;
+  padding: 1px;
+  font-size: calc(15px + 2vmin);
+}
 
-  .buttons-desktop {
-    margin-top: 7em;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.buttons-desktop {
+  margin-top: 7em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;  
+}
 
-    
-  }
+.menu-button.button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 1px;
+  align-self: flex-end;
+  width: 250px;
+  height: 4rem;  
+  font-size: calc(5px + 2vmin);
+}
 
-  #menu-button {
+.scroll {
+  position: absolute;
+  bottom: 9px;
+  opacity: .5;
+  left: 50%;
+  display: flex;
+  width: 10px;
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  transition: opacity .5s;
+}
+@keyframes bounce {
+    0%   { transform: translateY(0) translateX(-50%); }
+    70%  { transform: translateY(-5px) translateX(-50%); }
+    100% { transform: translateY(0) translateX(-50%); }
+}
 
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    align-self: flex-end;
-    width: 10rem;
-    height: 4rem;
-    
-    
-  }
-  
-  @keyframes App-logo-spin {
+
+@keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }

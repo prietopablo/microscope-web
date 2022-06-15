@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import HomePageLinks from './HomePageLinks/HomePageLinks';
+import ScrollDown from '../../assets/ScrollDown.svg';
 import './HomePage.css';
 
 function HomePage() {
 
 	const navigate = useNavigate();
-	const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-    const isDesktop = useMediaQuery({ query: '(min-width: 481px)'  });
+	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 769px)'  });
 
     return(
 
@@ -22,16 +23,17 @@ function HomePage() {
 			<Header />
 			{isMobile &&
 				<div className="buttons-mobile">
-					<Button id="button-mobile" inverted >Jouer</Button>
-					<Button id="button-mobile" inverted  onClick={() => navigate('/archived')}>Parties archivées</Button>
-					<Button id="button-mobile" inverted  onClick={() => navigate('/login')}>Se connecter</Button>
-					<Button id="button-mobile" inverted  onClick={() => navigate('/signup')}>Inscription</Button>
+					<Button className="button-mobile" inverted >Jouer</Button>
+					<Button className="button-mobile" inverted  onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<Button className="button-mobile" inverted  onClick={() => navigate('/login')}>Se connecter</Button>
+					<Button className="button-mobile" inverted  onClick={() => navigate('/signup')}>Inscription</Button>
 				</div>
 			}
 			{isDesktop &&
                 <div className="buttons-desktop">
-					<Button id="menu-button" inverted >Jouer</Button>
-					<Button id="menu-button" inverted onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<Button className="menu-button" inverted >Jouer</Button>
+					<Button className="menu-button" inverted onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<img src={ScrollDown} className="scroll bounce" alt="scroll-down arrow" />
 				</div>
 					}
 
