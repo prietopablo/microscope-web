@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendLogin, updateLoginForm } from '../../actions/loginActions';
 import { Input, Button } from 'semantic-ui-react'
@@ -9,7 +8,7 @@ import Header from '../Header/Header';
 function LoginPage() {
 
   const dispatch = useDispatch();
-  const email = useSelector((state) => state.email);
+  const username = useSelector((state) => state.username);
   const password = useSelector((state) => state.password);
 
   return (
@@ -24,11 +23,11 @@ function LoginPage() {
       >
         <Input
           className="login--form-input"
-          placeholder="Email"
-          type="email"
-          value={email}
+          placeholder="Nom d'utilisateur"
+          type="text"
+          value={username}
           onChange={(event) => {
-            dispatch(updateLoginForm('email', event.target.value));
+            dispatch(updateLoginForm('username', event.target.value));
 
           }}
         />

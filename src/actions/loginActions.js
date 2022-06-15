@@ -22,10 +22,10 @@
                     // });
                     
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const actionLoginSuccess = (pseudo) => ({
+export const actionLoginSuccess = (username) => ({
     type: LOGIN_SUCCESS,
     payload: {
-        pseudo 
+        username 
     },
 });
 
