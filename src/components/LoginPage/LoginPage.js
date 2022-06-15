@@ -42,7 +42,7 @@ function LoginPage() {
           }}
         />
 
-        <Button id="login--form-submit" inverted color="black" type="submit">Connection</Button>
+        <Button id="login--form-submit" inverted type="submit">Connection</Button>
       
 
 
