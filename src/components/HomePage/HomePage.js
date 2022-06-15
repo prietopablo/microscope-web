@@ -2,6 +2,8 @@ import { Button } from 'semantic-ui-react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import HomePageLinks from './HomePageLinks/HomePageLinks';
 import './HomePage.css';
 
 function HomePage() {
@@ -14,18 +16,22 @@ function HomePage() {
 
     <div className="home"> 
 		<div className="page">
+		{isDesktop &&
+			<HomePageLinks />
+		}
 			<Header />
 			{isMobile &&
 				<div className="buttons-mobile">
-					<button className="button-mobile" type="button">Jouer</button>
-					<button className="button-mobile" type="button">Parties archivées</button>
-					<button className="button-mobile" type="button" onClick={() => navigate('/login')} >Se connecter</button> 
-					<button className="button-mobile" type="button" onClick={() => navigate('/signup')} >Inscription</button>
+					<Button id="button-mobile" inverted color="black">Jouer</Button>
+					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/login')}>Se connecter</Button>
+					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/signup')}>Inscription</Button>
 				</div>
 			}
 			{isDesktop &&
                 <div className="buttons-desktop">
-					<Button inverted color="black">Standard</Button>
+					<Button id="menu-button" inverted color="black">Jouer</Button>
+					<Button id="menu-button" inverted color="black" onClick={() => navigate('/archived')}>Parties archivées</Button>
 				</div>
 					}
 
@@ -44,6 +50,7 @@ function HomePage() {
 			Etiam eget eros metus. Aliquam tempus ex ut massa tincidunt, tempus dignissim neque laoreet. Morbi commodo magna vel tellus tincidunt lacinia. Curabitur eu ipsum tortor. In rutrum faucibus massa quis tincidunt. Etiam dui odio, sagittis sit amet lacus quis, suscipit placerat ante. Proin dictum dictum sapien, a mollis ligula tempus vel. Nullam ante nisl, efficitur sed feugiat nec, tempus ultrices orci. Donec venenatis congue dolor. Curabitur justo nisi, vehicula eget accumsan a, rutrum ut nisl. Nam interdum pulvinar felis, et tempor nunc.
 
 			Sed ut posuere diam, ut vestibulum lacus. Fusce faucibus viverra dui at fermentum. Etiam feugiat lacus id ligula tristique semper a quis erat. Mauris sit amet consectetur quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla at libero quis diam finibus semper. Duis ultricies sapien at mauris convallis, sit amet efficitur orci placerat.</p>
+			<Footer />
     </div>
     );
 }

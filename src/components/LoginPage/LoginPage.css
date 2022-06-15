@@ -17,7 +17,6 @@
   }
   
   h1 {
-    font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
   }
   
@@ -26,7 +25,9 @@
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
-    margin-top: 2rem; 
+
+    margin-top: 11rem;
+
   }
   
   .ui.input>input {
@@ -37,7 +38,7 @@
   .ui.input>input:focus {
     border-color: black;
   }
-  
+
   .ui.button {
     margin: 0;
   }
@@ -46,3 +47,11 @@
     border-radius: 0;
   }
   
+  
+
+  @media (min-width: 480px) {
+    .login--form {
+      margin-top: 15rem;
+  }
+}
+

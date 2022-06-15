@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import { Button } from "semantic-ui-react";
 import './Contact.css';
 
 function Contact() {
@@ -26,13 +27,9 @@ function Contact() {
              type="text"
              placeholder="Votre message"
             />
-
-            <button 
-              type="submit"
-              className="button"
-            >
-            Envoyer</button>
-           
+            
+            <Button id="button" inverted color="black" type="submit">Envoyer</Button>
+            
               
           </form>
         </div>

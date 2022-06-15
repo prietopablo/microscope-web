@@ -5,7 +5,7 @@
     }
     
     h1 {
-      font-size: 25px;
+      
       font-family: 'Times New Roman', Times, serif;
     }
     
@@ -14,11 +14,25 @@
       flex-direction: column;
       width: 60%;
       margin: 0 auto;
-      margin-top: 2rem;
+      margin-top: 11rem;
+    
     
     
     }
     
+
+    .signup--form-input {
+      margin-bottom: 4%;
+    }
+
     .ui.button.button {
       border-radius: 0;
     }
+
+
+
+    @media (min-width: 480px) {
+      .signup--form {
+        margin-top: 15rem;
+    }
+  }
