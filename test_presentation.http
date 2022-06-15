@@ -1,0 +1,116 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+
+## Users list
+GET {{ endpoint }}/users
+
+### Create a new profile
+POST {{ endpoint }}/register
+content-type: application/json
+
+{
+   "username": "george",
+   "email": "lucasgeorge@gmail.com",
+   "password": "THX1138_forever!"
+}
+
+### Create a new profile
+POST {{ endpoint }}/register
+content-type: application/json
+
+{
+   "username": "Jeffrey",
+   "email": "abramsjje@gmail.com",
+   "password": "Imatrekkieatheart!"
+}
+
+### Get a profile
+GET {{ endpoint }}/users/1
+
+### Delete a profile
+DELETE {{ endpoint }}/users/5
+
+
+### Update username an existing profile username
+PATCH {{ endpoint }}/users/2
+content-type: application/json
+
+{
+   "username": "George"
+}
+
+### Login Attempt With Correct User
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "georgelucas" ,
+   "password": "THX1138_forever!"
+}
+
+### Login Attempt With Incorrect User
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "georgelucas" ,
+   "password": "Ceciestuntest"
+}
+
+### Login Attempt Without Password
+POST {{endpoint}}/login
+content-type: application/json
+
+{
+   "username": "george"
+}
+
+### Access attempt profile page, we need to pass a JWT generated during login
+GET {{endpoint}}/profile/1
+content-type: application/json
+
+{
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTI4NTYzNSwiZXhwIjoxNjU1MjkyODM1fQ.4JbCdPchF16W5VkWeT6aW42h38AJAupdO6CfnqAMIEc"
+}
+
+### Create a game
+POST {{endpoint}}/lobby
+content-type: application/json
+
+{
+   "big_picture": "Un aventure surnaturelle à travers les étoiles",
+   "state": "En cours",
+   "bookend_start": "Un vaisseau diplomatique est abordé par l'armée du despote",
+   "bookend_start_tone": "0",
+   "bookend_end": "L'empire est vaincu",
+   "bookend_end_tone": "1",
+   "creator_id": "1",
+   "current_user_id": "1",
+
+   "player_id": {
+      "player_id1": "1",
+      "player_id2": "2"
+   },
+
+   "palette": {
+      "paletteCard1": {
+         "text": "Magie",
+         "status": "1"
+      },
+      "paletteCard2": {
+         "text": "Le Bien contre le Mal",
+         "status": "1"
+      },
+      "paletteCard3": {
+         "text": "Violence trop graphique",
+         "status": "0"
+      },
+      "paletteCard4": {
+         "text": "Voyage dans le temps",
+         "status": "0"
+      },
+      "paletteCard5": {
+         "text": "l'Elu",
+         "status": "1"
+      },
+   }
+}
