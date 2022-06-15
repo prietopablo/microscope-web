@@ -1,9 +1,10 @@
-import { UPDATE_LOGIN_FORM } from '../actions/loginActions';
+import { LOGIN_SUCCESS, UPDATE_LOGIN_FORM } from '../actions/loginActions';
 import { UPDATE_SIGNUP_FORM } from '../actions/signupActions';
 
 const initialState = {
     email: '',
     password: '',
+    isConnected: false,
 
     username: null,
     emailSignup: '',
@@ -39,6 +40,12 @@ function reducer(state = initialState, action = {}) {
             return {
                 ...state,
                 [action.payload.field]: action.payload.value,
+            };
+
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                isConnected: true,
             };
 
         default:

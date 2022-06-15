@@ -1,7 +1,4 @@
-/* .App-logo {
-    width: 50vh;
-  }
-   */
+
   .signup {
       text-align: center;
       
@@ -23,9 +20,16 @@
     
     }
     
+
     .signup--form-input {
       margin-bottom: 4%;
     }
+
+    .ui.button.button {
+      border-radius: 0;
+    }
+
+
 
     @media (min-width: 480px) {
       .signup--form {
