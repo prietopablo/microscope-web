@@ -28,7 +28,7 @@ function Contact() {
              placeholder="Votre message"
             />
             
-            <Button id="button" inverted color="black" type="submit">Envoyer</Button>
+            <Button id="button" inverted type="submit">Envoyer</Button>
             
               
           </form>

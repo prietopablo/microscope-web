@@ -1,6 +1,6 @@
 import Header from "../Header/Header";
 import { Input, Button, Image, List } from 'semantic-ui-react';
-import Logo from '../../assets/Logo.svg';
+import LogoWhite from '../../assets/LogoWhite.svg';
 import './ArchivedGames.css';
 
 function ArchivedGames() {
@@ -15,7 +15,7 @@ function ArchivedGames() {
                 <List.Content floated='right'>
                   <Button>Ouvrir</Button>
                 </List.Content>
-                  <Image avatar src={Logo} />
+                  <Image avatar src={LogoWhite} />
                 <List.Content>Jeu 1</List.Content>
               </List.Item>
             </List>

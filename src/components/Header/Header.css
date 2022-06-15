@@ -2,20 +2,31 @@ body {
     background-color: aliceblue;
 }
 h1 {
-    margin-top: 0;
+    margin-top: 5rem;
+    width: 11em;
+    
+}
+.App-logo {
+    width: 9em;
+    margin-left: 4rem;
+    margin-top: 3rem;
+}
+
+.container-header {
+    display: flex;
 }
 
 @media (min-width: 480px) {
 
     .app-header{
-        margin: 0 auto;
+        margin-left: -6rem;
         display: flex;
         flex-direction: row;
         
     }
 
     .App-logo{
-        width: 100%;
+        width: 9em;
     }
 
     .container-header{
@@ -30,6 +41,7 @@ h1 {
 
     h1{
         margin: 0 auto;
+        margin-top: 1rem;
         height: 100%;
         display: flex;
         align-items: center;

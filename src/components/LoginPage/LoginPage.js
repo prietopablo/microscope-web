@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendLogin, updateLoginForm } from '../../actions/loginActions';
 import { Input, Button } from 'semantic-ui-react'
@@ -43,7 +42,7 @@ function LoginPage() {
           }}
         />
 
-        <Button id="login--form-submit" inverted color="black" type="submit">Connection</Button>
+        <Button id="login--form-submit" inverted type="submit">Connection</Button>
       
 
 

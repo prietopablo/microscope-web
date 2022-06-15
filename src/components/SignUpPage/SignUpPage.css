@@ -4,11 +4,7 @@
       
     }
     
-    h1 {
-      
-      font-family: 'Times New Roman', Times, serif;
-    }
-    
+   
     .signup--form {
       display:flex;
       flex-direction: column;

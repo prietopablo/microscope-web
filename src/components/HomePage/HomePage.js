@@ -22,16 +22,16 @@ function HomePage() {
 			<Header />
 			{isMobile &&
 				<div className="buttons-mobile">
-					<Button id="button-mobile" inverted color="black">Jouer</Button>
-					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/archived')}>Parties archivées</Button>
-					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/login')}>Se connecter</Button>
-					<Button id="button-mobile" inverted color="black" onClick={() => navigate('/signup')}>Inscription</Button>
+					<Button id="button-mobile" inverted >Jouer</Button>
+					<Button id="button-mobile" inverted  onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<Button id="button-mobile" inverted  onClick={() => navigate('/login')}>Se connecter</Button>
+					<Button id="button-mobile" inverted  onClick={() => navigate('/signup')}>Inscription</Button>
 				</div>
 			}
 			{isDesktop &&
                 <div className="buttons-desktop">
-					<Button id="menu-button" inverted color="black">Jouer</Button>
-					<Button id="menu-button" inverted color="black" onClick={() => navigate('/archived')}>Parties archivées</Button>
+					<Button id="menu-button" inverted >Jouer</Button>
+					<Button id="menu-button" inverted onClick={() => navigate('/archived')}>Parties archivées</Button>
 				</div>
 					}
 
