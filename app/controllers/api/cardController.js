@@ -1,9 +1,10 @@
 const cardDatamapper = require('../../models/cardDatamapper');
 
 const cardController = {
+
    async createPeriod (response, request) {
 
-      const period = await cardDatamapper.insert(request.body, 'period');
+      const period = await cardDatamapper.insert('period', request.body);
 
       // Check status code for error
       if (!period) {
