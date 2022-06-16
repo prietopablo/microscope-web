@@ -84,6 +84,7 @@ export const signupMiddleware = (store) => (next) => async (action) => {
     const { emailSignup, passwordSignup, username } = state;
 
     try {
+
       console.log('on déclenche la requete');
       await requestSignup(emailSignup, passwordSignup, username);
     }
@@ -96,6 +97,8 @@ export const signupMiddleware = (store) => (next) => async (action) => {
 
   next(action);
 };
+
+
 
 // export const authMiddleware = (store) => (next) => (action) => {
 //     console.log(store, next, action);
