@@ -8,8 +8,8 @@ POST {{ endpoint }}/register
 content-type: application/json
 
 {
-   "username": "george",
-   "email": "lucasgeorge@gmail.com",
+   "username": "John",
+   "email": "johnsmith@gmail.com",
    "password": "THX1138_forever!"
 }
 
@@ -83,9 +83,9 @@ content-type: application/json
    "creator_id": "1",
    "current_user_id": "1",
 
-   "player_id": {
-      "player_id1": "1",
-      "player_id2": "2"
+   "players_id": {
+      "player_id_1": "1",
+      "player_id_2": "2"
    },
 
    "palette": {

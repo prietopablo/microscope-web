@@ -21,8 +21,8 @@ const userController = {
     },
 
     async create (request, response) {
-        // We call for the body
-        console.log(request.body);
+
+        // We call for the body        
         const user = await userDatamapper.isUnique(request.body);
         if (user) {
             let field;

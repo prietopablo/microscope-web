@@ -10,15 +10,27 @@ const gameController = {
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
       console.log("request.body", request.body);
-      const game = await gameDatamapper.insert(request.body);
+
+      const data = request.body;
+
+      const game = await gameDatamapper.insert(data);
+
+      console.log("game", game);
 
       // When a game start insert every user participating with the related game.id
       const players = [];
-      console.log(request.body.players_id);
-      const playersId = request.body.players_id;
+      
+      const dataPlayers = data.players_id;
 
-      playersId.forEach(playerId => {
-         const player = playerDatamapper.insert(game.id, playerId);
+      // We have some problem working with await inside a forEach method
+      // We need to convert our object inta an array to use the forEach method
+   
+      dataPlayersId = Object.values(dataPlayers);
+
+      console.log("dataPlayersId",dataPlayersId);
+
+      dataPlayersId.forEach(async (dataPlayerId) => {
+         const player = playerDatamapper.insert(game.id, dataPlayerId);
          players.push(player);
       });
 
@@ -26,10 +38,10 @@ const gameController = {
       const paletteCards = [];
       const palette = request.body.palette
 
-      palette.forEach(paletteCard => {
-         const newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
-         paletteCards.push(newPaletteCard);
-      });
+      // palette.forEach(paletteCard => {
+      //    const newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
+      //    paletteCards.push(newPaletteCard);
+      // });
 
       // Check status code for error
       if (!game && !players && paletteCards) {
