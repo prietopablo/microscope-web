@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
@@ -6,9 +7,11 @@ import Footer from '../Footer/Footer';
 import HomePageLinks from './HomePageLinks/HomePageLinks';
 import ScrollDown from '../../assets/ScrollDown.svg';
 import './HomePage.css';
+import { actionLogout } from '../../actions/loginActions';
 
 function HomePage() {
 
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const isDesktop = useMediaQuery({ query: '(min-width: 769px)'  });
@@ -18,7 +21,12 @@ function HomePage() {
     <div className="home"> 
 		<div className="page">
 		{isDesktop &&
-			<HomePageLinks />
+			<HomePageLinks 
+				handleLogout={() => {
+					console.log('handleLogout');
+					dispatch(actionLogout());
+				}}
+			/>
 		}
 			<Header />
 			{isMobile &&
