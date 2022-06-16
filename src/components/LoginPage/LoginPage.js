@@ -46,7 +46,7 @@ function LoginPage() {
         />
         <Button 
           inverted
-          id="login--form-submit"
+          className="login--form-submit"
           type="submit"
           >
             Connexion

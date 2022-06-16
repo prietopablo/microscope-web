@@ -41,6 +41,10 @@
   .ui.button.button {
     border-radius: 0;
   }
+
+  .login--form-submit.button {
+    margin-top: 30px;
+  }
   
   
 

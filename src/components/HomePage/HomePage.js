@@ -35,6 +35,7 @@ function HomePage() {
 					<Button className="button-mobile" inverted  onClick={() => navigate('/archived')}>Parties archivées</Button>
 					<Button className="button-mobile" inverted  onClick={() => navigate('/login')}>Se connecter</Button>
 					<Button className="button-mobile" inverted  onClick={() => navigate('/signup')}>Inscription</Button>
+					<img src={ScrollDown} className="scroll bounce" alt="scroll-down arrow" />
 				</div>
 			}
 			{isDesktop &&

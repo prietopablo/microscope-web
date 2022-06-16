@@ -3,7 +3,6 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
   font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -31,7 +30,7 @@ h2 {
 }
   
 .buttons-mobile {
-    margin-top: 11rem;
+    margin-top: 6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +68,7 @@ h2 {
   opacity: .5;
   left: 50%;
   display: flex;
-  width: 10px;
+  width: 1px;
   -webkit-animation-name: bounce;
   animation-name: bounce;
   -webkit-animation-duration: 1.5s;
