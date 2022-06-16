@@ -52,7 +52,7 @@ function SignUpPage() {
                 }}
                 />
 
-                <Button id="signup--form-submit" inverted type="submit">Inscription</Button>
+                <Button className="signup--form-submit" inverted type="submit">Inscription</Button>
                 
             </form>
         </div>
