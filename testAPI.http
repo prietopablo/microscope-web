@@ -1,0 +1,56 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+
+### Create a new game with the creator
+POST {{ endpoint }}/createNewGame
+content-type: application/json
+
+{
+   "creator_id": "3"
+}
+
+### Access a game with its id
+GET {{ endpoint }}/game/5
+content-type: application/json
+
+### Deploy game
+POST {{ endpoint }}/game/5
+content-type: application/json
+
+{
+   "big_picture": "Un aventure surnaturelle à travers les étoiles",
+   "state": "En cours",
+   "bookend_start": "Un vaisseau diplomatique est abordé par l'armée du despote",
+   "bookend_start_tone": "0",
+   "bookend_end": "L'empire est vaincu",
+   "bookend_end_tone": "1",
+   "creator_id": "1",
+   "current_user_id": "1",
+
+   "players_id": {
+      "player_id_1": "1",
+      "player_id_2": "2"
+   },
+
+   "palette": {
+      "paletteCard1": {
+         "text": "Magie",
+         "status": "1"
+      },
+      "paletteCard2": {
+         "text": "Le Bien contre le Mal",
+         "status": "1"
+      },
+      "paletteCard3": {
+         "text": "Violence trop graphique",
+         "status": "0"
+      },
+      "paletteCard4": {
+         "text": "Voyage dans le temps",
+         "status": "0"
+      },
+      "paletteCard5": {
+         "text": "l'Elu",
+         "status": "1"
+      }
+   }
+}

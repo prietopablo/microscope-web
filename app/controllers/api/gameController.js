@@ -1,19 +1,27 @@
 const gameDatamapper = require('../../models/gameDatamapper');
 const playerDatamapper = require('../../models/playerDatamapper');
-const paletteDatamapper = require('../../models/paletteDatamapper')
+const paletteDatamapper = require('../../models/paletteDatamapper');
+const userDatamapper = require('../../models/userDatamapper');
 
 
 const gameController = {
 
-   async createGame (request, response) {
-<<<<<<< HEAD
-      console.log(request.body);
-=======
+   async createNewGame (request, response) {
+
+      await gameDatamapper.insertCreator(request.body);
       
->>>>>>> c4f3c66644442602093dd5690a6913c160b7ccf1
+      // findByPk method expect a variable named userId
+      const userId = request.body.creator_id;
+      const creator = await userDatamapper.findByPk(userId);
+
+      return response.status(200).json(`New game created by ${creator.username} !`);
+
+   },
+
+   async deployGame (request, response) {
+      
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
-      console.log("request.body", request.body);
 
       const data = request.body;
 
@@ -40,7 +48,7 @@ const gameController = {
 
       // We also need to loop with each palette card set with the new game
       const paletteCards = [];
-      const palette = request.body.palette
+      const palette = request.body.palette;
 
       // palette.forEach(paletteCard => {
       //    const newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
@@ -53,7 +61,18 @@ const gameController = {
       }
 
       return response.json(game, players, paletteCards);
-   }
+   },
+
+   async getOne (request, response) {
+      console.log(request.params.id);
+      const game = await gameDatamapper.findByPk(request.params.id);
+      
+      if (!game) {
+         return response.status(404).json({ errorMessage: "no game found"});
+      }
+
+      return response.status(200).json({ game });
+  }
 }
 
 module.exports = gameController;

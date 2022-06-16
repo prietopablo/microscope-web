@@ -2,7 +2,19 @@ const client = require('./client');
 
 const gameDatamapper = {
 
-   async insert(content) {
+   async insertCreator(content) {
+      // We need to insert data for each starting game relations
+      // of course the "game" table but also "participation" and "palette"
+      console.log(content.creator_id);
+      const preparedQuery = {
+         text : `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2)`,
+         values: [content.creator_id, content.creator_id]
+      };
+
+      await client.query(preparedQuery);
+   },
+
+   async insertAll(content) {
 
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
@@ -15,7 +27,37 @@ const gameDatamapper = {
       const newGame = await client.query(preparedQuery);
       console.log("newGame.rows[0]", newGame.rows[0]);
       return newGame.rows[0];
-   }
+   },
+
+   async findByPk(gameId) {
+      const result = await client.query('SELECT * FROM "game" WHERE "id" = $1', [gameId]);
+
+      if (result.rowCount === 0) {
+         return null;
+      }
+      
+      return result.rows[0];
+
+  },
+
+  async update(inputData, userId) {
+   
+   const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
+   const values = Object.values(inputData);
+
+   const date = Date.now();
+
+   const savedUser = await client.query(
+       `
+           UPDATE "game" SET
+               ${fields}, "updated_at" = $${fields.length + 2}
+           WHERE id = $${fields.length + 1}
+           RETURNING *`,
+       [...values, userId, date],
+   );
+
+   return savedUser.rows[0];
+},
 }
 
 module.exports = gameDatamapper;
