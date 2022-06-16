@@ -26,12 +26,9 @@ content-type: application/json
 ### Get a profile
 GET {{ endpoint }}/users/1
 
-### Delete a profile
-DELETE {{ endpoint }}/users/5
-
 
 ### Update username an existing profile username
-PATCH {{ endpoint }}/users/2
+PATCH {{ endpoint }}/users/1
 content-type: application/json
 
 {
@@ -43,7 +40,7 @@ POST {{endpoint}}/login
 content-type: application/json
 
 {
-   "username": "georgelucas" ,
+   "username": "george" ,
    "password": "THX1138_forever!"
 }
 
@@ -69,7 +66,7 @@ GET {{endpoint}}/profile/1
 content-type: application/json
 
 {
-   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTI4NTYzNSwiZXhwIjoxNjU1MjkyODM1fQ.4JbCdPchF16W5VkWeT6aW42h38AJAupdO6CfnqAMIEc"
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTM2NDE5NiwiZXhwIjoxNjU1MzcxMzk2fQ.b6t6m50sE8tZYiYqz6Ou4bYluAdFiZF1ViQH-yWIIes"
 }
 
 ### Create a game
@@ -111,6 +108,15 @@ content-type: application/json
       "paletteCard5": {
          "text": "l'Elu",
          "status": "1"
-      },
+      }
    }
+}
+
+### Test
+POST {{endpoint}}/lobby
+content-type: application/json
+
+{
+   "big_picture": "Un aventure surnaturelle à travers les étoiles",
+   "state": "En cours"
 }

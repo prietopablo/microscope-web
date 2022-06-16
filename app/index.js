@@ -10,13 +10,6 @@ const app = express();
 // We use the middleware to parse JSON payload
 app.use(express.json());
 
-
-app.use(session({
-   secret: process.env.SESSION_PASS || 'password par fort',
-   resave: false,
-   saveUninitialized: true
-}));
-
 // We use the middleware to parse urlencoded payload
 app.use(express.urlencoded({ extended: true }));
 

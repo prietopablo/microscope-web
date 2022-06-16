@@ -1,7 +1,7 @@
 const express = require('express');
 const authController = require('../../controllers/api/authController');
 const userController = require('../../controllers/api/userController');
-//const cardController = require('../../controllers/api/cardController');
+const gameController = require('../../controllers/api/gameController');
 const auth = require('../../middlewares/auth');
 
 
@@ -25,7 +25,7 @@ router.post("/login", authController.login);
 // Profile
 router.get('/profile/:id', auth, userController.getOne);
 
-// period routes
-//router.post('/periods', cardController.createPeriod)
+// Game creation routes
+router.post('/lobby', gameController.createGame);
 
 module.exports = router;
