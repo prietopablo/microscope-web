@@ -31,6 +31,7 @@ const authenticationController = {
             );
 
             // We send our user
+            console.log("utilisateur connecté");
             response.status(200).json({ user, token });
          }
          else {
