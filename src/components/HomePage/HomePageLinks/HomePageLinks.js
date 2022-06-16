@@ -8,8 +8,8 @@ function HomePageLinks() {
     
     return(
         <div className="nav">
-            <Button inverted onClick={() => navigate('/login')}>Se connecter</Button>
-            <Button inverted onClick={() => navigate('/signup')}>Inscription</Button>
+            <Button inverted className="nav--link" onClick={() => navigate('/login')}>Se connecter</Button>
+            <Button inverted className="nav--link" onClick={() => navigate('/signup')}>Inscription</Button>
         </div>
 
     );
