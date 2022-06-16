@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create axios instance to not repeat url on each requests
 const axiosInstance = axios.create({
-  baseURL: 'https://microscope-web.herokuapp.com/api',
+  baseURL: 'http://localhost:4000/api',
 });
 
 // axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
@@ -35,9 +35,10 @@ export async function requestLogin(username, password) {
 export async function requestSignup(emailSignup, passwordSignup, username) {
     try {
       const response = await axiosInstance.post('/register', {
+        username,
         email: emailSignup,
         password: passwordSignup,
-        username
+        
       });
       return response.data;
     }

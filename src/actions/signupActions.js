@@ -11,3 +11,4 @@ export const SEND_SIGNUP = 'SEND_SIGNUP';
 export const sendSignup = () => ({
     type: SEND_SIGNUP,
 });
+
