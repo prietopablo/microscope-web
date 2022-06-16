@@ -13,7 +13,7 @@ const gameDatamapper = {
       };
 
       const newGame = await client.query(preparedQuery);
-      
+      console.log("newGame.rows[0]", newGame.rows[0]);
       return newGame.rows[0];
    }
 }
