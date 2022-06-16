@@ -34,6 +34,8 @@ router.post('/createNewGame', gameController.createNewGame);
 // Access game created
 router
    .route('/game/:id')
-   .get(gameController.getOne);
+   .get(gameController.getOne)
+   // The following route is meant to update the current with game with all the data needed to start a game
+   .post(gameController.deployGame);
 
 module.exports = router;
