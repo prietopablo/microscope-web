@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     async getAll (_, response) {
-        
+        console.log(request.body);
         const userList = await userDatamapper.findAll();
         response.json({ userList });
     },
@@ -22,6 +22,7 @@ const userController = {
 
     async create (request, response) {
         // We call for the body
+        console.log(request.body);
         const user = await userDatamapper.isUnique(request.body);
         if (user) {
             let field;
@@ -43,6 +44,7 @@ const userController = {
     },
 
     async delete (request, response) {
+        
         const user = await userDatamapper.findByPk(request.params.id);
 
         if (!user) {
@@ -54,6 +56,7 @@ const userController = {
     },
 
     async update (request, response) {
+        console.log(request.body);
         const user = await userDatamapper.findByPk(request.params.id);
 
         if (!user) {

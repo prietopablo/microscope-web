@@ -2,7 +2,7 @@ const client = require('./client');
 
 const gameDatamapper = {
 
-   async insert(content, playersId) {
+   async insert(content) {
 
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"

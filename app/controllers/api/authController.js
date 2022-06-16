@@ -22,7 +22,7 @@ const authenticationController = {
 
          if (user && passwordVerified) {
             // Create JSON token
-            const userToken =  jwt.sign(
+            const token =  jwt.sign(
                { userId: user.id },
                process.env.TOKEN_KEY,
                {
@@ -31,7 +31,7 @@ const authenticationController = {
             );
 
             // We send our user
-            response.status(200).json({ user, userToken });
+            response.status(200).json({ user, token });
          }
          else {
             response.status(400).json({ errorMessage : "Invalid Credentials" });
