@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { sendSignup, updateSignupForm } from '../../actions/signupActions';
@@ -59,12 +58,6 @@ function SignUpPage() {
         </div>
     )
 }
-
-SignUpPage.propTypes = {
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-};
 
 // == Export
 export default SignUpPage;

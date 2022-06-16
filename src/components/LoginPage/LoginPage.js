@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendLogin, updateLoginForm } from '../../actions/loginActions';
 import { Input, Button } from 'semantic-ui-react'
@@ -41,23 +40,17 @@ function LoginPage() {
 
           }}
         />
-
-        <Button id="login--form-submit" inverted type="submit">Connection</Button>
-      
-
-
+        <Button 
+          inverted
+          id="login--form-submit"
+          type="submit"
+          >
+            Connexion
+        </Button>
       </form>
     </div>
   );
 }
-
-LoginPage.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  className: PropTypes.string,
-};
 
 // == Export
 export default LoginPage;
