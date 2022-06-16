@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     async getAll (_, response) {
-        console.log(request.body);
+        
         const userList = await userDatamapper.findAll();
         response.json({ userList });
     },

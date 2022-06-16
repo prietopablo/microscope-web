@@ -54,14 +54,15 @@ const userDatamapper = {
         const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
         const values = Object.values(inputData);
 
+        const date = Date.now();
+
         const savedUser = await client.query(
             `
                 UPDATE "user" SET
                     ${fields}, "updated_at" = $${fields.length + 2}
                 WHERE id = $${fields.length + 1}
-                RETURNING *
-            `,
-            [...values, userId, Date.now()],
+                RETURNING *`,
+            [...values, userId, date],
         );
 
         return savedUser.rows[0];

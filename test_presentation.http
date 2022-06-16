@@ -66,7 +66,7 @@ GET {{endpoint}}/profile/1
 content-type: application/json
 
 {
-   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTM2NDE5NiwiZXhwIjoxNjU1MzcxMzk2fQ.b6t6m50sE8tZYiYqz6Ou4bYluAdFiZF1ViQH-yWIIes"
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1NTM3MTk2MywiZXhwIjoxNjU1Mzc5MTYzfQ.0rAz90Cpmyb3jAlaL8uU3byRQa-NxlDzWPhbUXl4PvM"
 }
 
 ### Create a game
@@ -112,11 +112,12 @@ content-type: application/json
    }
 }
 
-### Test
-POST {{endpoint}}/lobby
+### Create a game attempt test
+POST {{ endpoint }}/lobby
 content-type: application/json
 
 {
-   "big_picture": "Un aventure surnaturelle à travers les étoiles",
-   "state": "En cours"
+   "username": "Jeffrey",
+   "email": "abramsjje@gmail.com",
+   "password": "Imatrekkieatheart!"
 }
