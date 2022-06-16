@@ -17,38 +17,41 @@ POST {{ endpoint }}/game/5
 content-type: application/json
 
 {
-   "big_picture": "Un aventure surnaturelle à travers les étoiles",
-   "state": "En cours",
-   "bookend_start": "Un vaisseau diplomatique est abordé par l'armée du despote",
-   "bookend_start_tone": "0",
-   "bookend_end": "L'empire est vaincu",
-   "bookend_end_tone": "1",
-   "creator_id": "1",
-   "current_user_id": "1",
+   "game":{
+      "big_picture": "Un aventure surnaturelle à travers les étoiles",
+      "state": "En cours",
+      "bookend_start": "Un vaisseau diplomatique est abordé par l'armée du despote",
+      "bookend_start_tone": "0",
+      "bookend_end": "L'empire est vaincu",
+      "bookend_end_tone": "1",
+      "creator_id": "1",
+      "current_user_id": "1"
+      },
 
-   "players_id": {
+   "players": {
       "player_id_1": "1",
-      "player_id_2": "2"
+      "player_id_2": "2",
+      "player_id_2": "3"
    },
 
    "palette": {
-      "paletteCard1": {
+      "paletteCard_1": {
          "text": "Magie",
          "status": "1"
       },
-      "paletteCard2": {
+      "paletteCard_2": {
          "text": "Le Bien contre le Mal",
          "status": "1"
       },
-      "paletteCard3": {
+      "paletteCard_3": {
          "text": "Violence trop graphique",
          "status": "0"
       },
-      "paletteCard4": {
+      "paletteCard_4": {
          "text": "Voyage dans le temps",
          "status": "0"
       },
-      "paletteCard5": {
+      "paletteCard_5": {
          "text": "l'Elu",
          "status": "1"
       }

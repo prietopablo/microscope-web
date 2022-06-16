@@ -40,20 +40,23 @@ const gameDatamapper = {
 
   },
 
-  async update(inputData, userId) {
-   
+  async updateToStartGame(inputData, userId) {
+
    const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
    const values = Object.values(inputData);
 
-   const date = Date.now();
+   console.log("fields", fields);
+   console.log("values", values);
 
+   // const date = Date.now();
+   // console.log("Date", date);
    const savedUser = await client.query(
        `
            UPDATE "game" SET
                ${fields}, "updated_at" = $${fields.length + 2}
            WHERE id = $${fields.length + 1}
            RETURNING *`,
-       [...values, userId, date],
+       [...values, userId/*, date*/],
    );
 
    return savedUser.rows[0];

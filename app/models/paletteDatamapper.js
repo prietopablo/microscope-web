@@ -9,8 +9,8 @@ const paletteDatamapper = {
          values: [ content.text, content.status, gameId]
       };
 
-      const newGame = await client.query(preparedQuery);
+      await client.query(preparedQuery);
       
-      return newGame.rows[0];
+      return console.log("palette inserted");
    }
 }

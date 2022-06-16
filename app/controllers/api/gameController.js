@@ -20,47 +20,50 @@ const gameController = {
 
    async deployGame (request, response) {
       
-      // We need to insert data for each starting game relations
+      // We need to update data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
-
-      const data = request.body;
-
-      const game = await gameDatamapper.insert(data);
-
-      console.log("game", game);
-
-      // When a game start insert every user participating with the related game.id
-      const players = [];
       
-      const dataPlayers = data.players_id;
+      const gameData = request.body.game;
+      console.log("gameData", gameData);
+
+      const game = await gameDatamapper.updateToStartGame(gameData);
+
+      // console.log("game", game);
+
+      // // When a game start insert every user participating with the related game.id
+      // const players = [];
+      
+      const playersData = request.body.players;
 
       // We have some problem working with await inside a forEach method
-      // We need to convert our object inta an array to use the forEach method
-   
-      dataPlayersId = Object.values(dataPlayers);
+      // We need to convert our object inta an array to use the forEach method   
+      dataPlayersId = Object.values(playersData);
 
-      console.log("dataPlayersId",dataPlayersId);
+      console.log("playersData",playersData);
 
-      dataPlayersId.forEach(async (dataPlayerId) => {
-         const player = playerDatamapper.insert(game.id, dataPlayerId);
-         players.push(player);
-      });
+      // dataPlayersId.forEach(async (dataPlayerId) => {
+      //    const player = playerDatamapper.insert(game.id, dataPlayerId);
+      //    players.push(player);
+      // });
 
       // We also need to loop with each palette card set with the new game
       const paletteCards = [];
-      const palette = request.body.palette;
+      const paletteArray = Object.values(request.body.palette);
+      console.log("paletteArray", paletteArray);
 
-      // palette.forEach(paletteCard => {
-      //    const newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
+      // paletteArray.forEach(paletteCard => {
+
+      //    console.log(paletteCard.text, paletteCard.status);
+      //    newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
       //    paletteCards.push(newPaletteCard);
       // });
 
-      // Check status code for error
-      if (!game && !players && paletteCards) {
-         return response.status(400).json({ errorMessage: "No game created" })
-      }
-
-      return response.json(game, players, paletteCards);
+      // // Check status code for error
+      // if (!game && !players && paletteCards) {
+      //    return response.status(400).json({ errorMessage: "No game created" })
+      // }
+      return response.json({ Message: "DONE"});
+      // return response.json(game, players, paletteCards);
    },
 
    async getOne (request, response) {
