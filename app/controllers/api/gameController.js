@@ -5,7 +5,7 @@ const paletteDatamapper = require('../../models/paletteDatamapper')
 
 const gameController = {
 
-   async createGame (response, request) {
+   async createGame (request, response) {
       console.log(request.body);
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
