@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/users', userController.getAll);
 
-// user routes
+// user routes, meant for admin, we need to authenticate and authorization
 router
    .route('/users/:id')
    .get(userController.getOne)
