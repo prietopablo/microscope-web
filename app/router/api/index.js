@@ -26,6 +26,14 @@ router.post("/login", authController.login);
 router.get('/profile/:id', auth, userController.getOne);
 
 // Game creation routes
-router.post('/lobby', gameController.createGame);
+//router.post('/lobby', gameController.createGame);
+
+// New game creation
+router.post('/createNewGame', gameController.createNewGame);
+
+// Access game created
+router
+   .route('/game/:id')
+   .get(gameController.getOne);
 
 module.exports = router;

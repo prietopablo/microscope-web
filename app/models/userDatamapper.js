@@ -17,7 +17,6 @@ const userDatamapper = {
         }
         
         return result.rows[0];
-
     },
 
     async findUserByUsername(username) {
