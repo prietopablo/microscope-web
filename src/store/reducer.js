@@ -1,16 +1,16 @@
 import { LOGIN_SUCCESS, UPDATE_LOGIN_FORM, SAVE_USER, LOGOUT  } from '../actions/loginActions';
-import { UPDATE_SIGNUP_FORM } from '../actions/signupActions';
+import { SIGNUP_SUCCESS, UPDATE_SIGNUP_FORM } from '../actions/signupActions';
 
 const initialState = {
     email: '',
     password: '',
     isConnected: false,
+    isSignedUp: false,
     token: null,
 
     username: null,
     emailSignup: '',
-    passwordSignup: '',
-    
+    passwordSignup: '',   
 };
 
 function reducer(state = initialState, action = {}) {
@@ -66,6 +66,12 @@ function reducer(state = initialState, action = {}) {
             return {
                 ...state,
                 isConnected: true,
+            };
+
+        case SIGNUP_SUCCESS:
+            return {
+                ...state,
+                isSignedUp: true,
             };
 
         default:

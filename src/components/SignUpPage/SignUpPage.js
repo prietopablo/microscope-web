@@ -1,6 +1,7 @@
 import { Input, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { sendSignup, updateSignupForm } from '../../actions/signupActions';
+import { useNavigate } from 'react-router-dom';
 import './SignUpPage.css';
 import Header from '../Header/Header';
 
@@ -10,8 +11,11 @@ function SignUpPage() {
     const emailSignup = useSelector((state) => state.emailSignup);
     const passwordSignup = useSelector((state) => state.passwordSignup);
     const username = useSelector((state) => state.username);
+    const isSignedUp = useSelector((state) => state.isSignedUp);
+    const navigate = useNavigate();
 
     return (
+        isSignedUp ? navigate('/login') :
         <div className="signup">
             <Header />
             <form 

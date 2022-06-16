@@ -1,5 +1,5 @@
 import { actionSaveUser, LOGOUT, SAVE_USER, SEND_LOGIN } from "../actions/loginActions";
-import { SEND_SIGNUP } from "../actions/signupActions";
+import { SEND_SIGNUP, signupSuccess } from "../actions/signupActions";
 import { removeAuthorization, requestLogin, requestSignup, saveAuthorization } from '../requests';
 
 export const debugMiddleware = (store) => (next) => (action) => {
@@ -87,6 +87,9 @@ export const signupMiddleware = (store) => (next) => async (action) => {
 
       console.log('on déclenche la requete');
       await requestSignup(emailSignup, passwordSignup, username);
+      store.dispatch(
+        signupSuccess(),
+      );
     }
     catch (err) {
       console.error(err);

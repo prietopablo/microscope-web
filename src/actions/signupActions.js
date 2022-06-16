@@ -12,3 +12,7 @@ export const sendSignup = () => ({
     type: SEND_SIGNUP,
 });
 
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const signupSuccess = () => ({
+    type: SIGNUP_SUCCESS,
+});
