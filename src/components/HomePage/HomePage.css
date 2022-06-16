@@ -62,13 +62,23 @@ h2 {
   font-size: calc(5px + 2vmin);
 }
 
+.rules--main {
+  text-align: center;
+}
+
+.rules {
+  width: 80%;
+  text-align: left;
+  margin: 0 auto;
+}
+
 .scroll {
   position: absolute;
   bottom: 9px;
   opacity: .5;
   left: 50%;
   display: flex;
-  width: 1px;
+  width: 15px;
   -webkit-animation-name: bounce;
   animation-name: bounce;
   -webkit-animation-duration: 1.5s;

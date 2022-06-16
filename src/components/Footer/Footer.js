@@ -4,11 +4,10 @@ import './Footer.css';
 function Footer() {
     return(
         <div className="footer">
-             <List.Content>
-               <a href='/contact'>Contact</a>
-             </List.Content>
+          <List.Content>
+            <a className="footer--item" href='/contact'>Contact</a>
+          </List.Content>
         </div>
-
     );
 }
 
