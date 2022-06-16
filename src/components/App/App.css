@@ -1,0 +1,16 @@
+body{
+  margin: 0 auto;
+  background-color: black;
+  width: 60%;
+  color: white;
+}
+.App {
+  text-align: center;
+  
+}
+
+@media (max-width: 768px) {
+  body {
+    width: 100%;
+  }
+}

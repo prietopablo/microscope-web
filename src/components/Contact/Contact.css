@@ -1,0 +1,39 @@
+
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 11rem;
+}
+
+.form {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.message {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 15vh;
+}
+
+.button {
+    margin-top: 5px;
+}
+
+/* @media (min-width: 50em) {
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+    .App-logo {
+        margin: 0px;
+    }
+   
+    
+
+} */
+
