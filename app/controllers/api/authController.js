@@ -52,7 +52,29 @@ const authenticationController = {
       } catch (error) {
          console.log(error);
       }
+   },
+
+   async verifyToken (request, response) {
+      try {      
+         const token = request.headers.authorization.split(' ')[1];
+         console.log("token", token);
+
+         jwt.verify(token, process.env.TOKEN_KEY, function (err, decoded){
+
+            if (err) {
+               return response.status(401).json({ errorMessage: "Token invalid" });
+               
+            }
+
+            return response.json({ userId: decoded.userId,  Message: "Token valid !"});
+
+         });
+      }
+      catch (error) {
+         response.status(401).json({ error });
+      }
    }
+   
 }
 
 module.exports = authenticationController;
