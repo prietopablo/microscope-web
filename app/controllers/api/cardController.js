@@ -4,13 +4,16 @@ const cardController = {
 
    async createPeriod (response, request) {
 
-      const period = await cardDatamapper.insert('period', request.body);
+         try {
+            await cardDatamapper.insert('period', request.body);
 
-      // Check status code for error
-      if (!period) {
-         return response.status(400).json({ errorMessage: "No period card parsed" })
+            // Check status code for error
+
+
+            
+            return response.json({ Message: "Card creation succeed !"});
+      } catch {
+            response.status(400).json({ errorMessage: "Card creation failed"})
       }
-
-      return response.json(period);
    }
 }
