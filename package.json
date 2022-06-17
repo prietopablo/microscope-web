@@ -30,12 +30,9 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "node-dev": "^7.4.3",
-    "nodemon": "^2.0.16",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.7.3"
-  },
-  "engines": {
-    "node": "16.14.0"
+    "pg": "^8.7.3",
+    "socket.io": "^4.5.1"
   }
 }

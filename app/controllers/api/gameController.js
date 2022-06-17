@@ -1,60 +1,75 @@
 const gameDatamapper = require('../../models/gameDatamapper');
+const playerDatamapper = require('../../models/playerDatamapper');
+const paletteDatamapper = require('../../models/paletteDatamapper');
+const userDatamapper = require('../../models/userDatamapper');
 
-const cardController = {
 
-   async createGame (response, request) {
+const gameController = {
 
-<<<<<<< HEAD
-      const period = await gameDatamapper.insert(request.body);
-=======
-   async createGame (request, response) {
-<<<<<<< HEAD
-      console.log(request.body);
-=======
+   async createNewGame (request, response) {
+
+      await gameDatamapper.insertCreator(request.body);
       
->>>>>>> c4f3c66644442602093dd5690a6913c160b7ccf1
-      // We need to insert data for each starting game relations
-      // of course the "game" table but also "participation" and "palette"
-      console.log("request.body", request.body);
+      // findByPk method expect a variable named userId
+      const userId = request.body.creator_id;
+      const creator = await userDatamapper.findByPk(userId);
 
-      const data = request.body;
+      return response.status(200).json(`New game created by ${creator.username} !`);
 
-      const game = await gameDatamapper.insert(data);
+   },
 
-      console.log("game", game);
-
-      // When a game start insert every user participating with the related game.id
-      const players = [];
+   async deployGame (request, response) {
       
-      const dataPlayers = data.players_id;
+      try {
+         // We need to update data for each starting game relations
+         // of course the "game" table but also "participation" and "palette"      
+         const gameData = request.body.game;
+         const gameId = request.params.id;  
 
-      // We have some problem working with await inside a forEach method
-      // We need to convert our object inta an array to use the forEach method
-   
-      dataPlayersId = Object.values(dataPlayers);
+         await gameDatamapper.updateToStartGame(gameData, gameId);
 
-      console.log("dataPlayersId",dataPlayersId);
+         // When a game start insert every user participating with the related game.id    
+         const playersData = request.body.players;
+         // We have some problem working with await inside a forEach method
+         // We need to convert our object inta an array to use the forEach method   
+         dataPlayersId = Object.values(playersData);
 
-      dataPlayersId.forEach(async (dataPlayerId) => {
-         const player = playerDatamapper.insert(game.id, dataPlayerId);
-         players.push(player);
-      });
+         console.log("playersData",playersData);
+         // We need need to pass also positions on the game tabletop starting with the first player
+         let position = 1;
+         dataPlayersId.forEach(async (dataPlayerId) => {
+            playerDatamapper.insert(gameId, dataPlayerId, position);
+            position++;
+         });
 
-      // We also need to loop with each palette card set with the new game
-      const paletteCards = [];
-      const palette = request.body.palette
+         // We also need to loop with each palette card set with the new game
+         const paletteArray = Object.values(request.body.palette);
 
-      // palette.forEach(paletteCard => {
-      //    const newPaletteCard = paletteDatamapper.insert(game.id, paletteCard);
-      //    paletteCards.push(newPaletteCard);
-      // });
->>>>>>> back_game_creation
+         paletteArray.forEach(async (paletteCard) => {
+            console.log(paletteCard.text, paletteCard.status);
+            paletteDatamapper.insert(gameId, paletteCard);         
+         });
+      
+         return response.json({ Message: "game started successfully !"});
 
-      // Check status code for error
-      if (!period) {
-         return response.status(400).json({ errorMessage: "No game created" })
+      } catch (error) {
+         return response.status(400).json({ errorMessage: "game not started"});
+      } 
+   },
+
+   async getOne (request, response) {
+      const game = await gameDatamapper.findByPk(request.params.id);
+      
+      if (!game) {
+         return response.status(404).json({ errorMessage: "no game found"});
       }
 
-      return response.json(period);
+      return response.status(200).json({ game });
+   },
+
+   async getAll (request, response) {
+      //const gamesArchived
    }
 }
+
+module.exports = gameController;

@@ -3,13 +3,8 @@ const bcrypt = require('bcrypt');
 
 const userController = {
 
-<<<<<<< HEAD
     async getAll (_, response) {
         
-=======
-    async getAll (request, response) {
-        console.log(request.body);
->>>>>>> c4f3c66644442602093dd5690a6913c160b7ccf1
         const userList = await userDatamapper.findAll();
         response.json({ userList });
     },
@@ -19,7 +14,7 @@ const userController = {
         const user = await userDatamapper.findByPk(request.params.id);
         
         if (!user) {
-            return response.status(404).json();
+            return response.status(404).json({ errorMessage: "no user found"});
         }
 
         return response.json({ user });
@@ -43,8 +38,9 @@ const userController = {
         // We use bcrypt module to hash our password value
         const hashedPassword = await bcrypt.hash(request.body.password, 10);
 
-        const savedUser = await userDatamapper.insert(request.body, hashedPassword);
-        return response.json(savedUser);
+        await userDatamapper.insert(request.body, hashedPassword);
+        
+        return response.status(200).json("New user created");
     
     },
 
