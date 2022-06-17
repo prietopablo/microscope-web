@@ -59,11 +59,6 @@ const gameDatamapper = {
    );
 
    return savedGame.rows[0];
-   },
-
-   async findAllArchive (data) {}
-}
-
-      return newCard.rows[0];
    }
+   
 };
