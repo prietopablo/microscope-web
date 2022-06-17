@@ -32,7 +32,6 @@ const userDatamapper = {
 
     async insert(content, hashedPassword) {
         
-        console.log(content);
         const preparedQuery = {
             text: `INSERT INTO "user" ("username", "email", "password") VALUES ($1, $2, $3)`,
             values: [content.username, content.email, hashedPassword]
@@ -61,8 +60,7 @@ const userDatamapper = {
                 UPDATE "user" SET
                     ${fields}, "updated_at" = $${fields.length + 2}
                 WHERE id = $${fields.length + 1}
-                RETURNING *
-            `,
+                RETURNING *`,
             [...values, userId, date],
         );
 
