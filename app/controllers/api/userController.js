@@ -3,8 +3,13 @@ const bcrypt = require('bcrypt');
 
 const userController = {
 
+<<<<<<< HEAD
+    async getAll (_, response) {
+        
+=======
     async getAll (request, response) {
         console.log(request.body);
+>>>>>>> c4f3c66644442602093dd5690a6913c160b7ccf1
         const userList = await userDatamapper.findAll();
         response.json({ userList });
     },
@@ -21,8 +26,8 @@ const userController = {
     },
 
     async create (request, response) {
-        // We call for the body
-        console.log(request.body);
+
+        // We call for the body        
         const user = await userDatamapper.isUnique(request.body);
         if (user) {
             let field;

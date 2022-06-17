@@ -12,6 +12,7 @@ const gameDatamapper = {
          values: [content]
       };
 
+<<<<<<< HEAD
       newGame = await client.query(preparedQueryGame);
 
       playersId.forEach(function)
@@ -20,6 +21,13 @@ const gameDatamapper = {
          values: [newGame.id];
 
       }
+=======
+      const newGame = await client.query(preparedQuery);
+      console.log("newGame.rows[0]", newGame.rows[0]);
+      return newGame.rows[0];
+   }
+}
+>>>>>>> back_game_creation
 
       return newCard.rows[0];
    }
