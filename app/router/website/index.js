@@ -27,14 +27,17 @@ router
 // Logout, check what solution front dev have
 router.post("/logout", auth, authController.logout);
 
-// // Game creation routes
-// router.post('/game', gameController.createGame);
+// New game creation
+router.post('/createNewGame', gameController.createNewGame);
 
-// // Game archive
-// router.get('/archive');
-// router.get('/archive/:id');
+// Game archive
+router.get('/archive');
+router.get('/archive/:id');
 
-// // Contact
-// router.get('/contact');
+// Contact
+router
+   .route('/contact')
+   .get()
+   .post();
 
 module.exports = router;

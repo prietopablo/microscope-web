@@ -2,11 +2,11 @@ const client = require('./client');
 
 const playerDatamapper = {
 
-   async insert(gameId, dataPlayerId) {
+   async insert(gameId, dataPlayerId, position) {
 
       const preparedQuery = {
-      text : `INSERT INTO "participation" ("game_id", "player_id") VALUES ($1, $2)`,
-      values: [gameId, dataPlayerId]
+      text : `INSERT INTO "participation" ("game_id", "player_id", "position") VALUES ($1, $2, $3)`,
+      values: [gameId, dataPlayerId, position]
       }
 
       const newPlayer = await client.query(preparedQuery);

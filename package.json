@@ -33,8 +33,5 @@
     "passport-local": "^1.0.0",
     "pg": "^8.7.3",
     "socket.io": "^4.5.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
   }
 }

@@ -49,7 +49,7 @@ const gameDatamapper = {
    console.log("values", values);
 
    
-   const savedUser = await client.query(
+   const savedGame = await client.query(
        `
            UPDATE "game" SET
                ${fields}, "updated_at" = Now()
@@ -58,8 +58,10 @@ const gameDatamapper = {
        [...values, gameId],
    );
 
-   return savedUser.rows[0];
-},
+   return savedGame.rows[0];
+   },
+
+   async findAllArchive (data) {}
 }
 
 module.exports = gameDatamapper;
