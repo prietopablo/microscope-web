@@ -16,3 +16,4 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const signupSuccess = () => ({
     type: SIGNUP_SUCCESS,
 });
+
