@@ -2,15 +2,15 @@ const cardDatamapper = require('../../models/cardDatamapper');
 
 const cardController = {
 
-   async createPeriod (response, request) {
+   async createCard (response, request) {
 
-      const period = await cardDatamapper.insert('period', request.body);
+      try {
+         await cardDatamapper.insert('period', request.body);
 
-      // Check status code for error
-      if (!period) {
-         return response.status(400).json({ errorMessage: "No period card parsed" })
-      }
-
-      return response.json(period);
+         return response.status(200).json({ errorMessage: "Card created !" });
+         
+         } catch (error) {
+            return response.status(400).json({ error, errorMessage: "No period card parsed" });
+         }
    }
 }
