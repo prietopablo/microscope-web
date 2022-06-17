@@ -9,11 +9,11 @@ content-type: application/json
 }
 
 ### Access a game with its id
-GET {{ endpoint }}/game/12
+GET {{ endpoint }}/game/1
 content-type: application/json
 
 ### Deploy game
-POST {{ endpoint }}/game/12
+POST {{ endpoint }}/game/1
 content-type: application/json
 
 {
@@ -31,7 +31,7 @@ content-type: application/json
    "players": {
       "player_id_1": "1",
       "player_id_2": "2",
-      "player_id_2": "3"
+      "player_id_3": "3"
    },
 
    "palette": {

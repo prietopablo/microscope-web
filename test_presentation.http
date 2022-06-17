@@ -23,6 +23,16 @@ content-type: application/json
    "password": "Imatrekkieatheart!"
 }
 
+### Create a new profile
+POST {{ endpoint }}/register
+content-type: application/json
+
+{
+   "username": "George",
+   "email": "georgelucase@gmail.com",
+   "password": "Imatrekkieatheart!"
+}
+
 ### Get a profile
 GET {{ endpoint }}/users/1
 
