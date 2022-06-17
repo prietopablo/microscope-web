@@ -24,22 +24,20 @@ const gameController = {
       // of course the "game" table but also "participation" and "palette"
       
       const gameData = request.body.game;
+      const gameId = request.params.id;
       console.log("gameData", gameData);
+      console.log("gameId", gameId);      
 
-      const game = await gameDatamapper.updateToStartGame(gameData);
+      await gameDatamapper.updateToStartGame(gameData, gameId);
 
-      // console.log("game", game);
-
-      // // When a game start insert every user participating with the related game.id
-      // const players = [];
-      
+      // When a game start insert every user participating with the related game.id
+      // const players = [];      
       const playersData = request.body.players;
-
       // We have some problem working with await inside a forEach method
       // We need to convert our object inta an array to use the forEach method   
       dataPlayersId = Object.values(playersData);
 
-      console.log("playersData",playersData);
+     // console.log("playersData",playersData);
 
       // dataPlayersId.forEach(async (dataPlayerId) => {
       //    const player = playerDatamapper.insert(game.id, dataPlayerId);
@@ -49,7 +47,7 @@ const gameController = {
       // We also need to loop with each palette card set with the new game
       const paletteCards = [];
       const paletteArray = Object.values(request.body.palette);
-      console.log("paletteArray", paletteArray);
+      //console.log("paletteArray", paletteArray);
 
       // paletteArray.forEach(paletteCard => {
 
