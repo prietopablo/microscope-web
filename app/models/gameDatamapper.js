@@ -7,7 +7,7 @@ const gameDatamapper = {
       // of course the "game" table but also "participation" and "palette"
       console.log(content.creator_id);
       const preparedQuery = {
-         text : `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2)`,
+         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2)`,
          values: [content.creator_id, content.creator_id]
       };
 
@@ -24,9 +24,7 @@ const gameDatamapper = {
          values: [content]
       };
 
-      const newGame = await client.query(preparedQuery);
-      console.log("newGame.rows[0]", newGame.rows[0]);
-      return newGame.rows[0];
+      await client.query(preparedQuery);
    },
 
    async findByPk(gameId) {
@@ -50,11 +48,10 @@ const gameDatamapper = {
 
    
    const savedGame = await client.query(
-       `
-           UPDATE "game" SET
-               ${fields}, "updated_at" = Now()
-           WHERE id = $${fields.length + 1}
-           RETURNING *`,
+       `UPDATE "game" SET
+         ${fields}, "updated_at" = Now()
+         WHERE id = $${fields.length + 1}
+         RETURNING *`,
        [...values, gameId],
    );
 
@@ -62,3 +59,5 @@ const gameDatamapper = {
    }
    
 };
+
+module.exports = gameDatamapper;

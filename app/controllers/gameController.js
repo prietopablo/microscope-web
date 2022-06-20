@@ -1,7 +1,7 @@
-const gameDatamapper = require('../../models/gameDatamapper');
-const playerDatamapper = require('../../models/playerDatamapper');
-const paletteDatamapper = require('../../models/paletteDatamapper');
-const userDatamapper = require('../../models/userDatamapper');
+const gameDatamapper = require('../models/gameDatamapper');
+const playerDatamapper = require('../models/playerDatamapper');
+const paletteDatamapper = require('../models/paletteDatamapper');
+const userDatamapper = require('../models/userDatamapper');
 
 
 const gameController = {
@@ -9,7 +9,7 @@ const gameController = {
    async createNewGame (request, response) {
 
       await gameDatamapper.insertCreator(request.body);
-      
+      console.log('request.body', request.body)
       // findByPk method expect a variable named userId
       const userId = request.body.creator_id;
       const creator = await userDatamapper.findByPk(userId);

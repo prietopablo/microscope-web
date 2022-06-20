@@ -1,4 +1,4 @@
-const userDatamapper = require('../../models/userDatamapper');
+const userDatamapper = require('../models/userDatamapper');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -42,17 +42,7 @@ const authenticationController = {
       }
    },
 
-   async logout (_, response) {
-      try {
-         
-         // We will destroy the JWT on the client side
-
-         response.status(200).json({ mesage: "logged out !"});
-
-      } catch (error) {
-         console.log(error);
-      }
-   },
+  // Logout happen on the client side
 
    async verifyToken (request, response) {
       try {      

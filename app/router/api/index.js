@@ -1,7 +1,7 @@
 const express = require('express');
-const authController = require('../../controllers/api/authController');
-const userController = require('../../controllers/api/userController');
-const gameController = require('../../controllers/api/gameController');
+const authController = require('../../controllers/authController');
+const userController = require('../../controllers/userController');
+const gameController = require('../../controllers/gameController');
 const auth = require('../../middlewares/auth');
 
 
@@ -24,9 +24,6 @@ router.post("/login", authController.login);
 
 // Profile
 router.get('/profile/:id', auth, userController.getOne);
-
-// Game creation routes
-//router.post('/lobby', gameController.createGame);
 
 // New game creation
 router.post('/createNewGame', gameController.createNewGame);

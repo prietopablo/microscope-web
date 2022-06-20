@@ -3,3 +3,4 @@
 
 init 2022-06-10T08:14:51Z Pablo Prieto <priet@DESKTOP-LQGK7CU> # table creation & domain for password and email
 game_v2 2022-06-16T14:37:15Z Pablo Prieto <priet@DESKTOP-LQGK7CU> # game needs to be created with null fields to work with the app logic
+cards_v2 2022-06-19T17:14:37Z Pablo Prieto <priet@DESKTOP-LQGK7CU> # we need to unify the tone column, introduce foreign key dependencies. the focus table column description is rename  text, needs a foreign key to the game table
