@@ -8,19 +8,17 @@ function ArchivedGames() {
         <div className="archived-games">
             <Header />
             <h2 className="archived-title">Parties archivées</h2>
-            <Input id="archived-input" size='big' icon='search' placeholder='Search...' />
-            
+            <Input className="archived-input" size='big' icon='search' placeholder='Search...' />
             <List divided verticalAlign='middle'>
               <List.Item>
                 <List.Content floated='right'>
                   <Button>Ouvrir</Button>
                 </List.Content>
                   <Image avatar src={LogoWhite} />
-                <List.Content>Jeu 1</List.Content>
+                <List.Content className="archived--item">Jeu 1</List.Content>
               </List.Item>
             </List>
         </div>
-
     );
 }
 

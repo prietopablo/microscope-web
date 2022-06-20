@@ -6,7 +6,7 @@ h1 {
   font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h2 {
+.rules--main {
   margin-top: 10rem;
   margin-bottom: 6rem;
 }

@@ -3,11 +3,12 @@
     margin-top: 5rem;
 }
 
+.archived-input {
+    margin-bottom: 3rem;
+}
 
-
-.item {
+.ui.divided.list>.item:first-child {
     width: 80%;
     text-align: left;
     margin: 0 auto;
-    margin-top: 6rem;
 }
