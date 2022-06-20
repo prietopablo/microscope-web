@@ -1,4 +1,4 @@
-@endpoint = http://localhost:{{$dotenv PORT}}/api
+@endpoint = http://localhost:{{$dotenv PORT}}
 
 ### Create a new game with the creator
 POST {{ endpoint }}/createNewGame
@@ -9,11 +9,11 @@ content-type: application/json
 }
 
 ### Access a game with its id
-GET {{ endpoint }}/game/1
+GET {{ endpoint }}/game/15
 content-type: application/json
 
 ### Deploy game
-POST {{ endpoint }}/game/1
+PATCH {{ endpoint }}/game/13
 content-type: application/json
 
 {

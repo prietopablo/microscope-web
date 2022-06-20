@@ -1,0 +1,12 @@
+@endpoint = http://localhost:{{$dotenv PORT}}
+
+
+POST {{ endpoint }}/game/15
+content-type: application/json
+
+{
+   "cardType": "period",
+   "text": "text",
+   "tone": true,
+   "position": 1
+}

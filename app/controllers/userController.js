@@ -1,4 +1,4 @@
-const userDatamapper = require('../../models/userDatamapper');
+const userDatamapper = require('../models/userDatamapper');
 const bcrypt = require('bcrypt');
 
 const userController = {

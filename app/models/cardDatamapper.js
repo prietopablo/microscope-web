@@ -2,15 +2,15 @@ const client = require('./client');
 
 const cardDatamapper = {
 
-   async insert(cardType, content) {
+   async insert(inputData, gameId) {      
 
       const preparedQuery = {
-         text : `INSERT INTO $1 ("text", "period_tone", "position") VALUES ($2, $3, $4)`,
-         values: [cardType, content]
+         text: `INSERT INTO $1 ("text", "tone", "position", "game_id") VALUES ( $2, $3, $4, $5 )`,
+         values: [...inputData, gameId]
       };
 
-      newCard = await client.query(preparedQuery);
-
-      return newCard.rows[0];
+      await client.query(preparedQuery);
    }
-};
+}
+
+module.exports = cardDatamapper;
