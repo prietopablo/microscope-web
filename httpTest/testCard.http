@@ -5,10 +5,11 @@ POST {{ endpoint }}/game/15
 content-type: application/json
 
 {
+   "parentType": "game",
    "cardType": "period",
    "text": "text",
    "tone": true,
-   "game_id": 13,
+   "parentId": 13,
    "previous_card_position": 0
 }
 
@@ -17,10 +18,10 @@ POST {{ endpoint }}/game/15
 content-type: application/json
 
 {
-   "card_type": "event",
+   "parentType": "game",
+   "cardType": "period",
    "text": "text",
    "tone": true,
-   "position": 1,
-   "period_id": 1,
+   "parentId": 13,
    "previous_card_position": 0
 }
