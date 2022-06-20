@@ -1,6 +1,6 @@
 @endpoint = http://localhost:{{$dotenv PORT}}
 
-
+### period
 POST {{ endpoint }}/game/15
 content-type: application/json
 
@@ -8,5 +8,19 @@ content-type: application/json
    "cardType": "period",
    "text": "text",
    "tone": true,
-   "position": 1
+   "game_id": 13,
+   "previous_card_position": 0
+}
+
+### event
+POST {{ endpoint }}/game/15
+content-type: application/json
+
+{
+   "card_type": "event",
+   "text": "text",
+   "tone": true,
+   "position": 1,
+   "period_id": 1,
+   "previous_card_position": 0
 }

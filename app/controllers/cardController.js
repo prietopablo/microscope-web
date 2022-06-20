@@ -6,12 +6,12 @@ const cardController = {
 
       try {
             
-            await cardDatamapper.insert(request.body, request.params.id);
+            await cardDatamapper.insert(request.body);
             // Check status code for error            
-            response.json({ Message: "Card creation succeed !"});
+            return response.json({ Message: "Card creation succeed !"});
 
-      } catch (error) {
-            response.json({ error, errorMessage: "Card creation failed"});
+      } catch {
+            return response.json({ errorMessage: "Card creation failed"});
       }
    }
 }
