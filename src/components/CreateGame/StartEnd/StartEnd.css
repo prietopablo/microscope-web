@@ -1,0 +1,9 @@
+.bookend {
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem auto;
+}
+
+.bookend--titles {
+  width: 40%;
+}

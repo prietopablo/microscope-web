@@ -1,0 +1,8 @@
+.lobby {
+  width: 80%;
+  margin: 4rem auto;
+}
+
+.lobby--submit.ui.button.button {
+  margin-bottom: 3rem;
+}

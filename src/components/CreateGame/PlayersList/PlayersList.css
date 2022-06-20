@@ -1,24 +1,22 @@
 .players {
-    margin: 3rem auto;
-    width: 80%;
+  margin: 3rem auto;
 }
 
 players--title {
-    margin-bottom: 4rem;
-    text-align: left;
-    width: 80%;
+  margin-bottom: 4rem;
+  text-align: left;
+  width: 80%;
 }
 
 .players--list {
-    list-style-type: none;
-    border: solid 2px white;
-    padding: 1rem;
-    width: 80%;
-    margin: 1rem auto;
+  list-style-type: none;
+  border: solid 2px white;
+  padding: 1rem;
+  width: 80%;
+  margin: 1rem auto;
 }
 
 .players--list-item {
-    text-align: left;
-    margin: 1rem 1rem;
+  text-align: left;
+  margin: 1rem 1rem;
 }
-
