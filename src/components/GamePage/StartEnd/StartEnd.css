@@ -1,0 +1,15 @@
+#debut {
+    color: black;
+    text-decoration:underline;
+
+}
+.column{width:100%}
+
+#start-end {
+    width: 100%;
+   
+}
+#grid-start-end {
+    justify-content: space-between;
+}
+
