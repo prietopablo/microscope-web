@@ -1,0 +1,23 @@
+.players-usernames {
+    display: flex;
+}
+
+.player-username {
+    color: aliceblue;
+    width: 25%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.game-title {
+    color: aliceblue;
+}
+
+.focus {
+    display: flex;
+    gap: 10%;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
