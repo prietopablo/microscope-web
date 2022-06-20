@@ -15,7 +15,12 @@ function CreateGame() {
   return (
     <div className="lobby">
       {/* <PlayersList /> */}
-      <Form>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log(event);
+        }}
+      >
         <BigPicture />
         <StartEnd />
         <Palette />
