@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 // Create axios instance to not repeat url on each requests
-const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000/api',
+export const axiosInstance = axios.create({
+  baseURL: 'https://microscope-web.herokuapp.com/api',
 });
 
 // axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
