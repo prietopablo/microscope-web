@@ -47,6 +47,7 @@ export const loginMiddleware = (store) => (next) => async (action) => {
         console.log("la requete est terminé et j'ai récupéré:", data);
 
         console.log("je dispatch SAVE_USER avec les infos de l'utilisateur connecté");
+        localStorage.setItem('token', data.token);
         store.dispatch(
           actionSaveUser(data.username, data.token),
         );
