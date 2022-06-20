@@ -1,0 +1,20 @@
+.palette {
+  margin: 4rem auto;
+}
+
+.palette--items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.palette--field {
+  width: 40%;
+}
+
+/* .palette--field {
+  width: 30% !important;
+} */
+
+.ui.form .field > label {
+  color: white;
+}
