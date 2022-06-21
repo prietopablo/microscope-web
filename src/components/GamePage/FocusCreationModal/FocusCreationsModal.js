@@ -10,7 +10,7 @@ function FocusCreationModal() {
   const handleChange = (e) => {
     setNewFocus(e.target.value);
   };
-  const handleClick = () =>
+  const handleClick = () => {
     dispatch({
       type: "ADD_FOCUS",
       payload: {
@@ -18,6 +18,9 @@ function FocusCreationModal() {
         id: Math.ceil(Math.random() * 100),
       },
     });
+
+    setOpen(false);
+  };
   console.log("create focus text", newFocus);
 
   return (
@@ -27,7 +30,7 @@ function FocusCreationModal() {
         open={open}
         // onClose={() => setOpen(false)}   {() => setOpen(false)}
         onOpen={() => setOpen(true)}
-        trigger={<Button>Focus</Button>}
+        trigger={<Button>Editer focus</Button>}
       >
         <Modal.Header>Description du focus</Modal.Header>
         <Modal.Content>
@@ -41,9 +44,7 @@ function FocusCreationModal() {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={(handleClick, () => setOpen(false))}>
-            Valider le focus
-          </Button>
+          <Button onClick={handleClick}>Valider le focus</Button>
         </Modal.Actions>
       </Modal>
     </div>

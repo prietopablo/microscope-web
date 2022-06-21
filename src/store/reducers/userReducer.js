@@ -19,8 +19,6 @@ const initialState = {
   username: null,
   emailSignup: "",
   passwordSignup: "",
-
-  focus: [],
 };
 
 function userReducer(state = initialState, action = {}) {
@@ -35,11 +33,7 @@ function userReducer(state = initialState, action = {}) {
     //         ...state,
     //         password: action.payload.value,
     //     };
-    case "ADD_FOCUS":
-      return {
-        ...state,
-        focus: [...state.focus, action.payload],
-      };
+
     case SAVE_USER:
       return {
         ...state,

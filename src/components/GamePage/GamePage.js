@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import Focus from "./Focus/Focus";
 import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
 import "./GamePage.css";
@@ -6,13 +7,18 @@ import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
 function GamePage() {
-  const dispatch = useDispatch();
-  const focus = useSelector((state) => state.focus);
-  const handleClick = (id) =>
-    dispatch({
-      type: "DELETE_FOCUS",
-      payload: id,
-    });
+  // const dispatch = useDispatch();
+  // const focus = useSelector((state) => state.game.focus);
+  // console.log("state", focus);
+  // const handleClick = (id) =>
+  //   dispatch({
+  //     type: "DELETE_FOCUS",
+  //     payload: id,
+  //   });
+
+  useEffect(() => {
+    console.log("verif focus", focus);
+  }, [focus]);
 
   return (
     <div className="">
@@ -29,15 +35,15 @@ function GamePage() {
       </div>
       <StartEnd />
       <div className="card-container">
-        <ul>
+        {/* <ul>
           {focus
-            ? focus.map((f) => (
-                <li key={f.id} onClick={() => handleClick(f)}>
+            ? focus.map((f, i) => (
+                <li key={i} onClick={() => handleClick(f)}>
                   {f.label}
                 </li>
               ))
             : console.log("voici le focus", focus)}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

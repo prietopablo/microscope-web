@@ -24,6 +24,7 @@ function gameReducer(state = initialState, action) {
         ...state,
         focus: state.focus.filter((focus) => focus.id !== action.payload),
       };
+
     default:
       return state;
   }
