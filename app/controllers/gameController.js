@@ -2,29 +2,35 @@ const gameDatamapper = require('../models/gameDatamapper');
 const playerDatamapper = require('../models/playerDatamapper');
 const paletteDatamapper = require('../models/paletteDatamapper');
 const userDatamapper = require('../models/userDatamapper');
+const cardDatamapper = require('../models/cardDatamapper');
 
 
 const gameController = {
 
    async createNewGame (request, response) {
+      try {
+         await gameDatamapper.insertCreator(request.body);
+         console.log('request.body', request.body)
+         // findByPk method expect a variable named userId
+         const userId = request.body.creator_id;
+         const creator = await userDatamapper.findByPk(userId);
 
-      await gameDatamapper.insertCreator(request.body);
-      console.log('request.body', request.body)
-      // findByPk method expect a variable named userId
-      const userId = request.body.creator_id;
-      const creator = await userDatamapper.findByPk(userId);
-
-      return response.status(200).json(`New game created by ${creator.username} !`);
+         return response.status(200).json(`New game created by ${creator.username} !`);
+      }
+      catch (err){
+         response.json({ errorType: err.message });
+     }
 
    },
 
    async deployGame (request, response) {
       
       try {
+         console.log(request.body);
          // We need to update data for each starting game relations
          // of course the "game" table but also "participation" and "palette"      
          const gameData = request.body.game;
-         const gameId = request.params.id;  
+         const gameId = request.params.id; 
 
          await gameDatamapper.updateToStartGame(gameData, gameId);
 
@@ -52,19 +58,42 @@ const gameController = {
       
          return response.json({ Message: "game started successfully !"});
 
-      } catch (error) {
-         return response.status(400).json({ errorMessage: "game not started"});
+      } catch (err) {
+         return response.status(400).json({ errorLog: err.message, errorMessage: "game not started"});
       } 
    },
 
    async getOne (request, response) {
-      const game = await gameDatamapper.findByPk(request.params.id);
-      
-      if (!game) {
-         return response.status(404).json({ errorMessage: "no game found"});
-      }
 
-      return response.status(200).json({ game });
+      try {
+         const game = await gameDatamapper.findByPk(request.params.id);
+         
+         if (!game) {
+            return response.status(404).json({ errorMessage: "no game found"});
+         }
+
+         const player = await userDatamapper.findByGame(request.params.id);
+
+         const period = await cardDatamapper.findByGame(request.params.id);
+
+         for (let i = 0; i < period.length; i++) {
+
+            const eventFound = await cardDatamapper.findByPeriod(period[i].id);
+
+            for (let j = 0; j < eventFound.length; j++) {
+
+               const sceneFound = await cardDatamapper.findByEvent(eventFound[j].id);
+               eventFound[j].scene = sceneFound;
+            }
+
+            period[i].event = eventFound;
+         }
+
+         return response.status(200).json({ game, player, period });
+         
+      } catch (err) {
+         return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
+      }
    },
 
    async getAll (request, response) {
