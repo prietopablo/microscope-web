@@ -3,6 +3,9 @@ import { useEffect } from "react";
 import Focus from "./Focus/Focus";
 import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
 import "./GamePage.css";
+import Periods from "./Periods/Periods";
+import PeriodsCreationModal from "./Periods/PeriodsCreationModal";
+
 import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
@@ -34,16 +37,9 @@ function GamePage() {
         <FocusCreationModal />
       </div>
       <StartEnd />
-      <div className="card-container">
-        {/* <ul>
-          {focus
-            ? focus.map((f, i) => (
-                <li key={i} onClick={() => handleClick(f)}>
-                  {f.label}
-                </li>
-              ))
-            : console.log("voici le focus", focus)}
-        </ul> */}
+      <div className="button-periods">
+        <PeriodsCreationModal />
+        <Periods />
       </div>
     </div>
   );

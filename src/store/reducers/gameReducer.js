@@ -9,6 +9,7 @@ const initialState = {
   currentUser: null,
 
   focus: [],
+  periods: [],
 };
 
 function gameReducer(state = initialState, action) {
@@ -19,10 +20,10 @@ function gameReducer(state = initialState, action) {
         focus: [...state.focus, action.payload],
       };
 
-    case "DELETE_FOCUS":
+    case "ADD_PERIODS":
       return {
         ...state,
-        focus: state.focus.filter((focus) => focus.id !== action.payload),
+        periods: [...state.periods, action.payload],
       };
 
     default:
