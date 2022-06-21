@@ -46,11 +46,11 @@ const userDatamapper = {
         return result.rows;
     },
 
-    async insert(content, hashedPassword) {
+    async insert(userData, hashedPassword) {
         
         const preparedQuery = {
             text: `INSERT INTO "user" ("username", "email", "password") VALUES ($1, $2, $3)`,
-            values: [content.username, content.email, hashedPassword]
+            values: [userData.username, userData.email, hashedPassword]
         };
 
         const newUser = await client.query(preparedQuery);
@@ -104,7 +104,6 @@ const userDatamapper = {
         }
         return results;
         */
-
         const fields = [];
         const values = [];
         // We gather our inputData

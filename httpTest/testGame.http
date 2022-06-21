@@ -19,7 +19,7 @@ content-type: application/json
 {
    "game":{
       "big_picture": "L'humanité quitte la terre et colonise une autre planète",
-      "state": "En cours",
+      "state": "ongoing",
       "bookend_start": "L'humanité quitte la terre à bord d'un vaisseau, en direction de Mars",
       "bookend_start_tone": "0",
       "bookend_end": "L'humanité échoue dans sa colonisation",

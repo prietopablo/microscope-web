@@ -74,9 +74,6 @@ const cardDatamapper = {
          text: `INSERT INTO ${data.cardType} ("text", "tone", "position", "${parentType}") VALUES ('${data.text}', '${data.tone}', '${positionToUpdate}', '${data.parentId}')`
       };
 
-      console.log("preparedQuery", preparedQuery);
-
-
       // const preparedQuery = {
       //    text: `INSERT INTO $1 ("text", "tone", "position", "$2") VALUES ($3, $4, $5, $6)`,
       //    values: [data.cardType, data.tone, `${data.parenType}_id`, data.text, data.previous_card_position + 1, data.game_id, data.parentId]
@@ -95,7 +92,6 @@ const cardDatamapper = {
             RETURNING *`,
           values: [newPosition, cardId],
       };
-      console.log(preparedQuery);
 
       const savedCard = await client.query(preparedQuery);
    
@@ -108,9 +104,6 @@ const cardDatamapper = {
          text: `INSERT INTO "focus" ("description", "author_id", "position")`,
          values: [content]
       };
-
-      console.log("preparedQuery", preparedQuery);
-
 
       await client.query(preparedQuery);
 

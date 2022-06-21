@@ -87,7 +87,6 @@ const gameController = {
                      eventsFound[j].scenes = scenesFound;
                   }
                }
-
                periods[i].events = eventsFound;
             }
          }
@@ -99,8 +98,15 @@ const gameController = {
       }
    },
 
-   async getAll (request, response) {
-      //const gamesArchived
+   async getAllArchived (_, response) {
+
+      try { 
+         const archivedList = await userDatamapper.findAllArchived();
+         return response.json({ archivedList });
+     }
+     catch (err){
+         response.json({ errorType: err.message });
+     }
    }
 }
 
