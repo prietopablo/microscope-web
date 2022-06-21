@@ -29,6 +29,16 @@ const userDatamapper = {
         return result.rows[0];
     },
 
+    async findByGame(inputData) {
+        const result = await client.query('SELECT * FROM "participation" WHERE "game_id" = $1', [inputData]);
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+
+        return result.rows;
+    },
+
     async insert(content, hashedPassword) {
         
         const preparedQuery = {

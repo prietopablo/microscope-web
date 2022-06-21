@@ -2,7 +2,7 @@ const client = require('./client');
 
 const cardDatamapper = {
 
-   async findByPosition (data) {
+   async findAllByPosition (data) {
 
       console.log("datamapper");
 
@@ -10,7 +10,7 @@ const cardDatamapper = {
          text: `SELECT * FROM ${data.cardType} WHERE position >= ${data.previous_card_position + 1} AND ${data.parentType}_id = ${data.parentId}`
       };
 
-      // make it more secure
+      // make it more secure !!!!!!!!!!!!!!!!
       // const preparedQuery = {
       //    text: `SELECT * FROM ${data.cardType} WHERE position = $1 AND $2 = $3`,
       //    values : [
@@ -71,7 +71,21 @@ const cardDatamapper = {
       const savedCard = await client.query(preparedQuery);
    
       return savedCard.rows[0];
-   }   
+   },
+   
+   async insertFocus (content) {
+
+      const preparedQuery = {
+         text: `INSERT INTO "focus" ("description", "author_id", "position")`,
+         values: [content]
+      };
+
+      console.log("preparedQuery", preparedQuery);
+
+
+      await client.query(preparedQuery);
+
+   },
 }
 
 module.exports = cardDatamapper;

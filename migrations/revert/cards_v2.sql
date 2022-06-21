@@ -3,17 +3,21 @@
 BEGIN;
 
 ALTER TABLE period
-   ALTER COLUMN tone RENAME TO period_tone,
+   RENAME COLUMN tone TO period_tone;
+ALTER TABLE period
    DROP COLUMN "game_id";
 ALTER TABLE event
-   ALTER COLUMN tone RENAME TO event_tone,
+   RENAME COLUMN tone TO event_tone;
+ALTER TABLE event 
    DROP COLUMN "period_id";
 ALTER TABLE scene
-   ALTER COLUMN tone RENAME TO scene_tone,
+   RENAME COLUMN tone TO scene_tone;
+ALTER TABLE scene
    DROP COLUMN "event_id";
 
 ALTER TABLE focus
-   ALTER COLUMN text RENAME TO description,
+   RENAME COLUMN text TO description;
+ALTER TABLE focus
    DROP COLUMN game_id;
 
 COMMIT;
