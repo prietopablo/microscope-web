@@ -8,10 +8,10 @@ const cardDatamapper = require('../models/cardDatamapper');
 const gameController = {
 
    async createNewGame (request, response) {
+      // We create a game just by creating row in our database, with its key and the creator one. We will update all the details with the deployGame method
       try {
          await gameDatamapper.insertCreator(request.body);
-         console.log('request.body', request.body)
-         // findByPk method expect a variable named userId
+
          const userId = request.body.creator_id;
          const creator = await userDatamapper.findByPk(userId);
 
@@ -26,29 +26,25 @@ const gameController = {
    async deployGame (request, response) {
       
       try {
-         console.log(request.body);
          // We need to update data for each starting game relations
-         // of course the "game" table but also "participation" and "palette"      
+         // Of course the "game" table but also "participation" and "palette"    
          const gameData = request.body.game;
          const gameId = request.params.id; 
 
          await gameDatamapper.updateToStartGame(gameData, gameId);
 
-         // When a game start insert every user participating with the related game.id    
-         const playersData = request.body.players;
-         // We have some problem working with await inside a forEach method
-         // We need to convert our object inta an array to use the forEach method   
-         dataPlayersId = Object.values(playersData);
+         // When a game start insert every user participating with the related "game".id
+         // We need to extract the "user".id who will play for this game                     
+         const dataPlayersId = Object.values(request.body.players);
 
-         console.log("playersData",playersData);
-         // We need need to pass also positions on the game tabletop starting with the first player
+         // We need need to increment players position, beginning by creator who will serve as the firs player
          let position = 1;
          dataPlayersId.forEach(async (dataPlayerId) => {
             playerDatamapper.insert(gameId, dataPlayerId, position);
             position++;
          });
 
-         // We also need to loop with each palette card set with the new game
+         // A similar loop is needed for inserting every palette shade i.e. themes to include or exclude from the game
          const paletteArray = Object.values(request.body.palette);
 
          paletteArray.forEach(async (paletteCard) => {
@@ -56,40 +52,47 @@ const gameController = {
             paletteDatamapper.insert(gameId, paletteCard);         
          });
       
-         return response.json({ Message: "game started successfully !"});
+         return response.json({ Message: "game deployed successfully !"});
 
       } catch (err) {
-         return response.status(400).json({ errorLog: err.message, errorMessage: "game not started"});
+         return response.json({ errorLog: err.message, errorMessage: "Unable to deploy the game!" });
       } 
    },
 
    async getOne (request, response) {
-
+      // This method will retrieve a game as an all, which every data connected to the a game
+      // It will be used to display ongoing games and archived ones
       try {
+         // The game object will find all the data contained in the "game" table
          const game = await gameDatamapper.findByPk(request.params.id);
+
+         // The player object will retrieve data in the "participation" table
+         const players = await userDatamapper.findByGameId(request.params.id);
+
+         // The period object is composed of period of our game and each subsequent event which also reach to related scenes
+         const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
          
-         if (!game) {
-            return response.status(404).json({ errorMessage: "no game found"});
-         }
+         for (let i = 0; i < periods.length; i++) {
 
-         const player = await userDatamapper.findByGame(request.params.id);
+            const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
+            console.log("eventFound", i,eventsFound);
 
-         const period = await cardDatamapper.findByGame(request.params.id);
+            if (eventsFound) {
+               
+               for (let j = 0; j < eventsFound.length; j++) {
 
-         for (let i = 0; i < period.length; i++) {
+                  const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
 
-            const eventFound = await cardDatamapper.findByPeriod(period[i].id);
+                  if (scenesFound) {
+                     eventsFound[j].scenes = scenesFound;
+                  }
+               }
 
-            for (let j = 0; j < eventFound.length; j++) {
-
-               const sceneFound = await cardDatamapper.findByEvent(eventFound[j].id);
-               eventFound[j].scene = sceneFound;
+               periods[i].events = eventsFound;
             }
-
-            period[i].event = eventFound;
          }
 
-         return response.status(200).json({ game, player, period });
+         return response.json({ game, players, periods });
          
       } catch (err) {
          return response.json({ errorType: err.message, errorMessage: "Failed to find game"});

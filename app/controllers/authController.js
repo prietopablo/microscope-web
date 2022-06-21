@@ -42,7 +42,7 @@ const authenticationController = {
       }
    },
 
-  // Logout happen on the client side
+   // Logout happen on the client side
 
    async verifyToken (request, response) {
       try {      
