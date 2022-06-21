@@ -2,7 +2,7 @@ const cardDatamapper = require('../models/cardDatamapper');
 
 const cardController = {
 
-   async create (request, response) {
+   async createCard (request, response) {
 
       try {
                      
@@ -20,7 +20,6 @@ const cardController = {
             return response.json({ Message: "Card creation succeed !"});
       
       } catch (err) {
-            // return response.json({ errorMessage: "Card creation failed"});
             return response.json({errotType: err.message, errorMessage: "Card creation failed"});
       }
    },
@@ -34,7 +33,6 @@ const cardController = {
             return response.json({ Message: "Focus creation succeed !"});
       
       } catch (err) {
-            // return response.json({ errorMessage: "Card creation failed"});
             return response.json({errotType: err.message, errorMessage: "Focus creation failed"});
       }
    }

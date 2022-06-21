@@ -10,7 +10,7 @@ const cardDatamapper = {
          text: `SELECT * FROM ${data.cardType} WHERE position >= ${data.previous_card_position + 1} AND ${data.parentType}_id = ${data.parentId}`
       };
 
-      // make it more secure !!!!!!!!!!!!!!!!
+      // MAKE it more secure !!!!!!!!!!!!!!!!
       // const preparedQuery = {
       //    text: `SELECT * FROM ${data.cardType} WHERE position = $1 AND $2 = $3`,
       //    values : [
@@ -23,11 +23,40 @@ const cardDatamapper = {
       // const result = await client.query('SELECT * FROM $1 WHERE position = $2 AND $3 = $4',
       // [data.cardType, data.previous_card_position, `${data.parentType}_id`, data.parentId]);
 
-      console.log("preparedQuery", preparedQuery);
+      const result = await client.query(preparedQuery);   
 
-      const result = await client.query(preparedQuery);
+      return result.rows;
+   },
 
-      console.log("result", result.rows);      
+   async findPeriodByGameId(gameId) {
+
+      const result = await client.query('SELECT * FROM "period" WHERE "game_id" = $1', [gameId]);
+
+      if (result.rowCount === 0) {
+          return null;
+      }
+
+      return result.rows;
+  },
+
+   async findEventByPeriodId(periodId) {
+
+      const result = await client.query('SELECT * FROM "event" WHERE "period_id" = $1', [periodId]);
+
+      if (result.rowCount === 0) {
+         return null;
+      }
+
+      return result.rows;
+   },
+
+   async findSceneByEventId(eventdId) {
+
+      const result = await client.query('SELECT * FROM "scene" WHERE "event_id" = $1', [eventdId]);
+
+      if (result.rowCount === 0) {
+         return null;
+      }
 
       return result.rows;
    },
