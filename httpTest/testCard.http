@@ -1,27 +1,40 @@
 @endpoint = http://localhost:{{$dotenv PORT}}
 
 ### period
-POST {{ endpoint }}/game/15
+POST {{ endpoint }}/game/1
 content-type: application/json
 
 {
    "parentType": "game",
    "cardType": "period",
-   "text": "text",
+   "text": "text period",
    "tone": true,
-   "parentId": 13,
+   "parentId": 1,
    "previous_card_position": 0
 }
 
-### event
-POST {{ endpoint }}/game/15
+### event 27, 20
+POST {{ endpoint }}/game/1
 content-type: application/json
 
 {
-   "parentType": "game",
-   "cardType": "period",
-   "text": "text",
+   "parentType": "period",
+   "cardType": "event",
+   "text": "text event",
    "tone": true,
-   "parentId": 13,
+   "parentId": 20,
+   "previous_card_position": 0
+}
+
+### scene
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "event",
+   "cardType": "scene",
+   "text": "text scene",
+   "tone": true,
+   "parentId": 2,
    "previous_card_position": 0
 }
