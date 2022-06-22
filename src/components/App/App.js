@@ -11,11 +11,15 @@ import "../App/App.css";
 import ArchivedGames from "../ArchivedGames/ArchivedGames";
 import { saveAuthorization, axiosInstance } from "../../requests";
 import GamePage from "../GamePage/GamePage";
+import CreateGame from "../CreateGame/CreateGame";
+import Profile from "../Profile/Profile";
 
 function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
+
+    console.log("token : ", token);
+
     if (!token) {
       return;
     }
@@ -27,7 +31,11 @@ function App() {
       console.log(response.data);
 
       if (response.data.error || response.data.errorMessage) {
+
         return localStorage.clear();
+
+        
+
       }
 
       if (response.data.userId) {
@@ -50,6 +58,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/archived" element={<ArchivedGames />} />
         <Route path="/game" element={<GamePage />} />
+        <Route path="/lobby" element={<CreateGame />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

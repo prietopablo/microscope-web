@@ -4,10 +4,19 @@ export const actionSendGameSetup = () => ({
 });
 
 export const UPDATE_NEW_GAME_FORM = "UPDATE_NEW_GAME_FORM";
-export const updateLoginForm = (field, value) => ({
+export const updateNewGameForm = (field, value) => ({
   type: UPDATE_NEW_GAME_FORM,
   payload: {
     field: field,
     value: value,
+  },
+});
+
+export const UPDATE_PALETTE_NEW_GAME_FORM = "UPDATE_PALETTE_NEW_GAME_FORM";
+export const updatePaletteNewGameForm = (status, value) => ({
+  type: UPDATE_PALETTE_NEW_GAME_FORM,
+  payload: {
+    status: status,
+    text: value,
   },
 });

@@ -7,10 +7,13 @@ import Header from "../Header/Header";
 
 function SignUpPage() {
   const dispatch = useDispatch();
+
   const emailSignup = useSelector((state) => state.user.emailSignup);
   const passwordSignup = useSelector((state) => state.user.passwordSignup);
   const username = useSelector((state) => state.user.username);
   const isSignedUp = useSelector((state) => state.user.isSignedUp);
+
+
   const navigate = useNavigate();
 
   return isSignedUp ? (
