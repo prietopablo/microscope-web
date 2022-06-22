@@ -38,7 +38,8 @@ router
    .get(gameController.getOne)
    // The following route is meant to update the current with game with all the data needed to start a game
    .patch(gameController.deployGame)
-   .post(cardController.createCard);
+
+   .post(cardController.createCard)
 
 // Game archive
 router.get('/archive');
