@@ -4,26 +4,28 @@ const cardDatamapper = {
 
    async findAllByPosition (data) {
 
-      console.log("datamapper");
+      let preparedQuery = {};
 
-      const preparedQuery = {
-         text: `SELECT * FROM ${data.cardType} WHERE position >= ${data.previous_card_position + 1} AND ${data.parentType}_id = ${data.parentId}`
-      };
-
-      // MAKE it more secure !!!!!!!!!!!!!!!!
-      // const preparedQuery = {
-      //    text: `SELECT * FROM $1:name WHERE position = $2 AND $3 = $4`,
-      //    values : [
-      //       data.cardType,
-      //       data.previous_card_position + 1,
-      //       `${data.parentType}_id`,
-      //       data.parentId]
-      // };
+      if(data.cardType === "period") {
+         preparedQuery = {
+            text: `SELECT * FROM "period" WHERE position >= $1 AND $2 = $3`,
+            values: [data.previous_card_position + 1, `${data.parentType}_id`, data.parentId]
+         };
+      }
+      else if (data.cardType === "event") {
+         preparedQuery = {
+            text: `SELECT * FROM "event" WHERE position >= $1 AND $2 = $3`,
+            values: [data.previous_card_position + 1, `${data.parentType}_id`, data.parentId]
+         };
+      }
+      else {
+         preparedQuery = {
+            text: `SELECT * FROM "scene" WHERE position >= $1 AND $2 = $3`,
+            values: [data.previous_card_position + 1, `${data.parentType}_id`, data.parentId]
+         };
+      }
       
       console.log("preparedQuery", preparedQuery);
-
-      // const result = await client.query('SELECT * FROM $1 WHERE position = $2 AND $3 = $4',
-      // [data.cardType, data.previous_card_position, `${data.parentType}_id`, data.parentId]);
 
       const result = await client.query(preparedQuery);   
 
@@ -75,23 +77,30 @@ const cardDatamapper = {
    },
 
    async insert (data) {
-     
+
       console.log("datainsert", data);
 
-      const parentType = `${data.parentType}_id`;
-      const positionToUpdate = data.previous_card_position + 1;
-      
-      console.log("positionToUpdate", positionToUpdate);
+      let preparedQuery = {};
 
-      const preparedQuery = {
-         text: `INSERT INTO ${data.cardType} ("text", "tone", "position", "${parentType}") VALUES ('${data.text}', '${data.tone}', '${positionToUpdate}', '${data.parentId}')`
-      };
-
-      // const preparedQuery = {
-      //    text: `INSERT INTO $1 ("text", "tone", "position", "$2") VALUES ($3, $4, $5, $6)`,
-      //    values: [data.cardType, data.tone, `${data.parenType}_id`, data.text, data.previous_card_position + 1, data.game_id, data.parentId]
-      // };
-
+      if(data.cardType === "period") {
+         preparedQuery = {
+            text: `INSERT INTO "period" ("text", "tone", "position", "game_id") VALUES ($1, $2, $3, $4)`,
+            values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
+         };
+      }
+      else if (data.cardType === "event") {
+         preparedQuery = {
+            text: `INSERT INTO "event" ("text", "tone", "position", "period_id") VALUES ($1, $2, $3, $4)`,
+            values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
+         };
+      }
+      else {
+         preparedQuery = {
+            text: `INSERT INTO "scene" ("text", "tone", "position", "event_id") VALUES ($1, $2, $3, $4)`,
+            values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
+         };
+      }
+      console.log("prepQ insert carte",preparedQuery)
       await client.query(preparedQuery);
 
    },
@@ -118,7 +127,7 @@ const cardDatamapper = {
          values: [content.text, content.author_id, position, gameId]
       };
 
-      console.log("preparedQuery", preparedQuery)
+      console.log("preparedQueryinsertFocus", preparedQuery)
 
       await client.query(preparedQuery);
    },

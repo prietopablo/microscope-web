@@ -2,37 +2,58 @@ const express = require('express');
 const authController = require('../../controllers/authController');
 const userController = require('../../controllers/userController');
 const gameController = require('../../controllers/gameController');
+const websiteController = require('../../controllers/websiteController');
+const cardController = require('../../controllers/cardController');
+
 const auth = require('../../middlewares/auth');
+const playerAccess = require('../../middlewares/playerAccess');
 
 
 const router = express.Router();
 
-router.get('/users', userController.getAll);
+//-------------Visitor------------->
+// homePage
+router.get('/', websiteController.homePage);
 
-// user routes, meant for admin, we need to authenticate and authorization
-router
-   .route('/users/:id')
-   .get(userController.getOne)
-   .delete(userController.delete)
-   .patch(userController.update);
+// archived games list
+router.get('/archived', gameController.getAllArchived);
 
-// Register
-router.post('/register', userController.create);
+// archived game
+router.get('/archived/:id', gameController.getOne);
+
+// Sign up
+router.post('/signup', userController.create);
 
 // Login
 router.post("/login", authController.login);
 
+//-------------Member------------->
 // Profile
-router.get('/profile/:id', auth, userController.getOne);
+router
+   .route('/profile/:id')
+   .get(auth, userController.getOne)
+   .patch(auth, userController.update)
+   .delete(auth, userController.delete);
+
+// Logout occurs in front
+
+//Verify logged in
+router.post('/verifsignin', authController.verifyToken);
 
 // New game creation
-router.post('/createNewGame', gameController.createNewGame);
+router.post('/createNewGame', auth, gameController.createNewGame);
 
-// Access game created
+// Send starting game data
+// The following route is meant to update the current with game with all the data needed to start a game
+router.post('/game/:id/starting', auth, gameController.deployGame);
+
+// Access game & refresh
 router
-   .route('/game/:id')
-   .get(gameController.getOne)
-   // The following route is meant to update the current with game with all the data needed to start a game
-   .post(gameController.deployGame);
+   .route('/game/:id/ongoing')
+   .get(auth, playerAccess, gameController.getOne)
+   .post(auth, playerAccess, cardController.createCard);
+
+// Finish game
+//..................TODO
 
 module.exports = router;

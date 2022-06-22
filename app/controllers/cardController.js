@@ -43,14 +43,9 @@ const cardController = {
                   return response.json({ Message: "Card creation succeed !"});
             } 
       } catch (err) {
-            return response.json({errotType: err.message, errorMessage: "Card creation failed"});
+            return response.json({errorType: err.message, errorMessage: "Card creation failed"});
       }
    },
-
-   async createFocus (request, response) {
-
-      
-   }
 }
 
 module.exports = cardController;

@@ -5,8 +5,6 @@ const cors = require('cors');
 
 const app = express();
 
-// we will put VIEW ENGINE here
-
 // We use the middleware to parse JSON payload
 app.use(express.json());
 
