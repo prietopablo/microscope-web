@@ -16,7 +16,7 @@ const initialState = {
   isSignedUp: false,
   token: null,
 
-  username: null,
+  username: "",
   emailSignup: "",
   passwordSignup: "",
 };

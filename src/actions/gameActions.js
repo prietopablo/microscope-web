@@ -13,10 +13,16 @@ export const updateNewGameForm = (field, value) => ({
 });
 
 export const UPDATE_PALETTE_NEW_GAME_FORM = "UPDATE_PALETTE_NEW_GAME_FORM";
-export const updatePaletteNewGameForm = (status, value) => ({
+export const updatePaletteNewGameForm = (status, text, index) => ({
   type: UPDATE_PALETTE_NEW_GAME_FORM,
   payload: {
     status: status,
-    text: value,
+    text: text,
+    index: index,
   },
+});
+
+export const PALETTE = "PALETTE";
+export const addPalette = () => ({
+  type: PALETTE,
 });
