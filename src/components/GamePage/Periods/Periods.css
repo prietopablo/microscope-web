@@ -10,7 +10,7 @@
 }
 
 .ui[class*="one column"].grid > .row > .column {
-  min-width: 25% !important;
+  min-width: 33% !important;
 }
 
 .ui.card {

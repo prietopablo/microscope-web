@@ -16,6 +16,7 @@ const initialState = {
   focus: [],
   periods: [],
   events: [],
+  scenes: [],
 
   palette: [
     { text: "", status: 0 },
@@ -42,6 +43,12 @@ function gameReducer(state = initialState, action) {
       return {
         ...state,
         events: [...state.events, action.payload],
+      };
+
+    case "ADD_SCENES":
+      return {
+        ...state,
+        scenes: [...state.scenes, action.payload],
       };
 
     case UPDATE_NEW_GAME_FORM:
