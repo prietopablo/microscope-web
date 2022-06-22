@@ -28,7 +28,7 @@ const authenticationController = {
                { userId: user.id },
                process.env.TOKEN_KEY,
                {
-                  expiresIn: "2h",
+                  expiresIn: "6h",
                }
             );
             // We send our user

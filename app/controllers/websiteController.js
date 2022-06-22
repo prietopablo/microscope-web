@@ -1,9 +1,9 @@
 const mainController = { 
     
     homePage : (request, response) => {
-        console.log('Ceci est un test');
+        console.log('Microscope API front page');
 
-        response.send('Ceci est un test pour le Front');
+        response.send('Welcome to Microscope-Web API');
     },
 };
 
