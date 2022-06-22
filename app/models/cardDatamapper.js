@@ -12,13 +12,15 @@ const cardDatamapper = {
 
       // MAKE it more secure !!!!!!!!!!!!!!!!
       // const preparedQuery = {
-      //    text: `SELECT * FROM ${data.cardType} WHERE position = $1 AND $2 = $3`,
+      //    text: `SELECT * FROM $1:name WHERE position = $2 AND $3 = $4`,
       //    values : [
-      //       // data.cardType,
+      //       data.cardType,
       //       data.previous_card_position + 1,
       //       `${data.parentType}_id`,
       //       data.parentId]
       // };
+      
+      console.log("preparedQuery", preparedQuery);
 
       // const result = await client.query('SELECT * FROM $1 WHERE position = $2 AND $3 = $4',
       // [data.cardType, data.previous_card_position, `${data.parentType}_id`, data.parentId]);
@@ -109,15 +111,14 @@ const cardDatamapper = {
       return savedCard.rows[0];
    },
    
-   async insertFocus (content) {
+   async insertFocus (content, position) {
 
       const preparedQuery = {
-         text: `INSERT INTO "focus" ("description", "author_id", "position")`,
-         values: [content]
+         text: `INSERT INTO "focus" ("description", "author_id", "position") VALUES ($1, $2, $3)`,
+         values: [content.description, content.author_id, position]
       };
 
       await client.query(preparedQuery);
-
    },
 }
 
