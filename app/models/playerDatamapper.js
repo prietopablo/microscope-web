@@ -12,9 +12,7 @@ const playerDatamapper = {
       const newPlayer = await client.query(preparedQuery);
 
       return newPlayer.rows[0];
-
    }
-
 }
 
 module.exports = playerDatamapper;

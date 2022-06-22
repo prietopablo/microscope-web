@@ -2,6 +2,9 @@
 
 BEGIN;
 
+-- We will create a game without every element registered
+-- First the author will create the new game then all players will populate the game with data important to the beginning of the game
+
 ALTER TABLE game
    ALTER COLUMN big_picture DROP NOT NULL,
    ALTER COLUMN state DROP NOT NULL,

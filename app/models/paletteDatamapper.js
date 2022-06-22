@@ -13,7 +13,7 @@ const paletteDatamapper = {
 
       await client.query(preparedQuery);
       
-      return console.log("palette inserted");
+      return console.log("Palette inserted !");
    }
 }
 

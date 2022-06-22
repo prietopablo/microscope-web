@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS "event" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    "event_tone" BOOLEAN NOT NULL,
-   "position" INT NOT NULL 
+   "position" INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "scene" (
@@ -76,14 +76,9 @@ CREATE TABLE IF NOT EXISTS "scene" (
 CREATE TABLE IF NOT EXISTS "palette" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
-<<<<<<< HEAD:migrations/deploy/init.sql
    --We will dedide that the false status will correspond to the "NO" part of the palette and of course the true status will correspond to the in quote "YES" to the yes part
    "status" BOOLEAN NOT NULL,
    "game_id" INT NOT NULL REFERENCES "game" ("id")
-=======
-   --We will decide that the false status will correspond to the "NO" part of the palette and of course the true status will correspond to the in quote "YES" to the yes part
-   "status" BOOLEAN NOT NULL
->>>>>>> 7a203fb601281832dd1bd4c42836127d7143d06b:data/migrations/deploy/init.sql
    
 );
 

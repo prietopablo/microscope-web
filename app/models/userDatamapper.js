@@ -5,11 +5,16 @@ const userDatamapper = {
     async findAll() {
         
         const result = await client.query('SELECT * FROM "user";');
+
+        if (result.rowCount === 0) {
+            return null;
+        }
         
         return result.rows;
     },
 
     async findByPk(userId) {
+
         const result = await client.query('SELECT * FROM "user" WHERE "id" = $1', [userId]);
 
         if (result.rowCount === 0) {
@@ -20,6 +25,7 @@ const userDatamapper = {
     },
 
     async findUserByUsername(username) {
+
         const result = await client.query('SELECT * FROM "user" WHERE "username" = $1', [username]);
 
         if (result.rowCount === 0) {
@@ -29,11 +35,22 @@ const userDatamapper = {
         return result.rows[0];
     },
 
-    async insert(content, hashedPassword) {
+    async findByGameId(gameId) {
+
+        const result = await client.query('SELECT * FROM "participation" WHERE "game_id" = $1', [gameId]);
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+
+        return result.rows;
+    },
+
+    async insert(userData, hashedPassword) {
         
         const preparedQuery = {
             text: `INSERT INTO "user" ("username", "email", "password") VALUES ($1, $2, $3)`,
-            values: [content.username, content.email, hashedPassword]
+            values: [userData.username, userData.email, hashedPassword]
         };
 
         const newUser = await client.query(preparedQuery);
@@ -43,23 +60,24 @@ const userDatamapper = {
     },
 
     async delete(userId) {
+
         const result = await client.query('DELETE FROM "user" WHERE "id" = $1', [userId]);
 
         return !!result.rowCount;
     },
 
     async update(inputData, userId) {
+
         const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
         const values = Object.values(inputData);
 
         const date = Date.now();
 
         const savedUser = await client.query(
-            `
-                UPDATE "user" SET
-                    ${fields}, "updated_at" = $${fields.length + 2}
-                WHERE id = $${fields.length + 1}
-                RETURNING *`,
+            `UPDATE "user" 
+            SET ${fields}, "updated_at" = $${fields.length + 2}
+            WHERE id = $${fields.length + 1}
+            RETURNING *`,
             [...values, userId, date],
         );
 
@@ -86,7 +104,6 @@ const userDatamapper = {
         }
         return results;
         */
-
         const fields = [];
         const values = [];
         // We gather our inputData
