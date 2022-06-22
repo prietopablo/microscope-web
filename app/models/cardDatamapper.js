@@ -28,9 +28,20 @@ const cardDatamapper = {
       return result.rows;
    },
 
+   async findFocusByGameId(gameId) {
+      
+      const result = await client.query('SELECT * FROM "focus" WHERE "game_id" = $1 ORDER BY "position" ASC', [gameId]);
+
+      if (result.rowCount === 0) {
+          return null;
+      }
+
+      return result.rows; 
+   },
+
    async findPeriodByGameId(gameId) {
 
-      const result = await client.query('SELECT * FROM "period" WHERE "game_id" = $1', [gameId]);
+      const result = await client.query('SELECT * FROM "period" WHERE "game_id" = $1 ORDER BY "position" ASC', [gameId]);
 
       if (result.rowCount === 0) {
           return null;
@@ -41,7 +52,7 @@ const cardDatamapper = {
 
    async findEventByPeriodId(periodId) {
 
-      const result = await client.query('SELECT * FROM "event" WHERE "period_id" = $1', [periodId]);
+      const result = await client.query('SELECT * FROM "event" WHERE "period_id" = $1 ORDER BY "position" ASC', [periodId]);
 
       if (result.rowCount === 0) {
          return null;
@@ -52,7 +63,7 @@ const cardDatamapper = {
 
    async findSceneByEventId(eventdId) {
 
-      const result = await client.query('SELECT * FROM "scene" WHERE "event_id" = $1', [eventdId]);
+      const result = await client.query('SELECT * FROM "scene" WHERE "event_id" = $1 ORDER BY "position" ASC', [eventdId]);
 
       if (result.rowCount === 0) {
          return null;
