@@ -13,21 +13,19 @@ const initialState = {
   userId: null,
   currentUser: null,
 
-
   focus: [],
   periods: [],
+  events: [],
 
   palette: [
     { text: "", status: 0 },
     { text: "", status: 0 },
     { text: "", status: 0 },
   ],
-
 };
 
 function gameReducer(state = initialState, action) {
   switch (action.type) {
-
     case "ADD_FOCUS":
       return {
         ...state,
@@ -40,6 +38,11 @@ function gameReducer(state = initialState, action) {
         periods: [...state.periods, action.payload],
       };
 
+    case "ADD_EVENTS":
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+      };
 
     case UPDATE_NEW_GAME_FORM:
       return {

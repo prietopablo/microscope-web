@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
-import { Button, Card, Grid } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
+import EventsCreationModal from "../EventsCreationModal/EventsCreationModal";
 import "./Periods.css";
 
 function Periods() {
   const periods = useSelector((state) => state.game.periods);
   console.log("state period", periods);
   const periode = [Grid.Column.length];
+  const events = useSelector((state) => state.game.events);
 
   return (
     <Grid columns={periode.length} divided>
@@ -19,7 +21,7 @@ function Periods() {
                     <Card.Description> {p.label} </Card.Description>
                   </Card.Content>
                   <Card.Content extra>
-                    <Button>créer un évenement</Button>
+                    <EventsCreationModal />
                   </Card.Content>
                 </Card>
 
@@ -29,18 +31,21 @@ function Periods() {
                     {/* COLONNE EVENEMENT */}
                     <Grid.Column verticalAlign="middle">
                       {/* CARTE EVENEMENT */}
-                      <Card style={{ background: "rgb(45, 118, 103)" }}>
-                        <Card.Content>
-                          <Card.Header>EVENEMENT 1</Card.Header>
-                          <Card.Meta>
-                            <span className="date">Joined in 2015</span>
-                          </Card.Meta>
-                          <Card.Description>
-                            Matthew is a musician living in Nashville.
-                          </Card.Description>
-                        </Card.Content>
-                        <Card.Content extra></Card.Content>
-                      </Card>
+                      {events
+                        ? events.map((e, i) => (
+                            <Card
+                              key={i}
+                              style={{ background: "rgb(45, 118, 103)" }}
+                            >
+                              <Card.Content>
+                                <Card.Header>EVENEMENT 1</Card.Header>
+
+                                <Card.Description>{e.label}</Card.Description>
+                              </Card.Content>
+                              <Card.Content extra></Card.Content>
+                            </Card>
+                          ))
+                        : ""}
 
                       {/* FIN CARTE EVENEMENT */}
                     </Grid.Column>
