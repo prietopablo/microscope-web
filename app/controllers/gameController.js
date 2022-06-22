@@ -69,6 +69,8 @@ const gameController = {
          // The player object will retrieve data in the "participation" table
          const players = await userDatamapper.findByGameId(request.params.id);
 
+         const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
+
          // The period object is composed of period of our game and each subsequent event which also reach to related scenes
          const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
 
@@ -94,7 +96,7 @@ const gameController = {
             }
          }
 
-         return response.json({ game, players, periods });
+         return response.json({ game, players, focuses, periods });
          
       } catch (err) {
          return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
@@ -104,7 +106,7 @@ const gameController = {
    async getAllArchived (_, response) {
 
       try { 
-         const archivedList = await userDatamapper.findAllArchived();
+         const archivedList = await gameDatamapper.findAllArchived();
          return response.json({ archivedList });
      }
      catch (err){
