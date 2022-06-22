@@ -8,27 +8,25 @@ function Periods() {
   const periode = [Grid.Column.length];
 
   return (
-    <div className="periods-container">
-      <Grid columns={periode.length}>
-        <Grid.Row>
-          {periods
-            ? periods.map((p, i) => (
-                <Grid.Column key={i} style={{ background: "black" }}>
-                  <Card style={{ background: "rgb(196, 207, 217)" }}>
-                    <Card.Content>
-                      <Card.Header>Période n°</Card.Header>
-                      <Card.Description> {p.label} </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <Button>créer un évenement</Button>
-                    </Card.Content>
-                  </Card>
-                </Grid.Column>
-              ))
-            : console.log("voici la periode", periods)}
-        </Grid.Row>
-      </Grid>
-    </div>
+    <Grid columns={periode.length} divided>
+      <Grid.Row>
+        {periods
+          ? periods.map((p, i) => (
+              <Grid.Column key={i} style={{ background: "black" }}>
+                <Card style={{ background: "rgb(196, 207, 217)" }}>
+                  <Card.Content>
+                    <Card.Header>Période n°</Card.Header>
+                    <Card.Description> {p.label} </Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <Button>créer un évenement</Button>
+                  </Card.Content>
+                </Card>
+              </Grid.Column>
+            ))
+          : ""}
+      </Grid.Row>
+    </Grid>
   );
 }
 
