@@ -1,51 +1,94 @@
 body {
-    background-color: aliceblue;
+
 }
+
 h1 {
-    margin: 0 auto;
-    width: 11em;
-    text-align: center;
-    display: block;    
-    font-size: 2rem;
+    font-weight: lighter;
+    margin-left: 0rem;
+    align-self: center;
+    font-size: 5rem;
 }
+
+.link-header {
+    height: 10rem;
+    align-self: center;
+}
+
 .App-logo {
-    width: 10em;
-    margin: 2rem auto;
+    height: 10rem;
 }
 
 .container-header {
+    margin-top: 3rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 
+.app-header{
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1120px) {
+
+    .app-header{
+        width: 100vw;
+    }
+
+    .App-logo{
+       height: 12rem; 
+    }
+
+    .container-header{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        align-content: flex-end;
+        margin-top: 0rem;
+        width: 100vw;
+    }
+
+    .link-header{
+        height: 12rem; 
+    }
+
+    h1{
+        font-size: 5rem;
+        height: 5rem;
+        margin: 0 0 0 0.5rem;
+        align-self: flex-end;
+    }
 }
 
 @media (min-width: 769px) {
 
     .app-header{
-        margin-left: -6rem;
-        display: flex;
-        flex-direction: row;   
+        width: 100vw;
     }
 
     .App-logo{
-        width: 9em;
+       height: 12rem; 
     }
 
     .container-header{
-        text-align: center;
         display: flex;
         flex-direction: row;
+        align-items: flex-end;
+        align-content: flex-end;
+        margin-top: 0rem;
+        width: 100vw;
     }
 
     .link-header{
-        width: 50%;
+        height: 12rem; 
     }
 
     h1{
-        margin: 0 auto;
-        margin-top: 1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    
-    }    
-
+        font-size: 5rem;
+        height: 5rem;
+        margin: 0 0 0 0.5rem;
+        align-self: flex-end;
+    }
 }

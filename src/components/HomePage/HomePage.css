@@ -1,10 +1,11 @@
 body {
-  background-color: gray;
+  background-color: #070a1e;
 }
 
 h1 {
   font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 .rules--main {

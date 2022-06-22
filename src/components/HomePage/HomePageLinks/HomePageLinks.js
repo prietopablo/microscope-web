@@ -14,7 +14,7 @@ function HomePageLinks({
     return(
         !isConnected ?
             <div className="nav">
-                <Button inverted className="nav--link" onClick={() => navigate('/login')}>Se connecter</Button>
+                <Button inverted className="nav--link font-color" onClick={() => navigate('/login')}>Se connecter</Button>
                 <Button inverted className="nav--link" onClick={() => navigate('/signup')}>Inscription</Button>
             </div>
         :
