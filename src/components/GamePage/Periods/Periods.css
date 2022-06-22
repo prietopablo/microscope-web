@@ -1,3 +1,9 @@
-.card-container {
+.periods-container {
   margin-top: 25px;
+  display: flex;
+}
+
+.ui[class*="one column"].grid > .row > .column {
+  width: 20% !important;
+  overflow-x: scroll;
 }

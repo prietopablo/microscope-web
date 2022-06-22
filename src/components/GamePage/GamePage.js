@@ -37,10 +37,10 @@ function GamePage() {
         <FocusCreationModal />
       </div>
       <StartEnd />
-      <div className="button-periods">
-        <PeriodsCreationModal />
-        <Periods />
-      </div>
+
+      <PeriodsCreationModal />
+
+      <Periods />
     </div>
   );
 }

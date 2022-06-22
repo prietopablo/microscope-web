@@ -4,6 +4,11 @@ import axios from "axios";
 // Create axios instance to not repeat url on each requests
 export const axiosInstance = axios.create({
   baseURL: "https://microscope-web.herokuapp.com",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+  },
 });
 
 // axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
