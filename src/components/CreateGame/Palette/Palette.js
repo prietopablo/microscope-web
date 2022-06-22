@@ -1,18 +1,15 @@
-import { Form, TextArea } from "semantic-ui-react";
+// import { useDispatch } from "react-redux";
+// import { Input, TextArea } from "semantic-ui-react";
+// import { updatePaletteNewGameForm } from "../../../actions/gameActions";
 import "./Palette.css";
+import PaletteField from "./PaletteField/PaletteField";
 
 function Palette() {
+  // const dispatch = useDispatch();
   return (
     <div className="palette">
       <h2 className="palette--title">Palette</h2>
-      <div className="palette--items">
-        <div className="palette--field">
-          <Form.Field control={TextArea} label="Oui" placeholder="..." />
-        </div>
-        <div className="palette--field">
-          <Form.Field control={TextArea} label="Non" placeholder="..." />
-        </div>
-      </div>
+      <PaletteField />
     </div>
   );
 }

@@ -13,7 +13,7 @@ players--title {
   border: solid 2px white;
   padding: 1rem;
   width: 80%;
-  margin: 1rem auto;
+  margin: 1rem 0;
 }
 
 .players--list-item {
