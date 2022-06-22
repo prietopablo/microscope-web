@@ -1,9 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { updateNewGameForm } from "../../../../actions/gameActions";
 import { Checkbox, Form } from "semantic-ui-react";
 import "../ColorTone/ColorTone.css";
 
-function ColorSlider() {
-  const [value, setValue] = React.useState("clair");
+function ColorSlider({ tone, isStartOrEnd }) {
+  const dispatch = useDispatch();
+
+  const getStartOrEnd = () => {
+    if (isStartOrEnd === "start") return "startTone";
+    if (isStartOrEnd === "end") return "endTone";
+  };
 
   return (
     <div className="slider">
@@ -11,24 +19,33 @@ function ColorSlider() {
         <Checkbox
           radio
           label="Clair"
-          name="checkboxRadioGroup"
-          value="clair"
-          checked={value === "clair"}
-          onChange={(e, data) => setValue(data.value)}
+          name="toneLight"
+          value={1}
+          checked={tone === 1}
+          onChange={(e, data) =>
+            dispatch(updateNewGameForm(getStartOrEnd(), data.value))
+          }
         />
       </Form.Field>
       <Form.Field>
         <Checkbox
           radio
           label="Sombre"
-          name="checkboxRadioGroup"
-          value="sombre"
-          checked={value === "sombre"}
-          onChange={(e, data) => setValue(data.value)}
+          name="toneDark"
+          value={0}
+          checked={tone === 0}
+          onChange={(e, data) =>
+            dispatch(updateNewGameForm(getStartOrEnd(), data.value))
+          }
         />
       </Form.Field>
     </div>
   );
 }
+
+ColorSlider.propTypes = {
+  tone: PropTypes.number,
+  isStartOrEnd: PropTypes.string,
+};
 
 export default ColorSlider;

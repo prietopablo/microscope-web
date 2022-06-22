@@ -5,15 +5,12 @@
 .palette--items {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
 
 .palette--field {
-  width: 40%;
+  width: 100%;
 }
-
-/* .palette--field {
-  width: 30% !important;
-} */
 
 .ui.form .field > label {
   color: white;
