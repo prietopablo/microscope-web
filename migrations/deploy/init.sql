@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS "event" (
    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    "text" TEXT NOT NULL,
    "event_tone" BOOLEAN NOT NULL,
-   "position" INT NOT NULL 
+   "position" INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "scene" (
