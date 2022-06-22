@@ -12,3 +12,8 @@
 .ui[class*="one column"].grid > .row > .column {
   width: rem !important;
 }
+
+.ui.card {
+  margin: 1em 0;
+  width: 100%;
+}

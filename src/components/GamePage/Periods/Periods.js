@@ -22,6 +22,51 @@ function Periods() {
                     <Button>créer un évenement</Button>
                   </Card.Content>
                 </Card>
+
+                <Grid columns={2} divided>
+                  {/* ROW EVENEMENT */}
+                  <Grid.Row>
+                    {/* COLONNE EVENEMENT */}
+                    <Grid.Column verticalAlign="middle">
+                      {/* CARTE EVENEMENT */}
+                      <Card style={{ background: "rgb(45, 118, 103)" }}>
+                        <Card.Content>
+                          <Card.Header>EVENEMENT 1</Card.Header>
+                          <Card.Meta>
+                            <span className="date">Joined in 2015</span>
+                          </Card.Meta>
+                          <Card.Description>
+                            Matthew is a musician living in Nashville.
+                          </Card.Description>
+                        </Card.Content>
+                        <Card.Content extra></Card.Content>
+                      </Card>
+
+                      {/* FIN CARTE EVENEMENT */}
+                    </Grid.Column>
+                    {/* FIN COLONNE EVENEMENT */}
+
+                    {/* COLONNE SCENE */}
+                    <Grid.Column>
+                      {/* CARTE SCENE */}
+                      <Card style={{ background: "rgb(77, 92, 106)" }}>
+                        <Card.Content>
+                          <Card.Header>SCENE 1</Card.Header>
+                          <Card.Meta>
+                            <span className="date">Joined in 2015</span>
+                          </Card.Meta>
+                          <Card.Description>
+                            Matthew is a musician living in Nashville.
+                          </Card.Description>
+                        </Card.Content>
+                        <Card.Content extra></Card.Content>
+                      </Card>
+                      {/* FIN CARTE SCENE */}
+                    </Grid.Column>
+                    {/* FIN COLONNE SCENE */}
+                  </Grid.Row>
+                  {/* FIN ROW EVENEMENT */}
+                </Grid>
               </Grid.Column>
             ))
           : ""}
