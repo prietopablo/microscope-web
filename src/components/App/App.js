@@ -17,7 +17,9 @@ import Profile from "../Profile/Profile";
 function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     console.log("token : ", token);
+
     if (!token) {
       return;
     }
@@ -29,7 +31,11 @@ function App() {
       console.log(response.data);
 
       if (response.data.error || response.data.errorMessage) {
-        return;
+
+        return localStorage.clear();
+
+        
+
       }
 
       if (response.data.userId) {

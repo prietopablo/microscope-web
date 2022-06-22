@@ -1,23 +1,32 @@
 .players-usernames {
-    display: flex;
+  display: flex;
 }
 
 .player-username {
-    color: aliceblue;
-    width: 25%;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    justify-content: space-between;
+  color: aliceblue;
+  width: 25%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: space-between;
 }
 
 .game-title {
-    color: aliceblue;
+  color: aliceblue;
 }
 
 .focus {
-    display: flex;
-    gap: 10%;
-    justify-content: space-between;
-    margin-bottom: 25px;
+  display: flex;
+  gap: 10%;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }
 
+.button-periods {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.period-creation {
+  text-align: center;
+  margin-top: 25px;
+}

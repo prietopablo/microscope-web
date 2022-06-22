@@ -33,6 +33,7 @@ function userReducer(state = initialState, action = {}) {
     //         ...state,
     //         password: action.payload.value,
     //     };
+
     case SAVE_USER:
       return {
         ...state,
