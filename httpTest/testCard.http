@@ -1,0 +1,215 @@
+@endpoint = http://localhost:{{$dotenv PORT}}
+
+### period 1
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "game",
+   "cardType": "period",
+   "text": "Construction d un vaisseau voyageant plus vite que la lumière",
+   "tone": true,
+   "parentId": 1,
+   "previous_card_position": 0
+}
+
+### period 2
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "game",
+   "cardType": "period",
+   "text": "L humanité se fait attaquer",
+   "tone": false,
+   "parentId": 1,
+   "previous_card_position": 0
+}
+
+### event 1
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Suite à la victoire sur mars, les hommes réussissent à adapter la technologie des ennemis à leurs propres besoins",
+   "tone": true,
+   "parentId": 1,
+   "previous_card_position": 0
+}
+
+### event 2
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Le Pr. Victor F. avec l aide du pilote de génie Thorsten met au point un moteur exploitant l énergie de la Pierre",
+   "tone": true,
+   "parentId": 2,
+   "previous_card_position": 0
+}
+
+### event 3
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "L’humanité vainc la menace trouvée sur Mars.",
+   "tone": true,
+   "parentId": 2,
+   "previous_card_position": 0
+}
+
+### period 3
+POST {{ endpoint }}/game/1
+content-type: application/json
+
+{
+   "parentType": "game",
+   "cardType": "period",
+   "text": "Exploration de la nouvelle planète et son écosystème",
+   "tone": false,
+   "parentId": 1,
+   "previous_card_position": 2
+}
+
+### period 4
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "game",
+   "cardType": "period",
+   "text": "L ennemi revient",
+   "tone": false,
+   "parentId": 1,
+   "previous_card_position": 3 
+}
+
+### event 4
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Thorsten à modifié le vaisseau, créant ainsi une faille dans le fonctionnement, cette faille n’est pas connue lors du départ.",
+   "tone": false,
+   "parentId": 2,
+   "previous_card_position": 2
+}
+
+### event 5
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Suite à la victoire sur mars, les hommes réussissent à adapter la technologie des ennemis à leurs propres besoins.",
+   "tone": false,
+   "parentId": 1,
+   "previous_card_position": 1
+} 
+
+### event 6
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Panne du vaisseau, absence de ressources necessaires a la réparation",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 0
+}
+
+### event 7
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Les Machines détruisent toutes les stations orbitales Martiennes",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 0
+}
+
+### event 8
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Panne du vaisseau, absence de ressources necessaires a la réparation",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 0
+}
+
+### event 9
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Certains s’allient, complotent pour prendre la tête de l’humanité",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 1
+}
+
+### event 10
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "La réactivation des machines et leur découverte par les colons",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 0
+}
+
+### event 11
+POST {{ endpoint }}/game/2
+content-type: application/json
+
+{
+   "parentType": "period",
+   "cardType": "event",
+   "text": "Attaque de la Capital de la colonie",
+   "tone": false,
+   "parentId": 3,
+   "previous_card_position": 2
+}
+
+### focus 1
+POST {{endpoint}}/game/1
+content-type: application/json
+
+{
+   "cardType": "focus",
+   "text": "text focus 1",
+   "author_id": 4
+}
+
+### focus 2
+POST {{endpoint}}/game/2
+content-type: application/json
+
+{
+   "description" : "Ceci est un test 2 pour voir",
+   "author_id" : 4,
+}
