@@ -16,6 +16,8 @@ const initialState = {
 
   focus: [],
   periods: [],
+  events: [],
+  scenes: [],
 
   palettes: [
     { text: "", status: 0 },
@@ -38,11 +40,24 @@ function gameReducer(state = initialState, action) {
         periods: [...state.periods, action.payload],
       };
 
+    case "ADD_EVENTS":
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+      };
+
+    case "ADD_SCENES":
+      return {
+        ...state,
+        scenes: [...state.scenes, action.payload],
+      };
+
     case UPDATE_NEW_GAME_FORM:
       return {
         ...state,
         [action.payload.field]: action.payload.value,
       };
+      
     case UPDATE_PALETTE_NEW_GAME_FORM:
       console.log("actionpayload", action.payload);
       const newPalette = [...state.palettes];
@@ -52,12 +67,14 @@ function gameReducer(state = initialState, action) {
         ...state,
         palettes: newPalette,
       };
+      
     case PALETTE:
       console.log("on y est mdr");
       return {
         ...state,
         palettes: [...state.palettes, { text: "", status: 0 }],
       };
+      
     default:
       return state;
   }

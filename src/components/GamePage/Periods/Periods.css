@@ -1,9 +1,19 @@
 .periods-container {
   margin-top: 25px;
-  display: flex;
+  /* display: flex; */
+}
+
+.ui.grid > .row {
+  flex-wrap: nowrap;
+  margin-top: 25px;
+  overflow: auto;
 }
 
 .ui[class*="one column"].grid > .row > .column {
-  width: 20% !important;
-  overflow-x: scroll;
+  min-width: 33% !important;
+}
+
+.ui.card {
+  margin: 1em 0;
+  width: 100%;
 }

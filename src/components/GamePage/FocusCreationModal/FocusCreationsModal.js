@@ -36,7 +36,7 @@ function FocusCreationModal() {
         <Modal.Content>
           <Form>
             <input
-              placeholder="Tell us more"
+              placeholder="Description du focus"
               value={newFocus || ""}
               onChange={(e) => handleChange(e)}
               type="text"
