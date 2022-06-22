@@ -111,12 +111,14 @@ const cardDatamapper = {
       return savedCard.rows[0];
    },
    
-   async insertFocus (content, position) {
+   async insertFocus (content, position, gameId) {
 
       const preparedQuery = {
-         text: `INSERT INTO "focus" ("description", "author_id", "position") VALUES ($1, $2, $3)`,
-         values: [content.description, content.author_id, position]
+         text: `INSERT INTO "focus" ("text", "author_id", "position", "game_id") VALUES ($1, $2, $3, $4)`,
+         values: [content.text, content.author_id, position, gameId]
       };
+
+      console.log("preparedQuery", preparedQuery)
 
       await client.query(preparedQuery);
    },

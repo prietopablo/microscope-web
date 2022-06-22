@@ -196,13 +196,13 @@ content-type: application/json
 }
 
 ### focus 1
-POST {{endpoint}}/game/2
+POST {{endpoint}}/game/1
 content-type: application/json
 
 {
    "cardType": "focus",
-   "description" : "Ceci est un test 1 pour voir si le focus marche bien",
-   "author_id" : 2,
+   "text": "text focus 1",
+   "author_id": 4
 }
 
 ### focus 2
