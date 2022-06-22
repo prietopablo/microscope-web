@@ -4,6 +4,7 @@ import "./Focus.css";
 
 function Focus() {
   const focus = useSelector((state) => state.game.focus);
+  const username = useSelector((state) => state.user.username);
   console.log("state", focus);
 
   return (
@@ -11,7 +12,7 @@ function Focus() {
       {focus
         ? focus.map((f, i) => (
             <Label key={i}>
-              <Header as="h5">Username</Header>
+              <Header as="h5">{username}</Header>
               {f.label}
             </Label>
           ))

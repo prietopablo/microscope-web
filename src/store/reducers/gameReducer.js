@@ -1,4 +1,5 @@
 import {
+  PALETTE,
   UPDATE_NEW_GAME_FORM,
   UPDATE_PALETTE_NEW_GAME_FORM,
 } from "../../actions/gameActions";
@@ -13,21 +14,18 @@ const initialState = {
   userId: null,
   currentUser: null,
 
-
   focus: [],
   periods: [],
 
-  palette: [
+  palettes: [
     { text: "", status: 0 },
     { text: "", status: 0 },
     { text: "", status: 0 },
   ],
-
 };
 
 function gameReducer(state = initialState, action) {
   switch (action.type) {
-
     case "ADD_FOCUS":
       return {
         ...state,
@@ -40,23 +38,26 @@ function gameReducer(state = initialState, action) {
         periods: [...state.periods, action.payload],
       };
 
-
     case UPDATE_NEW_GAME_FORM:
       return {
         ...state,
         [action.payload.field]: action.payload.value,
       };
     case UPDATE_PALETTE_NEW_GAME_FORM:
-      const newPalette = state.palette.map((pal, index) => {
-        if (index === action.index) {
-          (pal.text = action.text), (pal.status = action.status);
-        }
-      });
+      console.log("actionpayload", action.payload);
+      const newPalette = [...state.palettes];
+      newPalette[action.payload.index].status = action.payload.status;
+      newPalette[action.payload.index].text = action.payload.text;
       return {
         ...state,
-        palette: newPalette,
+        palettes: newPalette,
       };
-
+    case PALETTE:
+      console.log("on y est mdr");
+      return {
+        ...state,
+        palettes: [...state.palettes, { text: "", status: 0 }],
+      };
     default:
       return state;
   }
