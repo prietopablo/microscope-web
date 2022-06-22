@@ -10,7 +10,7 @@ module.exports = async (request, response, next) => {
       const players = await userDatamapper.findByGameId(request.params.id);
       players.forEach(player => {
         if (player.id === response.locals.userIdRetrieved) {
-
+            next();
         }
       });
 
