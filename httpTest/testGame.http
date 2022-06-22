@@ -9,11 +9,11 @@ content-type: application/json
 }
 
 ### Access a game with its id
-GET {{ endpoint }}/game/1
+GET {{ endpoint }}/game/4/ongoing
 content-type: application/json
 
 ### Deploy game
-PATCH {{ endpoint }}/game/1
+PATCH {{ endpoint }}/game/1/starting
 content-type: application/json
 
 {

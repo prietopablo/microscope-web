@@ -71,23 +71,26 @@ const gameController = {
 
          // The period object is composed of period of our game and each subsequent event which also reach to related scenes
          const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
+
+         if (periods) {
          
-         for (let i = 0; i < periods.length; i++) {
+            for (let i = 0; i < periods.length; i++) {
 
-            const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
-            console.log("eventFound", i,eventsFound);
+               const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
+               console.log("eventFound", i,eventsFound);
 
-            if (eventsFound) {
-               
-               for (let j = 0; j < eventsFound.length; j++) {
+               if (eventsFound) {
+                  
+                  for (let j = 0; j < eventsFound.length; j++) {
 
-                  const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
+                     const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
 
-                  if (scenesFound) {
-                     eventsFound[j].scenes = scenesFound;
+                     if (scenesFound) {
+                        eventsFound[j].scenes = scenesFound;
+                     }
                   }
+                  periods[i].events = eventsFound;
                }
-               periods[i].events = eventsFound;
             }
          }
 
