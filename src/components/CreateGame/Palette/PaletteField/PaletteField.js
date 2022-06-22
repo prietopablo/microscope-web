@@ -1,46 +1,64 @@
-// import { useDispatch } from "react-redux";
-import { Form, Input, Checkbox } from "semantic-ui-react";
+/* eslint-disable react/prop-types */
+import { useDispatch } from "react-redux";
+import { Form, Input, Checkbox, Grid } from "semantic-ui-react";
+import { useEffect, useState } from "react";
+import { updatePaletteNewGameForm } from "../../../../actions/gameActions";
 
-function PaletteField() {
-  //   const dispatch = useDispatch();
+function PaletteField({ palette, index }) {
+  const [localPalette, setLocalPalette] = useState(palette);
+  const dispatch = useDispatch();
+  //   console.log("palette : ", palette);
+  console.log("localPalette : ", localPalette);
+
+  useEffect(() => {
+    dispatch(
+      updatePaletteNewGameForm(localPalette.status, localPalette.text, index)
+    );
+  }, [localPalette]);
   return (
-    <div className="palette--items">
-      <div className="palette--field">
-        <Input
-          fluid
-          placeholder="..."
-          //   onChange={(event) => {
-          //       dispatch(updatePaletteNewGameForm(0, event.target.value));
-          //   }}
-        />
-        <Form.Field>
-          <Checkbox
-            radio
-            label="Oui"
-            name="oui"
-            value={1}
-            //   checked={tone === 1}
-            //   onChange={(e, data) =>
-            //     dispatch(updatePaletteNewGameForm(TODO:, data.value))
-            //   }
+    <div className="palette--field">
+      <Grid stretched>
+        <Grid.Column width={14}>
+          <Input
+            fluid
+            placeholder="..."
+            onChange={(event) => {
+              setLocalPalette({ ...localPalette, text: event.target.value });
+            }}
           />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            radio
-            label="Non"
-            name="non"
-            value={0}
-            //   checked={tone === 0}
-            //   onChange={(e, data) =>
-            //     dispatch(updatePaletteNewGameForm(TODO:, data.value))
-            //   }
-          />
-        </Form.Field>
-      </div>
+        </Grid.Column>
+        <Grid.Column>
+          <Form.Field>
+            <Checkbox
+              radio
+              label="Oui"
+              name="oui"
+              value={1}
+              checked={localPalette.status === 1}
+              onChange={(_, data) =>
+                setLocalPalette({ ...localPalette, status: data.value })
+              }
+            />
+          </Form.Field>
+          <Form.Field>
+            <Checkbox
+              radio
+              label="Non"
+              name="non"
+              value={0}
+              checked={localPalette.status === 0}
+              onChange={(_, data) =>
+                setLocalPalette({ ...localPalette, status: data.value })
+              }
+            />
+          </Form.Field>
+        </Grid.Column>
+      </Grid>
     </div>
   );
 }
+
+PaletteField.propTypes = {};
 
 // == Export
 export default PaletteField;

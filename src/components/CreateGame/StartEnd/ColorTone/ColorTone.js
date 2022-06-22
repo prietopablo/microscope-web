@@ -48,4 +48,5 @@ ColorSlider.propTypes = {
   isStartOrEnd: PropTypes.string,
 };
 
+// == Export
 export default ColorSlider;

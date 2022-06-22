@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Create axios instance to not repeat url on each requests
 export const axiosInstance = axios.create({
-  baseURL: "https://microscope-web.herokuapp.com",
+  baseURL: "https://microscope-web.herokuapp.com/api",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",

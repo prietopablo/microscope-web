@@ -27,15 +27,11 @@ function App() {
     async function fetchData() {
       saveAuthorization(token);
       console.log(axiosInstance);
-      const response = await axiosInstance.post("/tokenValidity");
+      const response = await axiosInstance.post("/verifsignin");
       console.log(response.data);
 
       if (response.data.error || response.data.errorMessage) {
-
         return localStorage.clear();
-
-        
-
       }
 
       if (response.data.userId) {
