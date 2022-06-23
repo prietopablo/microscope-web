@@ -9,12 +9,13 @@ module.exports = async (request, response, next) => {
       
       const players = await userDatamapper.findByGameId(request.params.id);
       players.forEach(player => {
-        if (player.id === response.locals.userIdRetrieved) {
+        if (player.player_id === response.locals.userIdRetrieved) {
 
         }
       });
 
       response.json({ Message: "Access granted" });
+      console.log("Access granted");
 
       next();
    }
