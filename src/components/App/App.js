@@ -13,10 +13,13 @@ import { saveAuthorization, axiosInstance } from "../../requests";
 import GamePage from "../GamePage/GamePage";
 import CreateGame from "../CreateGame/CreateGame";
 import Profile from "../Profile/Profile";
+import { actionLoginSuccess } from "../../actions/loginActions";
+import { useDispatch } from "react-redux";
 // import { actionSaveUser } from "../../actions/loginActions";
 // import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -36,12 +39,15 @@ function App() {
         return localStorage.clear();
       }
 
-      if (response.data.userId) {
-        const user = await axiosInstance.get(
-          `/profile/${response.data.userId}`
-        );
-        console.log(user);
-      }
+      dispatch(
+        actionLoginSuccess(response.data.userName, response.data.userId)
+      );
+      // if (response.data.userId) {
+      //   const user = await axiosInstance.get(
+      //     `/profile/${response.data.userId}`
+      //   );
+      //   console.log(user.data);
+      // }
     }
     fetchData();
   }, []);

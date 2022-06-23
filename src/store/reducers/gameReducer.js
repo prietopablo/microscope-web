@@ -6,13 +6,11 @@ import {
 
 const initialState = {
   bigPicture: "",
-  state: "",
+  gameState: "",
   start: "",
   startTone: 0,
   end: "",
   endTone: 0,
-  userId: null,
-  currentUser: null,
 
   focus: [],
   periods: [],
@@ -57,7 +55,7 @@ function gameReducer(state = initialState, action) {
         ...state,
         [action.payload.field]: action.payload.value,
       };
-      
+
     case UPDATE_PALETTE_NEW_GAME_FORM:
       console.log("actionpayload", action.payload);
       const newPalette = [...state.palettes];
@@ -67,14 +65,14 @@ function gameReducer(state = initialState, action) {
         ...state,
         palettes: newPalette,
       };
-      
+
     case PALETTE:
       console.log("on y est mdr");
       return {
         ...state,
         palettes: [...state.palettes, { text: "", status: 0 }],
       };
-      
+
     default:
       return state;
   }

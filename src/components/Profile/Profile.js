@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Input } from "semantic-ui-react";
+import { Button, Card, Divider, Input } from "semantic-ui-react";
 import Header from "../Header/Header";
 import "./Profile.css";
 
@@ -9,14 +9,6 @@ function Profile() {
 
   return (
     <div className="profile">
-      {/* <Input id="profile-username" placeholder="New Username" /> 
-      <Header />
-      <Button onClick={this.open}>Show</Button>
-       <Confirm
-                open={this.state.open}
-                onCancel={this.close}
-                onConfirm={this.close}
-             /> */}
       <Header />
       <form
         className="profile--form"
@@ -31,12 +23,78 @@ function Profile() {
           value={username || ""}
         />
         <Input
-          className="signup--form-input"
+          className="profile--form-input"
           placeholder="Email"
           type="email"
           value={email || ""}
         />
+        <Input
+          className="profile--form-input pwd"
+          placeholder="Mot de passe"
+          type="password"
+          value={""}
+        />
+        <Input
+          className="profile--form-input"
+          placeholder="Confirmer le mot de passe"
+          type="password"
+          value={""}
+        />
+        <Button inverted className="profile--form-submit" type="submit">
+          Modifier
+        </Button>
       </form>
+      <Divider inverted />
+      <h2 className="profile--title">Parties en cours</h2>
+      <div className="profile--gamesSection">
+        <Card.Group itemsPerRow={4}>
+          <Card>
+            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+            <Card.Content
+              description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
+          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
+          finibus arcu vel consequat."
+            />
+          </Card>
+          <Card>
+            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+            <Card.Content
+              description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
+          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
+          finibus arcu vel consequat."
+            />
+          </Card>
+        </Card.Group>
+      </div>
+      <h2 className="profile--title">Parties archivées</h2>
+      <div className="profile--gamesSection">
+        <Card.Group itemsPerRow={4}>
+          <Card>
+            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+            <Card.Content
+              description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
+          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
+          finibus arcu vel consequat."
+            />
+          </Card>
+          <Card>
+            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+            <Card.Content
+              description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
+          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
+          finibus arcu vel consequat."
+            />
+          </Card>
+          <Card>
+            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+            <Card.Content
+              description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
+          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
+          finibus arcu vel consequat."
+            />
+          </Card>
+        </Card.Group>
+      </div>
     </div>
   );
 }
