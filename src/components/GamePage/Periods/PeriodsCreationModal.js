@@ -9,12 +9,14 @@ function PeriodsCreationModal() {
   const handleChange = (e) => {
     setNewPeriods(e.target.value);
   };
+
   const handleClick = () => {
     dispatch({
       type: "ADD_PERIODS",
       payload: {
         label: newPeriods,
         id: Math.ceil(Math.random() * 100),
+        events: [],
       },
     });
     setOpen(false);
