@@ -22,7 +22,7 @@ router.get('/archived', gameController.getAllArchived);
 router.get('/archived/:id', gameController.getOne);
 
 // Sign up
-router.post('/signup', userController.create);
+router.post('/register', userController.create);
 
 // Login
 router.post('/login', authController.login);
