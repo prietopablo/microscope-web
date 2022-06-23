@@ -37,7 +37,7 @@ const authenticationController = {
             // We send our user
             console.log(`user connected as ${user.role}`);
             
-            return response.json({ user, token });
+            return response.json({ username: user.username, email: user.email, userId: user.id, token });
          }
          else {
             return response.json({ errorMessage : "Invalid Credentials" });
