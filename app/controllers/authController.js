@@ -22,15 +22,18 @@ const authenticationController = {
          // Validate if password is correct using bcrypt
          const passwordVerified = await bcrypt.compare(request.body.password, user.password);
 
+         console.log("username", username);
+
          if (user && passwordVerified) {
             // Create JSON token
             const token =  jwt.sign(
-               { userId: user.id },
+               { userId: user.id, userName: username },
                process.env.TOKEN_KEY,
                {
                   expiresIn: "6h",
                }
             );
+
             // We send our user
             console.log(`user connected as ${user.role}`);
             
@@ -61,9 +64,10 @@ const authenticationController = {
                
             }
 
-            return response.json({ userId: decoded.userId,  Message: "Token valid !"});
+            return response.json({ userId: decoded.userId, userName: decoded.userName,  Message: "Token valid !"});
 
          });
+
       }
       catch (err) {
          return response.json({errotType: err.message, errorMessage: "Unable to verify the token"});

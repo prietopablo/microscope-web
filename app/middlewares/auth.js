@@ -13,12 +13,12 @@ module.exports = (request, response, next) => {
             return response.json({ errorMessage: "Token invalid" });            
          }
 
-         response.locals.userIdRetrieved = decoded.userId;
-
+         response.locals.userIdRetrieved = decoded.userId;      
+         
          response.json({ userId: decoded.userId,  Message: "Token valid !"});
 
       });
-
+      
       console.log("response.locals.userIdRetrieved", response.locals.userIdRetrieved);
       next();
    }

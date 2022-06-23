@@ -25,7 +25,7 @@ router.get('/archived/:id', gameController.getOne);
 router.post('/signup', userController.create);
 
 // Login
-router.post("/login", authController.login);
+router.post('/login', authController.login);
 
 //-------------Member------------->
 // Profile
