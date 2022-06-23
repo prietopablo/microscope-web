@@ -1,5 +1,6 @@
 // import { useMediaQuery } from 'react-responsive';
 // import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Form, Button } from "semantic-ui-react";
 import BigPicture from "./BigPicture/BigPicture";
 import Palette from "./Palette/Palette";
@@ -7,8 +8,10 @@ import PlayersList from "./PlayersList/PlayersList";
 import StartEnd from "./StartEnd/StartEnd";
 
 import "./CreateGame.css";
+import { createGame } from "../../actions/gameActions";
 
 function CreateGame() {
+  const dispatch = useDispatch();
   // const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   // const isDesktop = useMediaQuery({ query: '(min-width: 769px)'  });
   // const palettes = useSelector((state) => state.game.palette);
@@ -22,7 +25,7 @@ function CreateGame() {
         <Form
           onSubmit={(event) => {
             event.preventDefault();
-            // console.log(event);
+            dispatch(createGame());
           }}
         >
           <BigPicture />

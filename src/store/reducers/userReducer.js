@@ -15,6 +15,8 @@ const initialState = {
   isConnected: false,
   isSignedUp: false,
   token: null,
+  userId: null,
+  currentUser: null,
 
   username: "",
   emailSignup: "",
@@ -42,6 +44,8 @@ function userReducer(state = initialState, action = {}) {
         username: action.payload.username,
         token: action.payload.token,
         password: "", // empty password value (SECURITY)
+        userId: action.payload.id,
+        currentUser: action.payload.id,
       };
 
     case LOGOUT:
@@ -69,6 +73,8 @@ function userReducer(state = initialState, action = {}) {
       return {
         ...state,
         isConnected: true,
+        userId: action.payload.id,
+        username: action.payload.username,
       };
 
     case SIGNUP_SUCCESS:

@@ -14,7 +14,7 @@ function HomePage() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
-  const isConnected = useSelector((state) => state.isConnected);
+  const isConnected = useSelector((state) => state.user.isConnected);
 
   return (
     <div className="home">
