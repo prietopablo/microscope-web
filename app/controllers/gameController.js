@@ -48,7 +48,6 @@ const gameController = {
          const paletteArray = Object.values(request.body.palette);
 
          paletteArray.forEach(async (paletteCard) => {
-            console.log(paletteCard.text, paletteCard.status);
             paletteDatamapper.insert(gameId, paletteCard);         
          });
       

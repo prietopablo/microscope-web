@@ -47,7 +47,7 @@ router.post('/createNewGame', authUser, gameController.createNewGame);
 
 // Send starting game data
 // The following route is meant to update the current with game with all the data needed to start a game
-router.post('/game/:id/starting', authUser, gameController.deployGame);
+router.post('/game/:id/starting', /*authUser,*/ gameController.deployGame);
 
 // Access game & refresh
 router
