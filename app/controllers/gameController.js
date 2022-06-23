@@ -63,6 +63,7 @@ const gameController = {
       // This method will retrieve a game as an all, which every data connected to the a game
       // It will be used to display ongoing games and archived ones
       try {
+
          // The game object will find all the data contained in the "game" table
          const game = await gameDatamapper.findByPk(request.params.id);
 
@@ -79,7 +80,6 @@ const gameController = {
             for (let i = 0; i < periods.length; i++) {
 
                const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
-               console.log("eventFound", i,eventsFound);
 
                if (eventsFound) {
                   

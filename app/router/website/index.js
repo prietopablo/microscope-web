@@ -3,7 +3,7 @@ const authController = require('../../controllers/authController');
 const userController = require('../../controllers/userController');
 const gameController = require('../../controllers/gameController');
 const cardController = require('../../controllers/cardController');
-const auth = require('../../middlewares/auth');
+
 
 const websiteController = require('../../controllers/websiteController');
 

@@ -1,11 +1,13 @@
 const express = require('express');
+// Controllers
 const authController = require('../../controllers/authController');
 const userController = require('../../controllers/userController');
 const gameController = require('../../controllers/gameController');
 const websiteController = require('../../controllers/websiteController');
 const cardController = require('../../controllers/cardController');
-
-const auth = require('../../middlewares/auth');
+// Middlewares
+const authUser = require('../../middlewares/authUser');
+const authGame = require('../../middlewares/authGame');
 const playerAccess = require('../../middlewares/playerAccess');
 
 
@@ -31,9 +33,9 @@ router.post('/login', authController.login);
 // Profile
 router
    .route('/profile/:id')
-   .get(auth, userController.getOne)
-   .patch(auth, userController.update)
-   .delete(auth, userController.delete);
+   .get(authUser, userController.getOne)
+   .patch(authUser, userController.update)
+   .delete(authUser, userController.delete);
 
 // Logout occurs in front
 
@@ -41,17 +43,17 @@ router
 router.post('/verifsignin', authController.verifyToken);
 
 // New game creation
-router.post('/createNewGame', auth, gameController.createNewGame);
+router.post('/createNewGame', authUser, gameController.createNewGame);
 
 // Send starting game data
 // The following route is meant to update the current with game with all the data needed to start a game
-router.post('/game/:id/starting', auth, gameController.deployGame);
+router.post('/game/:id/starting', authUser, gameController.deployGame);
 
 // Access game & refresh
 router
    .route('/game/:id/ongoing')
-   .get(auth, playerAccess, gameController.getOne)
-   .post(auth, playerAccess, cardController.createCard);
+   .get(authGame, gameController.getOne)
+   .post(authGame, cardController.createCard);
 
 // Finish game
 //..................TODO
