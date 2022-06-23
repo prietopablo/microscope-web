@@ -8,58 +8,59 @@ function Periods() {
   const periods = useSelector((state) => state.game.periods);
   console.log("state period", periods);
   const periode = [Grid.Column.length];
-  const events = useSelector((state) => state.game.events);
-  const scenes = useSelector((state) => state.game.scenes);
+  // const events = useSelector((state) => state.game.events);
+  // const scenes = useSelector((state) => state.game.scenes);
 
   return (
     <Grid columns={periode.length} divided>
       <Grid.Row>
-        {periods
-          ? periods.map((p, i) => (
-              <Grid.Column key={i} style={{ background: "black" }}>
-                <Card style={{ background: "rgb(196, 207, 217)" }}>
-                  <Card.Content>
-                    <Card.Header>Période n°</Card.Header>
-                    <Card.Description> {p.label} </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <EventsCreationModal />
-                  </Card.Content>
-                </Card>
+        {periods &&
+          periods.map((p, i) => (
+            <Grid.Column key={i} style={{ background: "black" }}>
+              <Card style={{ background: "rgb(196, 207, 217)" }}>
+                <Card.Content>
+                  <Card.Header>Période n°</Card.Header>
+                  <Card.Description> {p.label} </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <EventsCreationModal periodId={p.id} />
+                </Card.Content>
+              </Card>
 
-                <Grid columns={2} divided>
-                  {/* ROW EVENEMENT */}
-                  <Grid.Row>
-                    {/* COLONNE EVENEMENT */}
-                    <Grid.Column verticalAlign="middle">
-                      {/* CARTE EVENEMENT */}
-                      {events
-                        ? events.map((e, i) => (
-                            <Card
-                              key={i}
-                              style={{ background: "rgb(45, 118, 103)" }}
-                            >
-                              <Card.Content>
-                                <Card.Header>EVENEMENT 1</Card.Header>
+              <Grid columns={2} divided>
+                {/* ROW EVENEMENT */}
+                {p.events &&
+                  p.events.map((e, i) => (
+                    <Grid.Row key={i}>
+                      {/* COLONNE EVENEMENT */}
 
-                                <Card.Description>{e.label}</Card.Description>
-                              </Card.Content>
-                              <Card.Content extra>
-                                <ScenesCreationModal />
-                              </Card.Content>
-                            </Card>
-                          ))
-                        : ""}
+                      <Grid.Column verticalAlign="middle">
+                        {/* CARTE EVENEMENT */}
 
-                      {/* FIN CARTE EVENEMENT */}
-                    </Grid.Column>
-                    {/* FIN COLONNE EVENEMENT */}
+                        <Card style={{ background: "rgb(45, 118, 103)" }}>
+                          <Card.Content>
+                            <Card.Header>EVENEMENT 1</Card.Header>
 
-                    {/* COLONNE SCENE */}
-                    <Grid.Column>
-                      {/* CARTE SCENE */}
-                      {scenes
-                        ? scenes.map((s, i) => (
+                            <Card.Description>{e.label}</Card.Description>
+                          </Card.Content>
+                          <Card.Content extra>
+                            <ScenesCreationModal
+                              eventId={e.id}
+                              periodId={p.id}
+                            />
+                          </Card.Content>
+                        </Card>
+
+                        {/* FIN CARTE EVENEMENT */}
+                      </Grid.Column>
+
+                      {/* FIN COLONNE EVENEMENT */}
+
+                      {/* COLONNE SCENE */}
+                      <Grid.Column>
+                        {/* CARTE SCENE */}
+                        {e.scenes &&
+                          e.scenes.map((s, i) => (
                             <Card
                               key={i}
                               style={{ background: "rgb(77, 92, 106)" }}
@@ -73,17 +74,17 @@ function Periods() {
                               </Card.Content>
                               <Card.Content extra></Card.Content>
                             </Card>
-                          ))
-                        : ""}
-                      {/* FIN CARTE SCENE */}
-                    </Grid.Column>
-                    {/* FIN COLONNE SCENE */}
-                  </Grid.Row>
-                  {/* FIN ROW EVENEMENT */}
-                </Grid>
-              </Grid.Column>
-            ))
-          : ""}
+                          ))}
+                        {/* FIN CARTE SCENE */}
+                      </Grid.Column>
+                      {/* FIN COLONNE SCENE */}
+                    </Grid.Row>
+                  ))}
+
+                {/* FIN ROW EVENEMENT */}
+              </Grid>
+            </Grid.Column>
+          ))}
       </Grid.Row>
     </Grid>
   );

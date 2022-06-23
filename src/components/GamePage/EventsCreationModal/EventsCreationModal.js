@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "semantic-ui-react";
 
-function EventsCreationModal() {
+// eslint-disable-next-line react/prop-types
+function EventsCreationModal({ periodId }) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const [newEvent, setNewEvent] = useState();
   const handleChange = (e) => {
     setNewEvent(e.target.value);
   };
+  // const periodId = useSelector((state) => state.game.periodId);
+
   const handleClick = () => {
     dispatch({
       type: "ADD_EVENTS",
       payload: {
         label: newEvent,
         id: Math.ceil(Math.random() * 100),
+        periodId,
+        scenes: [],
       },
     });
     setOpen(false);
