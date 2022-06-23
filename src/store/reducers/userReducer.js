@@ -37,7 +37,7 @@ function userReducer(state = initialState, action = {}) {
     case SAVE_USER:
       return {
         ...state,
-        // user is connected,  isLogged=true
+        // user is connected,  isConnected=true
         isConnected: true,
         username: action.payload.username,
         token: action.payload.token,

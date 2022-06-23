@@ -4,6 +4,7 @@ import { sendLogin, updateLoginForm } from "../../actions/loginActions";
 import { Input, Button } from "semantic-ui-react";
 import "./LoginPage.css";
 import Header from "../Header/Header";
+import { useEffect } from "react";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -13,9 +14,11 @@ function LoginPage() {
   const navigate = useNavigate();
   console.log("username vide ", username);
 
-  return isConnected ? (
-    navigate("/")
-  ) : (
+  useEffect(() => {
+    if (isConnected) navigate("/");
+  }, [isConnected]);
+
+  return (
     <div className="login">
       <Header />
       <form

@@ -13,6 +13,8 @@ import { saveAuthorization, axiosInstance } from "../../requests";
 import GamePage from "../GamePage/GamePage";
 import CreateGame from "../CreateGame/CreateGame";
 import Profile from "../Profile/Profile";
+// import { actionSaveUser } from "../../actions/loginActions";
+// import { useDispatch } from "react-redux";
 
 function App() {
   useEffect(() => {
@@ -26,7 +28,7 @@ function App() {
 
     async function fetchData() {
       saveAuthorization(token);
-      console.log(axiosInstance);
+
       const response = await axiosInstance.post("/verifsignin");
       console.log(response.data);
 
