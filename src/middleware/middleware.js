@@ -1,12 +1,22 @@
-import { actionSaveUser, LOGOUT, SAVE_USER, SEND_LOGIN } from "../actions/loginActions";
+import {
+  actionSaveUser,
+  LOGOUT,
+  SAVE_USER,
+  SEND_LOGIN,
+} from "../actions/loginActions";
 import { SEND_SIGNUP, signupSuccess } from "../actions/signupActions";
-import { removeAuthorization, requestLogin, requestSignup, saveAuthorization } from '../requests';
+import {
+  removeAuthorization,
+  requestLogin,
+  requestSignup,
+  saveAuthorization,
+} from "../requests";
 
 export const debugMiddleware = (store) => (next) => (action) => {
-    console.log('debbug middleware');
-    console.log(action, store, next);
-    console.log(`L'action ${action.type} est appelée`);
-    next(action);
+  console.log("debbug middleware");
+  console.log(action, store, next);
+  console.log(`L'action ${action.type} est appelée`);
+  next(action);
 };
 
 // export const loginMiddleware = (store) => (next) => async (action) => {
@@ -39,20 +49,20 @@ export const loginMiddleware = (store) => (next) => async (action) => {
       console.log("loginMiddleware: j'ai intercepté SEND_LOGIN");
 
       const state = store.getState();
-      const { username, password } = state;
+      const { username, password } = state.user;
+      console.log("LE MIDLEWARE DE LOGIN", username, password);
 
       try {
-        console.log('je lance ma requete login');
+        console.log("je lance ma requete login");
         const data = await requestLogin(username, password);
         console.log("la requete est terminé et j'ai récupéré:", data);
 
-        console.log("je dispatch SAVE_USER avec les infos de l'utilisateur connecté");
-        localStorage.setItem('token', data.token);
-        store.dispatch(
-          actionSaveUser(data.username, data.token),
+        console.log(
+          "je dispatch SAVE_USER avec les infos de l'utilisateur connecté"
         );
-      }
-      catch (err) {
+        localStorage.setItem("token", data.token);
+        store.dispatch(actionSaveUser(data.user.username, data.token));
+      } catch (err) {
         console.error(err);
       }
 
@@ -78,21 +88,16 @@ export const loginMiddleware = (store) => (next) => async (action) => {
 };
 
 export const signupMiddleware = (store) => (next) => async (action) => {
-
   if (action.type === SEND_SIGNUP) {
-    console.log('le loginMiddleware a capturé l\'action SEND_SIGNUP');
+    console.log("le loginMiddleware a capturé l'action SEND_SIGNUP");
     const state = store.getState();
-    const { emailSignup, passwordSignup, username } = state;
+    const { emailSignup, passwordSignup, username } = state.user;
 
     try {
-
-      console.log('on déclenche la requete');
+      console.log("on déclenche la requete");
       await requestSignup(emailSignup, passwordSignup, username);
-      store.dispatch(
-        signupSuccess(),
-      );
-    }
-    catch (err) {
+      store.dispatch(signupSuccess());
+    } catch (err) {
       console.error(err);
     }
 
@@ -101,8 +106,6 @@ export const signupMiddleware = (store) => (next) => async (action) => {
 
   next(action);
 };
-
-
 
 // export const authMiddleware = (store) => (next) => (action) => {
 //     console.log(store, next, action);

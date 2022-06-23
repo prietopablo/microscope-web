@@ -4,6 +4,7 @@ import { sendSignup, updateSignupForm } from "../../actions/signupActions";
 import { useNavigate } from "react-router-dom";
 import "./SignUpPage.css";
 import Header from "../Header/Header";
+import { useEffect } from "react";
 
 function SignUpPage() {
   const dispatch = useDispatch();
@@ -13,12 +14,13 @@ function SignUpPage() {
   const username = useSelector((state) => state.user.username);
   const isSignedUp = useSelector((state) => state.user.isSignedUp);
 
-
   const navigate = useNavigate();
 
-  return isSignedUp ? (
-    navigate("/login")
-  ) : (
+  useEffect(() => {
+    if (isSignedUp) navigate("/login");
+  }, [isSignedUp]);
+
+  return (
     <div className="signup">
       <Header />
       <form
