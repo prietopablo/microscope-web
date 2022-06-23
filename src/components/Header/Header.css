@@ -6,7 +6,7 @@ h1 {
     font-weight: lighter;
     margin-left: 0rem;
     align-self: center;
-    font-size: 5rem;
+    font-size: 3rem;
 }
 
 .link-header {
@@ -20,7 +20,7 @@ h1 {
 
 .container-header {
     margin-top: 3rem;
-    width: 100vw;
+    width: 150vw;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -32,37 +32,6 @@ h1 {
 }
 
 @media (min-width: 1120px) {
-
-    .app-header{
-        width: 100vw;
-    }
-
-    .App-logo{
-       height: 12rem; 
-    }
-
-    .container-header{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        align-content: flex-end;
-        margin-top: 0rem;
-        width: 100vw;
-    }
-
-    .link-header{
-        height: 12rem; 
-    }
-
-    h1{
-        font-size: 5rem;
-        height: 5rem;
-        margin: 0 0 0 0.5rem;
-        align-self: flex-end;
-    }
-}
-
-@media (min-width: 769px) {
 
     .app-header{
         width: 100vw;
