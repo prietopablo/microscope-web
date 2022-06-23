@@ -24,7 +24,7 @@ const userController = {
                 return response.json({ errorMessage: "no user found"});
             }
     
-            return response.json({ user });  
+            return response.json({ username: user.username, email: user.email, userId: user.id });
         }
         catch (err){
             response.json({ errorType: err.message });
