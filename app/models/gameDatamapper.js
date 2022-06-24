@@ -7,13 +7,15 @@ const gameDatamapper = {
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
       console.log(content.creator_id);
-      const preparedQuery = {
-         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *` ,
-         values: [content.creator_id, content.creator_id]
-      };
+      // const preparedQuery = {
+      //    text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *` ,
+      //    values: [content.creator_id, content.creator_id]
+      // };
 
 
-      const result = await client.query(preparedQuery);
+      // const result = await client.query(preparedQuery);
+
+      const result = await client.query('INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *', [content.creator_id, content.creator_id]);
 
       return result.rows[0];
    },
