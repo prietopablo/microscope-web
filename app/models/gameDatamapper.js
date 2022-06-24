@@ -15,7 +15,7 @@ const gameDatamapper = {
 
       // const result = await client.query(preparedQuery);
 
-      const result = await client.query('INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *', [content.creator_id, content.creator_id]);
+      const result = await client.query(`INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *`, [content.creator_id, content.creator_id]);
 
       return result.rows[0];
    },
