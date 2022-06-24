@@ -43,7 +43,7 @@ router
 router.post('/verifsignin', authController.verifyToken);
 
 // New game creation
-router.post('/createNewGame', authUser, gameController.createNewGame);
+router.post('/createNewGame', /*authUser*/, gameController.createNewGame);
 
 // Send starting game data
 // The following route is meant to update the current with game with all the data needed to start a game
