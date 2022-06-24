@@ -12,10 +12,11 @@ const gameController = {
       try {
          await gameDatamapper.insertCreator(request.body);
 
+         const game = request.params.id;
          const userId = request.body.creator_id;
          const creator = await userDatamapper.findByPk(userId);
 
-         return response.status(200).json(`New game created by ${creator.username} !`, game_id);
+         return response.status(200).json(`New game created by ${creator.username} !`, game);
       }
       catch (err){
          response.json({ errorType: err.message });
