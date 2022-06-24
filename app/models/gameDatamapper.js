@@ -8,11 +8,14 @@ const gameDatamapper = {
       // of course the "game" table but also "participation" and "palette"
       console.log(content.creator_id);
       const preparedQuery = {
-         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2)`,
+         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *` ,
          values: [content.creator_id, content.creator_id]
       };
 
+
       await client.query(preparedQuery);
+
+      return result.rows[0]
    },
 
    async insertAll(content) {
