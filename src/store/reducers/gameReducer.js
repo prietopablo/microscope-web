@@ -19,6 +19,7 @@ const initialState = {
   events: [],
   scenes: [],
   periodId: [],
+  position: [],
 
   palettes: [
     { text: "", status: 0 },
@@ -36,14 +37,14 @@ function gameReducer(state = initialState, action) {
       };
 
     case "ADD_PERIODS":
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         periods: [...state.periods, action.payload],
       };
 
     case "ADD_EVENTS":
-      console.log("event", action.payload);
+      // console.log("event", action.payload);
 
       const newPeriods = state.periods.map((period) => {
         if (period.id === action.payload.periodId) {
@@ -77,7 +78,7 @@ function gameReducer(state = initialState, action) {
         }
         return period;
       });
-      console.log(" newEventsPeriods", newEventsPeriods);
+      // console.log(" newEventsPeriods", newEventsPeriods);
       // let foundEventsPeriod = state.periods.find(
       //   (period) => period.id === action.payload.periodId
       // );

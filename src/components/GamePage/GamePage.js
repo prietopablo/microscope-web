@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Focus from "./Focus/Focus";
 import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
 import "./GamePage.css";
@@ -10,14 +10,19 @@ import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
 function GamePage() {
+  const focus = useSelector((state) => state.game.focus);
   // const dispatch = useDispatch();
-  // const focus = useSelector((state) => state.game.focus);
   // console.log("state", focus);
   // const handleClick = (id) =>
   //   dispatch({
   //     type: "DELETE_FOCUS",
   //     payload: id,
   //   });
+
+  // TODO:
+  // useEffect(() => {
+  //   getGameinfos(gameId);
+  // }, [])
 
   useEffect(() => {
     console.log("verif focus", focus);
@@ -37,9 +42,7 @@ function GamePage() {
         <FocusCreationModal />
       </div>
       <StartEnd />
-
       <PeriodsCreationModal />
-
       <Periods />
     </div>
   );

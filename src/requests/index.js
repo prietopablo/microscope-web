@@ -49,3 +49,12 @@ export async function requestSignup(emailSignup, passwordSignup, username) {
     throw err;
   }
 }
+
+export async function getGameinfos(gameId) {
+  try {
+    const response = await axiosInstance.get(`/game/${gameId}/ongoing`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
