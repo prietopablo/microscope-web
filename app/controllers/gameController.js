@@ -15,7 +15,7 @@ const gameController = {
          const userId = request.body.creator_id;
          const creator = await userDatamapper.findByPk(userId);
 
-         return response.status(200).json(`New game created by ${creator.username} !`);
+         return response.status(200).json(`New game created by ${creator.username} !`, game_id);
       }
       catch (err){
          response.json({ errorType: err.message });
