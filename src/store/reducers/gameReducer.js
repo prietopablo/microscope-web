@@ -45,55 +45,67 @@ function gameReducer(state = initialState, action) {
     case "ADD_EVENTS":
       console.log("event", action.payload);
 
-      let foundPeriod = state.periods.find(
-        (period) => period.id === action.payload.periodId
-      );
-      console.log(" found period", foundPeriod);
-      foundPeriod = {
-        ...foundPeriod,
-        events: [...foundPeriod.events, action.payload],
-      };
-
-      const filteredPeriod = state.periods.filter(
-        (period) => period.id !== action.payload.periodId
-      );
+      const newPeriods = state.periods.map((period) => {
+        if (period.id === action.payload.periodId) {
+          return { ...period, events: [...period.events, action.payload] };
+        }
+        return period;
+      });
 
       return {
         ...state,
-        periods: [...filteredPeriod, foundPeriod],
+        periods: [...newPeriods],
       };
 
     case "ADD_SCENES":
-      console.log(" scenes", action.payload);
+      const newEventsPeriods = state.periods.map((period) => {
+        if (period.id === action.payload.periodId) {
+          const newEvents = period.events.map((event) => {
+            if (event.id === action.payload.eventId) {
+              return {
+                ...event,
+                scenes: [...event.scenes, action.payload],
+              };
+            }
+            return event;
+          });
+          console.log(newEvents);
+          return {
+            ...period,
+            events: [...newEvents],
+          };
+        }
+        return period;
+      });
+      console.log(" newEventsPeriods", newEventsPeriods);
+      // let foundEventsPeriod = state.periods.find(
+      //   (period) => period.id === action.payload.periodId
+      // );
 
-      let foundEventsPeriod = state.periods.find(
-        (period) => period.id === action.payload.periodId
-      );
+      // const filteredEventsPeriod = state.periods.filter(
+      //   (period) => period.id !== action.payload.periodId
+      // );
+      // let foundEvent = foundEventsPeriod.events.find(
+      //   (event) => event.id === action.payload.eventId
+      // );
+      // console.log(foundEvent);
+      // foundEvent = {
+      //   ...foundEvent,
+      //   scenes: [...foundEvent.scenes, action.payload],
+      // };
 
-      const filteredEventsPeriod = state.periods.filter(
-        (period) => period.id !== action.payload.periodId
-      );
-      let foundEvent = foundEventsPeriod.events.find(
-        (event) => event.id === action.payload.eventId
-      );
-      console.log(foundEvent);
-      foundEvent = {
-        ...foundEvent,
-        scenes: [...foundEvent.scenes, action.payload],
-      };
+      // const filteredEvents = foundEventsPeriod.events.filter(
+      //   (event) => event.id !== action.payload.eventId
+      // );
 
-      const filteredEvents = foundEventsPeriod.events.filter(
-        (event) => event.id !== action.payload.eventId
-      );
-
-      foundEventsPeriod = {
-        ...foundEventsPeriod,
-        events: [...filteredEvents, foundEvent],
-      };
+      // foundEventsPeriod = {
+      //   ...foundEventsPeriod,
+      //   events: [...filteredEvents, foundEvent],
+      // };
 
       return {
         ...state,
-        periods: [...filteredEventsPeriod, foundEventsPeriod],
+        periods: [...newEventsPeriods],
       };
 
     case UPDATE_NEW_GAME_FORM:
