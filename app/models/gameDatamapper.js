@@ -13,9 +13,9 @@ const gameDatamapper = {
       };
 
 
-      await client.query(preparedQuery);
+      const result = await client.query(preparedQuery);
 
-      return result.rows[0]
+      return result.rows[0];
    },
 
    async insertAll(content) {
