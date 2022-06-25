@@ -54,7 +54,6 @@ export async function requestSignup(emailSignup, passwordSignup, username) {
 export async function requestCreateGame(
   userId,
   bigPicture,
-  gameState,
   start,
   startTone,
   end,
@@ -76,6 +75,18 @@ export async function requestCreateGame(
       palette: palettes,
     });
     return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function requestGameId(userId) {
+  try {
+    const response = await axiosInstance.post("/createNewGame", {
+      creator_id: String(userId),
+    });
+    console.log(response.data);
+    return response;
   } catch (err) {
     throw err;
   }

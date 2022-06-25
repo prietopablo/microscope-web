@@ -8,21 +8,13 @@ const gameMiddleware = (store) => (next) => async (action) => {
 
       const state = store.getState();
       const { userId } = state.user;
-      const {
-        bigPicture,
-        gameState,
-        start,
-        startTone,
-        end,
-        endTone,
-        palettes,
-      } = state.game;
+      const { bigPicture, start, startTone, end, endTone, palettes } =
+        state.game;
 
       try {
         const data = await requestCreateGame(
           userId,
           bigPicture,
-          gameState,
           start,
           startTone,
           end,

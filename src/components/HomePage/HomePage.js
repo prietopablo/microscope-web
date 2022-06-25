@@ -8,13 +8,22 @@ import HomePageLinks from "./HomePageLinks/HomePageLinks";
 import ScrollDown from "../../assets/ScrollDown.svg";
 import "./HomePage.css";
 import { actionLogout } from "../../actions/loginActions";
+import { requestGameId } from "requests";
 
 function HomePage() {
+  const userId = useSelector((state) => state.user.userId);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
   const isConnected = useSelector((state) => state.user.isConnected);
+
+  const handleCreateGame = () => {
+    const result = requestGameId(userId);
+    if (result.data) {
+      navigate(isConnected ? "/lobby" : "/login");
+    }
+  };
 
   return (
     <div className="home">
@@ -67,11 +76,7 @@ function HomePage() {
         )}
         {isDesktop && (
           <div className="buttons-desktop">
-            <Button
-              className="menu-button"
-              inverted
-              onClick={() => navigate(isConnected ? "/lobby" : "/login")}
-            >
+            <Button className="menu-button" inverted onClick={handleCreateGame}>
               Créer une partie
             </Button>
             <Button

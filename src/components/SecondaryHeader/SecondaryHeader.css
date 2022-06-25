@@ -1,0 +1,51 @@
+/* h1 {
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  font-size: 2rem;
+  width: 100%;
+}
+.App-logo {
+  width: 10em;
+}
+
+@media (min-width: 769px) {
+  .app-header {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+  }
+
+  .App-logo {
+    width: 4rem;
+    align-self: baseline;
+    margin: 0;
+  }
+
+  .container-header {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    margin-top: 1rem;
+    min-width: 50%;
+  }
+
+  .link-header {
+    width: 100%;
+    display: flex;
+    color: white;
+  }
+
+  .link-header:hover {
+    color: white;
+  }
+
+  h1 {
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    height: 100%;
+    text-align: left;
+    align-self: baseline;
+  }
+} */

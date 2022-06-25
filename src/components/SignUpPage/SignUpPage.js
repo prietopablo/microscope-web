@@ -1,7 +1,7 @@
 import { Input, Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendSignup, updateSignupForm } from "../../actions/signupActions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUpPage.css";
 import Header from "../Header/Header";
 import { useEffect } from "react";
@@ -61,6 +61,9 @@ function SignUpPage() {
         <Button className="signup--form-submit" inverted type="submit">
           Inscription
         </Button>
+        <p className="signup--form-message">
+          Déja inscrit ? <Link to="/login">Connectez-vous</Link>
+        </p>
       </form>
     </div>
   );
