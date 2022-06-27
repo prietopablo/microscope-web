@@ -10,11 +10,15 @@ const gameController = {
    async createNewGame (request, response) {
       // We create a game just by creating row in our database, with its key and the creator one. We will update all the details with the deployGame method
       try {
-         const game = await gameDatamapper.insertCreator(request.body);
+         await gameDatamapper.insertCreator(request.body);
+
          const userId = request.body.creator_id;
+
          const creator = await userDatamapper.findByPk(userId);
 
-         return response.status(200).json(`New game created by ${creator.username} !`, String(game));
+         const game = await gameDatamapper.findByCreatorId(userId);
+
+         return response.json({ Message: `New game created by ${creator.username} !`, gameId: game.id });
       }
       catch (err){
          response.json({ errorType: err.message });
