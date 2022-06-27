@@ -55,7 +55,6 @@ const gameDatamapper = {
 
       console.log("fields", fields);
       console.log("values", values);
-
       
       const savedGame = await client.query(
          `UPDATE "game" SET

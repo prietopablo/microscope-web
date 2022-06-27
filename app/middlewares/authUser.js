@@ -12,7 +12,7 @@ module.exports = (request, response, next) => {
       if (request.params.id !== String(userId)) {
 
          response.json({ errorMessage: "Invalid User Id" });
-      } 
+      }
       else {
          next();
       }
