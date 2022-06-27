@@ -5,7 +5,7 @@ POST {{ endpoint }}/createNewGame
 content-type: application/json
 
 {
-   "creator_id": "4"
+   "creator_id": "3"
 }
 
 ### Access a game with its id

@@ -133,7 +133,7 @@ const gameController = {
 
       try {
          const gameToArchive = request.params.id;
-         await gameDatamapper.updateGame({ status: "archived"},gameToArchive);
+         await gameDatamapper.updateGame({ state: "archived"}, gameToArchive);
          return response.json({Message: "Success ! Game Archived !"});
       }
       catch (err){
@@ -151,6 +151,54 @@ const gameController = {
      catch (err){
          response.json({ errorType: err.message });
      }
+   },
+
+   async getOneArchived (request, response) {
+      // This method will retrieve a game as an all, which every data connected to the a game
+      // It will be used to display ongoing games and archived ones
+      try {
+
+         // The game object will find all the data contained in the "game" table
+         const game = await gameDatamapper.findByPk(request.params.id);
+
+         if (game.state !== "archived") {
+            response.json({ Message: "Game not archived !"});
+         }
+
+         // The player object will retrieve data in the "participation" table
+         const players = await userDatamapper.findByGameId(request.params.id);
+
+         const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
+
+         // The period object is composed of period of our game and each subsequent event which also reach to related scenes
+         const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
+
+         if (periods) {
+         
+            for (let i = 0; i < periods.length; i++) {
+
+               const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
+
+               if (eventsFound) {
+                  
+                  for (let j = 0; j < eventsFound.length; j++) {
+
+                     const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
+
+                     if (scenesFound) {
+                        eventsFound[j].scenes = scenesFound;
+                     }
+                  }
+                  periods[i].events = eventsFound;
+               }
+            }
+         }
+
+         return response.json({ game, players, focuses, periods });
+         
+      } catch (err) {
+         return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
+      }
    }
 }
 
