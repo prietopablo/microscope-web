@@ -53,9 +53,8 @@ router.post('/game/:id/starting', authCreate, gameController.deployGame);
 router
    .route('/game/:id/ongoing')
    .get(authGame, gameController.getOne)
-   .post(authGame, cardController.createCard);
-
+   .post(authGame, cardController.createCard)
 // Finish game
-//..................TODO
+   .patch(authGame, gameController.endGame);
 
 module.exports = router;
