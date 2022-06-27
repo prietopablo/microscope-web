@@ -8,7 +8,7 @@ const cardController = require('../../controllers/cardController');
 // Middlewares
 const authUser = require('../../middlewares/authUser');
 const authGame = require('../../middlewares/authGame');
-const playerAccess = require('../../middlewares/playerAccess');
+const authCreate = require('../../middlewares/authCreate');
 
 
 const router = express.Router();
@@ -43,11 +43,11 @@ router
 router.post('/verifsignin', authController.verifyToken);
 
 // New game creation
-router.post('/createNewGame', /*authUser,*/ gameController.createNewGame);
+router.post('/createNewGame', authCreate, gameController.createNewGame);
 
 // Send starting game data
 // The following route is meant to update the current with game with all the data needed to start a game
-router.post('/game/:id/starting', /*authUser,*/ gameController.deployGame);
+router.post('/game/:id/starting', authCreate, gameController.deployGame);
 
 // Access game & refresh
 router

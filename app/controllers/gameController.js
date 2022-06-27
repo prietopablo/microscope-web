@@ -37,8 +37,20 @@ const gameController = {
          await gameDatamapper.updateToStartGame(gameData, gameId);
 
          // When a game start insert every user participating with the related "game".id
-         // We need to extract the "user".id who will play for this game                     
-         const dataPlayersId = Object.values(request.body.players);
+         // We need to extract the "user".id who will play for this game         
+         
+         // As a work around for the absence of socketio we will be presented with the usernames of the users participating to the game
+         // So the data about user.id will not be in the request.body. It will contain usernames instead
+         //const dataPlayersId = Object.values(request.body.players);
+
+         const dataPlayersUsername = request.body.players;
+
+         // let's retrieve the ids
+         const dataPlayersId = [];
+
+         dataPlayersUsername.forEach(async (dataPlayerUsername) => {
+            dataPlayersId.push(playerDatamapper.findByUsername(dataPlayerUsername).id);
+         });
 
          // We need need to increment players position, beginning by creator who will serve as the firs player
          let position = 1;
@@ -54,7 +66,7 @@ const gameController = {
             paletteDatamapper.insert(gameId, paletteCard);         
          });
       
-         return response.json({ Message: "game deployed successfully !"});
+         return response.json({ Message: "game deployed successfully !" });
 
       } catch (err) {
          return response.json({ errorLog: err.message, errorMessage: "Unable to deploy the game!" });
