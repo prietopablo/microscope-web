@@ -54,15 +54,16 @@ export async function requestSignup(emailSignup, passwordSignup, username) {
 export async function requestCreateGame(
   userId,
   bigPicture,
-  gameState,
   start,
   startTone,
   end,
   endTone,
+  gameId,
+  players,
   palettes
 ) {
   try {
-    const response = await axiosInstance.post("/game", {
+    const response = await axiosInstance.post(`/game/${gameId}/starting`, {
       game: {
         big_picture: bigPicture,
         state: "En cours",
@@ -73,8 +74,21 @@ export async function requestCreateGame(
         creator_id: userId,
         current_user_id: userId,
       },
+      players: players,
       palette: palettes,
     });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function requestGameId(userId) {
+  try {
+    const response = await axiosInstance.post("/createNewGame", {
+      creator_id: String(userId),
+    });
+    console.log(response.data);
     return response.data;
   } catch (err) {
     throw err;

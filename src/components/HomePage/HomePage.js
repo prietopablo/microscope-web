@@ -8,13 +8,32 @@ import HomePageLinks from "./HomePageLinks/HomePageLinks";
 import ScrollDown from "../../assets/ScrollDown.svg";
 import "./HomePage.css";
 import { actionLogout } from "../../actions/loginActions";
+import { requestGameId } from "requests";
 
 function HomePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userId = useSelector((state) => state.user.userId);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
   const isConnected = useSelector((state) => state.user.isConnected);
+  // const gameId = useSelector((state) => state.game.gameId);
+
+  const handleCreatelobby = async () => {
+    const result = await requestGameId(userId);
+
+    console.log(result);
+    if (result.gameId) {
+      dispatch({
+        type: "GAME_ID",
+        payload: {
+          id: result.gameId,
+        },
+      });
+      navigate(isConnected ? `/lobby/${result.gameId}` : "/login");
+      console.log("ID DE LA GAME", result.gameId);
+    }
+  };
 
   return (
     <div className="home">
@@ -70,7 +89,7 @@ function HomePage() {
             <Button
               className="menu-button"
               inverted
-              onClick={() => navigate(isConnected ? "/lobby" : "/login")}
+              onClick={handleCreatelobby}
             >
               Créer une partie
             </Button>

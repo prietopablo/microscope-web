@@ -1,7 +1,9 @@
 import {
   PALETTE,
+  PLAYER,
   UPDATE_NEW_GAME_FORM,
   UPDATE_PALETTE_NEW_GAME_FORM,
+  UPDATE_PLAYERS_NEW_GAME_FORM,
 } from "../../actions/gameActions";
 
 const initialState = {
@@ -11,6 +13,8 @@ const initialState = {
   startTone: 0,
   end: "",
   endTone: 0,
+
+  players: [{ playerName: "" }, { playerName: "" }],
 
   focus: [],
   periods: [],
@@ -23,6 +27,13 @@ const initialState = {
     { text: "", status: 0 },
     { text: "", status: 0 },
   ],
+
+  gameId: null,
+
+  focus: [],
+  periods: [],
+  events: [],
+  scenes: [],
 };
 
 function gameReducer(state = initialState, action) {
@@ -94,6 +105,12 @@ function gameReducer(state = initialState, action) {
         periods: [...filteredEventsPeriod, foundEventsPeriod],
       };
 
+    case "GAME_ID":
+      return {
+        ...state,
+        gameId: action.payload.id,
+      };
+
     case UPDATE_NEW_GAME_FORM:
       return {
         ...state,
@@ -109,9 +126,19 @@ function gameReducer(state = initialState, action) {
         ...state,
         palettes: newPalette,
       };
-
+    case UPDATE_PLAYERS_NEW_GAME_FORM:
+      const newPlayer = [...state.players];
+      newPlayer[action.payload.index].playerName = action.payload.playerName;
+      return {
+        ...state,
+        players: newPlayer,
+      };
+    case PLAYER:
+      return {
+        ...state,
+        players: [...state.players, { playerName: "" }],
+      };
     case PALETTE:
-      console.log("on y est mdr");
       return {
         ...state,
         palettes: [...state.palettes, { text: "", status: 0 }],

@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { axiosInstance } from "requests";
 // import { useDispatch, useSelector } from "react-redux";
 import Focus from "./Focus/Focus";
 import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
@@ -10,6 +12,7 @@ import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
 function GamePage() {
+  const gameId = useSelector((state) => state.game.gameId);
   // const dispatch = useDispatch();
   // const focus = useSelector((state) => state.game.focus);
   // console.log("state", focus);
@@ -18,6 +21,14 @@ function GamePage() {
   //     type: "DELETE_FOCUS",
   //     payload: id,
   //   });
+
+  useEffect(() => {
+    async function fetchGameInfo() {
+      const response = await axiosInstance.get(`/game/${gameId}/ongoing`);
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", response);
+    }
+    fetchGameInfo();
+  }, []);
 
   useEffect(() => {
     console.log("verif focus", focus);

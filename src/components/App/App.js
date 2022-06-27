@@ -16,7 +16,6 @@ import Profile from "../Profile/Profile";
 import { actionLoginSuccess } from "../../actions/loginActions";
 import { useDispatch } from "react-redux";
 // import { actionSaveUser } from "../../actions/loginActions";
-// import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,8 +60,8 @@ function App() {
         <Route path="/tou" element={<TOU />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/archived" element={<ArchivedGames />} />
-        <Route path="/game" element={<GamePage />} />
-        <Route path="/lobby" element={<CreateGame />} />
+        <Route path="/game/:id" element={<GamePage />} />
+        <Route path="/lobby/:id" element={<CreateGame />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>

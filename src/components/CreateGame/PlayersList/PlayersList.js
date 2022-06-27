@@ -1,15 +1,28 @@
+import { addPlayer } from "actions/gameActions";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "semantic-ui-react";
+import PlayerField from "./PlayerField/PlayerField";
 import "./PlayersList.css";
 
 function PlayersList() {
+  const players = useSelector((state) => state.game.players);
+  const dispatch = useDispatch();
   return (
     <div className="players">
       <h2 className="players--title">Joueurs</h2>
-      <ul className="players--list">
-        <li className="players--list-item">Joueur 1</li>
-        <li className="players--list-item">Joueur 2</li>
-        <li className="players--list-item">Joueur 3</li>
-        <li className="players--list-item">Joueur 4</li>
-      </ul>
+      {players &&
+        players.map((player, index) => (
+          <PlayerField player={player} key={index} index={index} />
+        ))}
+      <Button
+        inverted
+        size="small"
+        className="player--add"
+        type="button"
+        onClick={() => dispatch(addPlayer())}
+      >
+        +
+      </Button>
     </div>
   );
 }
