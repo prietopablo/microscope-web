@@ -11,17 +11,27 @@ import { actionLogout } from "../../actions/loginActions";
 import { requestGameId } from "requests";
 
 function HomePage() {
-  const userId = useSelector((state) => state.user.userId);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userId = useSelector((state) => state.user.userId);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
   const isConnected = useSelector((state) => state.user.isConnected);
+  // const gameId = useSelector((state) => state.game.gameId);
 
-  const handleCreateGame = () => {
-    const result = requestGameId(userId);
-    if (result.data) {
-      navigate(isConnected ? "/lobby" : "/login");
+  const handleCreatelobby = async () => {
+    const result = await requestGameId(userId);
+
+    console.log(result);
+    if (result.gameId) {
+      dispatch({
+        type: "GAME_ID",
+        payload: {
+          id: result.gameId,
+        },
+      });
+      navigate(isConnected ? `/lobby/${result.gameId}` : "/login");
+      console.log("ID DE LA GAME", result.gameId);
     }
   };
 
@@ -76,7 +86,11 @@ function HomePage() {
         )}
         {isDesktop && (
           <div className="buttons-desktop">
-            <Button className="menu-button" inverted onClick={handleCreateGame}>
+            <Button
+              className="menu-button"
+              inverted
+              onClick={handleCreatelobby}
+            >
               Créer une partie
             </Button>
             <Button

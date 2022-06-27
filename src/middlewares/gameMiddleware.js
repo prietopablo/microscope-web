@@ -8,8 +8,17 @@ const gameMiddleware = (store) => (next) => async (action) => {
 
       const state = store.getState();
       const { userId } = state.user;
-      const { bigPicture, start, startTone, end, endTone, palettes } =
-        state.game;
+      const {
+        bigPicture,
+        start,
+        startTone,
+        end,
+        endTone,
+        gameId,
+        players,
+        palettes,
+      } = state.game;
+      console.log("STATE GAME ", state.game);
 
       try {
         const data = await requestCreateGame(
@@ -19,6 +28,8 @@ const gameMiddleware = (store) => (next) => async (action) => {
           startTone,
           end,
           endTone,
+          gameId,
+          players,
           palettes
         );
         console.log(

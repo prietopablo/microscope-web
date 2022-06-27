@@ -4,6 +4,7 @@ import { sendLogin, updateLoginForm } from "../../actions/loginActions";
 import { Input, Button } from "semantic-ui-react";
 import "./LoginPage.css";
 import { useEffect } from "react";
+import Header from "components/Header/Header";
 // import SecondaryHeader from "components/SecondaryHeader/SecondaryHeader";
 
 function LoginPage() {
@@ -21,6 +22,7 @@ function LoginPage() {
   return (
     <div className="login">
       {/* <SecondaryHeader /> */}
+      <Header />
       <form
         className="login--form"
         onSubmit={(event) => {

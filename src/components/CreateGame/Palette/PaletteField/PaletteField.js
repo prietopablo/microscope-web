@@ -8,7 +8,7 @@ function PaletteField({ palette, index }) {
   const [localPalette, setLocalPalette] = useState(palette);
   const dispatch = useDispatch();
   //   console.log("palette : ", palette);
-  console.log("localPalette : ", localPalette);
+  // console.log("localPalette : ", localPalette);
 
   useEffect(() => {
     dispatch(

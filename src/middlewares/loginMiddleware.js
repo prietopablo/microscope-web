@@ -29,7 +29,7 @@ const loginMiddleware = (store) => (next) => async (action) => {
           "je dispatch SAVE_USER avec les infos de l'utilisateur connecté"
         );
         localStorage.setItem("token", data.token);
-        store.dispatch(actionSaveUser(data.username, data.token, data.id));
+        store.dispatch(actionSaveUser(data.username, data.token, data.userId));
       } catch (err) {
         console.error(err);
       }
