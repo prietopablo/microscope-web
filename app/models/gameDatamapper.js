@@ -48,7 +48,7 @@ const gameDatamapper = {
       return result.rows[0];
   },
 
-  async updateToStartGame(inputData, gameId) {
+  async updateGame(inputData, gameId) {
 
       const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
       const values = Object.values(inputData);

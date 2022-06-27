@@ -34,7 +34,7 @@ const gameController = {
          const gameData = request.body.game;
          const gameId = request.params.id; 
 
-         await gameDatamapper.updateToStartGame(gameData, gameId);
+         await gameDatamapper.updateGame(gameData, gameId);
 
          // When a game start insert every user participating with the related "game".id
          // We need to extract the "user".id who will play for this game         
@@ -127,6 +127,19 @@ const gameController = {
       } catch (err) {
          return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
       }
+   },
+
+   async endGame (request, response) {
+
+      try {
+         const gameToArchive = request.params.id;
+         await gameDatamapper.updateGame({ status: "archived"},gameToArchive);
+         return response.json({Message: "Success ! Game Archived !"});
+      }
+      catch (err){
+         response.json({ errorType: err.message });
+      }
+      
    },
 
    async getAllArchived (_, response) {
