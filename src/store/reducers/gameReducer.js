@@ -16,6 +16,12 @@ const initialState = {
 
   players: [{ playerName: "" }, { playerName: "" }],
 
+  focus: [],
+  periods: [],
+  events: [],
+  scenes: [],
+  periodId: [],
+
   palettes: [
     { text: "", status: 0 },
     { text: "", status: 0 },
@@ -39,21 +45,64 @@ function gameReducer(state = initialState, action) {
       };
 
     case "ADD_PERIODS":
+      console.log(action.payload);
       return {
         ...state,
         periods: [...state.periods, action.payload],
       };
 
     case "ADD_EVENTS":
+      console.log("event", action.payload);
+
+      let foundPeriod = state.periods.find(
+        (period) => period.id === action.payload.periodId
+      );
+      console.log(" found period", foundPeriod);
+      foundPeriod = {
+        ...foundPeriod,
+        events: [...foundPeriod.events, action.payload],
+      };
+
+      const filteredPeriod = state.periods.filter(
+        (period) => period.id !== action.payload.periodId
+      );
+
       return {
         ...state,
-        events: [...state.events, action.payload],
+        periods: [...filteredPeriod, foundPeriod],
       };
 
     case "ADD_SCENES":
+      console.log(" scenes", action.payload);
+
+      let foundEventsPeriod = state.periods.find(
+        (period) => period.id === action.payload.periodId
+      );
+
+      const filteredEventsPeriod = state.periods.filter(
+        (period) => period.id !== action.payload.periodId
+      );
+      let foundEvent = foundEventsPeriod.events.find(
+        (event) => event.id === action.payload.eventId
+      );
+      console.log(foundEvent);
+      foundEvent = {
+        ...foundEvent,
+        scenes: [...foundEvent.scenes, action.payload],
+      };
+
+      const filteredEvents = foundEventsPeriod.events.filter(
+        (event) => event.id !== action.payload.eventId
+      );
+
+      foundEventsPeriod = {
+        ...foundEventsPeriod,
+        events: [...filteredEvents, foundEvent],
+      };
+
       return {
         ...state,
-        scenes: [...state.scenes, action.payload],
+        periods: [...filteredEventsPeriod, foundEventsPeriod],
       };
 
     case "GAME_ID":

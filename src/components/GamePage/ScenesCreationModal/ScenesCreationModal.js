@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "semantic-ui-react";
 
-function ScenesCreationModal() {
+// eslint-disable-next-line react/prop-types
+function ScenesCreationModal({ eventId, periodId }) {
   const [open, setOpen] = React.useState(false);
   const [newScene, setNewScene] = useState();
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ function ScenesCreationModal() {
       payload: {
         label: newScene,
         id: Math.ceil(Math.random() * 100),
+        eventId,
+        periodId,
       },
     });
     setOpen(false);
