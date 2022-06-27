@@ -44,20 +44,32 @@ const gameController = {
          //const dataPlayersId = Object.values(request.body.players);
 
          const dataPlayersUsername = request.body.players;
-
+         
          // let's retrieve the ids
          const dataPlayersId = [];
 
+         let position = 1;
+
          dataPlayersUsername.forEach(async (dataPlayerUsername) => {
-            dataPlayersId.push(playerDatamapper.findByUsername(dataPlayerUsername).id);
+
+            const player = await playerDatamapper.findByUsername(dataPlayerUsername);
+
+            if (player) {
+               
+               const playerId = player.id;
+
+               playerDatamapper.insert(gameId, playerId, position);
+               position++;
+            }
          });
 
          // We need need to increment players position, beginning by creator who will serve as the firs player
-         let position = 1;
-         dataPlayersId.forEach(async (dataPlayerId) => {
-            playerDatamapper.insert(gameId, dataPlayerId, position);
-            position++;
-         });
+
+         // dataPlayersId.forEach(async (dataPlayerId) => {
+  
+         //    playerDatamapper.insert(gameId, dataPlayerId, position);
+         //    position++;
+         // });
 
          // A similar loop is needed for inserting every palette shade i.e. themes to include or exclude from the game
          const paletteArray = Object.values(request.body.palette);
