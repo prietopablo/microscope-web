@@ -1,7 +1,7 @@
 const express = require('express');
 
 const routerApi = require('./api');
-const routerWebsite = require('./website');
+const routerWebsite = require('./admin');
 
 const router = express.Router();
 
