@@ -30,11 +30,6 @@ const initialState = {
   ],
 
   gameId: null,
-
-  focus: [],
-  periods: [],
-  events: [],
-  scenes: [],
 };
 
 function gameReducer(state = initialState, action) {

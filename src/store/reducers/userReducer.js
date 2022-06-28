@@ -52,7 +52,10 @@ function userReducer(state = initialState, action = {}) {
       return {
         ...state,
         isConnected: false,
+        isSignedUp: false,
         username: "",
+        emailSignup: "",
+        passwordSignup: "",
         token: null,
         email: "",
       };
