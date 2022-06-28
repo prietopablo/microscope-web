@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const userDatamapper = require("../models/userDatamapper");
 
 module.exports = async (request, response, next) => {
+
    try { 
 
       const token = request.headers.authorization.split(' ')[1];
@@ -24,13 +25,11 @@ module.exports = async (request, response, next) => {
                break;
             }  
          }
-      }
-      else {
+      } else {
          throw new Error("Unable to find player" )
       }
    }
    catch (err) {
-
       response.json({ errorType: err, errorMessage: "Unable to find player" });
    }
 }

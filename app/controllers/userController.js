@@ -5,11 +5,12 @@ const userController = {
 
     async getAll (_, response) {
 
-        try { 
+        try {
+
             const userList = await userDatamapper.findAll();
             return response.json({ userList });
-        }
-        catch (err){
+
+        } catch (err){
             response.json({ errorType: err.message });
         }        
     },
@@ -25,8 +26,8 @@ const userController = {
             }
     
             return response.json({ username: user.username, email: user.email, userId: user.id });
-        }
-        catch (err){
+
+        } catch (err) {
             response.json({ errorType: err.message });
         }        
     },
@@ -54,8 +55,8 @@ const userController = {
             await userDatamapper.insert(request.body, hashedPassword);
             
             return response.json("New user created");
-        }
-        catch (err){
+
+        } catch (err) {
             response.json({ errorType: err.message });
         }    
     },
@@ -71,8 +72,8 @@ const userController = {
 
             await userDatamapper.delete(request.params.id);
             return response.status(204).json();
-        }
-        catch (err){
+
+        } catch (err) {
             response.json({ errorType: err.message });
         }        
     },
@@ -105,8 +106,8 @@ const userController = {
 
             const savedUser = await userDatamapper.update(request.params.id, request.body);
             return response.json(savedUser);
-        }
-        catch (err){
+            
+        } catch (err) {
             response.json({ errorType: err.message });
         }        
     },

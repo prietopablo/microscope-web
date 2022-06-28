@@ -1,6 +1,6 @@
 const mainController = { 
     
-    homePage : (request, response) => {
+    homePage : (_, response) => {
         console.log('Microscope API front page');
 
         response.send('Welcome to Microscope-Web API');
