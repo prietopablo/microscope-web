@@ -6,8 +6,12 @@ function PeriodsCreationModal() {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const [newPeriods, setNewPeriods] = useState();
-  const handleChange = (e) => {
+  const [newPosition, setNewPosition] = useState();
+  const handleChangePeriod = (e) => {
     setNewPeriods(e.target.value);
+  };
+  const handleChangePosition = (e) => {
+    setNewPosition(e.target.value);
   };
 
   const handleClick = () => {
@@ -17,6 +21,7 @@ function PeriodsCreationModal() {
         label: newPeriods,
         id: Math.ceil(Math.random() * 100),
         events: [],
+        position: newPosition,
       },
     });
     setOpen(false);
@@ -37,8 +42,14 @@ function PeriodsCreationModal() {
             <input
               placeholder="Tell us more"
               value={newPeriods || ""}
-              onChange={(e) => handleChange(e)}
+              onChange={(e) => handleChangePeriod(e)}
               type="text"
+            />
+            <input
+              placeholder="Position de la période"
+              value={newPosition || ""}
+              onChange={(e) => handleChangePosition(e)}
+              type="number"
             />
           </Form>
         </Modal.Content>

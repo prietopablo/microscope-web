@@ -51,6 +51,7 @@ export async function requestSignup(emailSignup, passwordSignup, username) {
   }
 }
 
+
 export async function requestCreateGame(
   userId,
   bigPicture,
