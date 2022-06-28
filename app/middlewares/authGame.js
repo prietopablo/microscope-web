@@ -6,13 +6,15 @@ module.exports = async (request, response, next) => {
 
       const token = request.headers.authorization.split(' ')[1];
 
-      const decodedToken = jwt.verify(token, process.env.TOKEN_KEY);      
+      const decodedToken = jwt.verify(token, process.env.TOKEN_KEY);  
 
       const userId = decodedToken.userId;
       console.log("userId", userId);
       // Problem here
       console.log("request.params.id", request.params.id);
+
       const players = await userDatamapper.findByGameId(request.params.id);
+
       console.log("players", players);
       if (players) {
          for (let i = 0; i < players.length; i++) {
@@ -21,7 +23,7 @@ module.exports = async (request, response, next) => {
                next();
                break;
             }  
-         }      
+         }
       }
    }
    catch (err) {
