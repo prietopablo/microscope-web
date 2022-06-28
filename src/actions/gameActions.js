@@ -27,6 +27,20 @@ export const addPalette = () => ({
   type: PALETTE,
 });
 
+export const UPDATE_PLAYERS_NEW_GAME_FORM = "UPDATE_PLAYERS_NEW_GAME_FORM";
+export const updatePlayersNewGameForm = (playerName, index) => ({
+  type: UPDATE_PLAYERS_NEW_GAME_FORM,
+  payload: {
+    playerName,
+    index,
+  },
+});
+
+export const PLAYER = "PLAYER";
+export const addPlayer = () => ({
+  type: PLAYER,
+});
+
 export const CREATE_GAME = "CREATE_GAME";
 export const createGame = () => ({
   type: CREATE_GAME,

@@ -1,5 +1,5 @@
-.lobby {
-  margin: 0 auto;
+.lobby--form {
+  margin: 0 auto !important;
   display: flex;
 }
 

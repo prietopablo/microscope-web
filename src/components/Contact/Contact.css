@@ -1,26 +1,25 @@
-
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 11rem;
+}
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 11rem;
+  margin: 3rem auto;
 }
 
-.form {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.contact-form-message,
+.contact-form-input {
+  margin-bottom: 2rem !important;
+}
+.contact-form-message textarea {
+  height: 15rem;
 }
 
-.message {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 15vh;
-}
-
-.button {
-    margin-top: 5px;
+.contact-form-button {
+  margin-top: 3rem !important;
 }
 
 /* @media (min-width: 50em) {
@@ -36,4 +35,3 @@
     
 
 } */
-

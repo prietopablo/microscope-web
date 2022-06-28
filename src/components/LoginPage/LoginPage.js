@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sendLogin, updateLoginForm } from "../../actions/loginActions";
 import { Input, Button } from "semantic-ui-react";
 import "./LoginPage.css";
-import Header from "../Header/Header";
 import { useEffect } from "react";
+import Header from "components/Header/Header";
+// import SecondaryHeader from "components/SecondaryHeader/SecondaryHeader";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function LoginPage() {
 
   return (
     <div className="login">
+      {/* <SecondaryHeader /> */}
       <Header />
       <form
         className="login--form"
@@ -49,6 +51,9 @@ function LoginPage() {
         <Button inverted className="login--form-submit" type="submit">
           Connexion
         </Button>
+        <p className="login--form-message">
+          Pas de compte ? <Link to="/signup">Inscrivez-vous</Link>
+        </p>
       </form>
     </div>
   );

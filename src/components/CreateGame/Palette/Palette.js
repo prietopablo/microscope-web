@@ -21,6 +21,7 @@ function Palette() {
         inverted
         size="small"
         className="palette--add"
+        type="button"
         onClick={() => dispatch(addPalette())}
       >
         +

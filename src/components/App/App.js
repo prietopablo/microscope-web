@@ -13,10 +13,12 @@ import { saveAuthorization, axiosInstance } from "../../requests";
 import GamePage from "../GamePage/GamePage";
 import CreateGame from "../CreateGame/CreateGame";
 import Profile from "../Profile/Profile";
+import { actionLoginSuccess } from "../../actions/loginActions";
+import { useDispatch } from "react-redux";
 // import { actionSaveUser } from "../../actions/loginActions";
-// import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -36,12 +38,15 @@ function App() {
         return localStorage.clear();
       }
 
-      if (response.data.userId) {
-        const user = await axiosInstance.get(
-          `/profile/${response.data.userId}`
-        );
-        console.log(user);
-      }
+      dispatch(
+        actionLoginSuccess(response.data.userName, response.data.userId)
+      );
+      // if (response.data.userId) {
+      //   const user = await axiosInstance.get(
+      //     `/profile/${response.data.userId}`
+      //   );
+      //   console.log(user.data);
+      // }
     }
     fetchData();
   }, []);
@@ -55,8 +60,8 @@ function App() {
         <Route path="/tou" element={<TOU />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/archived" element={<ArchivedGames />} />
-        <Route path="/game" element={<GamePage />} />
-        <Route path="/lobby" element={<CreateGame />} />
+        <Route path="/game/:id" element={<GamePage />} />
+        <Route path="/lobby/:id" element={<CreateGame />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>

@@ -21,10 +21,11 @@
 // });
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const actionLoginSuccess = (username) => ({
+export const actionLoginSuccess = (username, id) => ({
   type: LOGIN_SUCCESS,
   payload: {
     username,
+    id,
   },
 });
 
@@ -43,11 +44,12 @@ export const sendLogin = () => ({
 });
 
 export const SAVE_USER = "SAVE_USER";
-export const actionSaveUser = (username, token) => ({
+export const actionSaveUser = (username, token, id) => ({
   type: SAVE_USER,
   payload: {
     username,
     token,
+    id,
   },
 });
 
