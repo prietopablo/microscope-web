@@ -30,3 +30,7 @@
   text-align: center;
   margin-top: 25px;
 }
+
+.ui.modal > .content {
+  color: black;
+}

@@ -45,3 +45,11 @@ export const CREATE_GAME = "CREATE_GAME";
 export const createGame = () => ({
   type: CREATE_GAME,
 });
+
+export const UPDATE_GAME_INFO = "UPDATE_GAME_INFO";
+export const updateGameInfo = (data) => ({
+  type: UPDATE_GAME_INFO,
+  payload: {
+    data,
+  },
+});

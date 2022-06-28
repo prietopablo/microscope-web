@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 
 import { axiosInstance } from "requests";
+import { updateGameInfo } from "../../actions/gameActions";
 // import { useDispatch, useSelector } from "react-redux";
 
 import Focus from "./Focus/Focus";
@@ -14,12 +15,15 @@ import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
 function GamePage() {
-
   const focus = useSelector((state) => state.game.focus);
-
   const gameId = useSelector((state) => state.game.gameId);
+  const bigPicture = useSelector((state) => state.game.bigPicture);
+  const start = useSelector((state) => state.game.start);
+  const startTone = useSelector((state) => state.game.startTone);
+  const end = useSelector((state) => state.game.end);
+  const endTone = useSelector((state) => state.game.endTone);
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
   // console.log("state", focus);
   // const handleClick = (id) =>
   //   dispatch({
@@ -35,7 +39,11 @@ function GamePage() {
   useEffect(() => {
     async function fetchGameInfo() {
       const response = await axiosInstance.get(`/game/${gameId}/ongoing`);
-      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", response);
+      dispatch(updateGameInfo(response.data));
+      console.log(
+        "response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
+        response.data
+      );
     }
     fetchGameInfo();
   }, []);
@@ -53,11 +61,16 @@ function GamePage() {
         <div className="player-username">Pablo</div>
       </div>
       <div className="focus">
-        <SettingsModal />
+        <SettingsModal bigPicture={bigPicture} />
         <Focus />
         <FocusCreationModal />
       </div>
-      <StartEnd />
+      <StartEnd
+        start={start}
+        startTone={startTone}
+        end={end}
+        endTone={endTone}
+      />
       <PeriodsCreationModal />
       <Periods />
     </div>
