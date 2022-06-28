@@ -78,7 +78,7 @@ const gameController = {
       try {
 
          // The game object will find all the data contained in the "game" table
-         const game = await gameDatamapper.findByGameId(request.params.id);
+         const game = await gameDatamapper.findByPk(request.params.id);
 
          // The player object will retrieve data in the "participation" table
          const playersFound = await userDatamapper.findByGameId(request.params.id);
