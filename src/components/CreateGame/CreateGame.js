@@ -37,13 +37,7 @@ function CreateGame() {
           <BigPicture />
           <StartEnd />
           <Palette />
-          <Button
-            circular
-            inverted
-            size="large"
-            className="lobby--submit"
-            type="submit"
-          >
+          <Button inverted size="large" className="lobby--submit" type="submit">
             Lancer la partie
           </Button>
         </div>

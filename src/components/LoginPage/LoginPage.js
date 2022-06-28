@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { sendLogin, updateLoginForm } from "../../actions/loginActions";
-import { Input, Button } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import "./LoginPage.css";
 import { useEffect } from "react";
 import Header from "components/Header/Header";
@@ -23,14 +23,23 @@ function LoginPage() {
     <div className="login">
       {/* <SecondaryHeader /> */}
       <Header />
-      <form
+      <Form
         className="login--form"
         onSubmit={(event) => {
           event.preventDefault();
           dispatch(sendLogin());
         }}
       >
-        <Input
+        {/* <Message
+          error
+          header="Action Forbidden"
+          content="You can only sign up for an account once with a given e-mail address."
+        /> */}
+        <Form.Input
+          // error={{
+          //   content: "Please enter a valid email username",
+          //   pointing: "below",
+          // }}
           className="login--form-input"
           placeholder="Nom d'utilisateur"
           type="text"
@@ -39,7 +48,7 @@ function LoginPage() {
             dispatch(updateLoginForm("username", event.target.value));
           }}
         />
-        <Input
+        <Form.Input
           className="login--form-input"
           placeholder="Mot de passe"
           type="password"
@@ -54,7 +63,7 @@ function LoginPage() {
         <p className="login--form-message">
           Pas de compte ? <Link to="/signup">Inscrivez-vous</Link>
         </p>
-      </form>
+      </Form>
     </div>
   );
 }
