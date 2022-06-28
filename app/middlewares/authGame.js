@@ -25,6 +25,9 @@ module.exports = async (request, response, next) => {
             }  
          }
       }
+      else {
+         throw new Error("Unable to find player" )
+      }
    }
    catch (err) {
 
