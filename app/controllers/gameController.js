@@ -78,7 +78,7 @@ const gameController = {
       try {
 
          // The game object will find all the data contained in the "game" table
-         const game = await gameDatamapper.findByPk(request.params.id);
+         const game = await gameDatamapper.findByGameId(request.params.id);
 
          // The player object will retrieve data in the "participation" table
          const playersFound = await userDatamapper.findByGameId(request.params.id);
@@ -87,10 +87,13 @@ const gameController = {
 
          playersFound.forEach(async (player) => {
             const playerInfo = await userDatamapper.findByPk(player.player_id);
-            players.push({ username: playerInfo.username, position: player.position})
+            players.push({ username: playerInfo.username, position: player.position })
          });         
 
          const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
+
+         // We also need to retrieve the palette colors
+         const palette = await paletteDatamapper.findByGameId(request.params.id);
 
          // The period object is composed of period of our game and each subsequent event which also reach to related scenes
          const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
@@ -115,7 +118,7 @@ const gameController = {
                }
             }
          }
-         return response.json({ game, players, focuses, periods });
+         return response.json({ game, players, palette, focuses, periods });
 
       } catch (err) {
          return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
