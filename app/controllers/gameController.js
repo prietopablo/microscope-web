@@ -81,7 +81,14 @@ const gameController = {
          const game = await gameDatamapper.findByPk(request.params.id);
 
          // The player object will retrieve data in the "participation" table
-         const players = await userDatamapper.findByGameId(request.params.id);
+         const playersFound = await userDatamapper.findByGameId(request.params.id);
+
+         const players= [];
+
+         playersFound.forEach(async (player) => {
+            const playerInfo = await userDatamapper.findByPk(player.player_id);
+            players.push({ username: playerInfo.username, position: player.position})
+         });         
 
          const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
 
