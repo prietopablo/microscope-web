@@ -4,7 +4,7 @@ const auth = require('../middlewares/authUser');
 
 module.exports = async (request, response, next) => {
    try {
-      
+
       const players = await userDatamapper.findByGameId(request.params.id);
 
       players.forEach(player => {
@@ -12,9 +12,6 @@ module.exports = async (request, response, next) => {
          response.json({ Message: "Access granted" });
         }
       });
-
-      // response.json({ Message: "Access granted" });
-      // console.log("Access granted");
 
       next();
    }
