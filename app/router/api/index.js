@@ -52,9 +52,9 @@ router.post('/game/:id/starting', authCreate, gameController.deployGame);
 // Access game & refresh
 router
    .route('/game/:id/ongoing')
-   .get(/*authGame,*/ gameController.getOne)
-   .post(/*authGame,*/ cardController.createCard)
+   .get(authGame, gameController.getOne)
+   .post(authGame, cardController.createCard)
 // Finish game
-   .patch(/*authGame,*/ gameController.endGame);
+   .patch(authGame, gameController.endGame);
 
 module.exports = router;
