@@ -4,8 +4,6 @@ const auth = require('../middlewares/authUser');
 
 module.exports = async (request, response, next) => {
    try {
-      console.log("In playerAccess middleware");
-      console.log("response.locals.userIdRetrievedPlayerACCESS", response.locals.userIdRetrieved);
       
       const players = await userDatamapper.findByGameId(request.params.id);
 

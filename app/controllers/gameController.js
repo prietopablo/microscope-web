@@ -19,11 +19,9 @@ const gameController = {
          const game = await gameDatamapper.findByCreatorId(userId);
 
          return response.json({ Message: `New game created by ${creator.username} !`, gameId: game.id });
-      }
-      catch (err){
+      } catch (err) {
          response.json({ errorType: err.message });
      }
-
    },
 
    async deployGame (request, response) {
@@ -44,10 +42,7 @@ const gameController = {
          //const dataPlayersId = Object.values(request.body.players);
 
          const dataPlayersUsername = request.body.players;
-         
-         // let's retrieve the ids
-         const dataPlayersId = [];
-
+         // We need need to increment players position, beginning by creator who will serve as the firs player
          let position = 1;
 
          dataPlayersUsername.forEach(async (dataPlayerUsername) => {
@@ -62,14 +57,6 @@ const gameController = {
                position++;
             }
          });
-
-         // We need need to increment players position, beginning by creator who will serve as the firs player
-
-         // dataPlayersId.forEach(async (dataPlayerId) => {
-  
-         //    playerDatamapper.insert(gameId, dataPlayerId, position);
-         //    position++;
-         // });
 
          // A similar loop is needed for inserting every palette shade i.e. themes to include or exclude from the game
          const paletteArray = Object.values(request.body.palette);
@@ -121,9 +108,8 @@ const gameController = {
                }
             }
          }
-
          return response.json({ game, players, focuses, periods });
-         
+
       } catch (err) {
          return response.json({ errorType: err.message, errorMessage: "Failed to find game"});
       }
@@ -135,8 +121,8 @@ const gameController = {
          const gameToArchive = request.params.id;
          await gameDatamapper.updateGame({ state: "archived"}, gameToArchive);
          return response.json({Message: "Success ! Game Archived !"});
-      }
-      catch (err){
+
+      } catch (err){
          response.json({ errorType: err.message });
       }
       
@@ -147,8 +133,8 @@ const gameController = {
       try { 
          const archivedList = await gameDatamapper.findAllArchived();
          return response.json({ archivedList });
-     }
-     catch (err){
+
+     } catch (err){
          response.json({ errorType: err.message });
      }
    },
@@ -193,7 +179,6 @@ const gameController = {
                }
             }
          }
-
          return response.json({ game, players, focuses, periods });
          
       } catch (err) {
