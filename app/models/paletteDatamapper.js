@@ -14,6 +14,17 @@ const paletteDatamapper = {
       await client.query(preparedQuery);
       
       return console.log("Palette inserted !");
+   },
+
+   async findByGameId (gameId) {
+
+      const result = await client.query(`SELECT * FROM "palette" WHERE "game_id" = $1`, [gameId]);
+
+      if (result.rowCount === 0) {
+         return null;
+     }
+
+     return result.rows;
    }
 }
 
