@@ -8,11 +8,21 @@ const gameDatamapper = {
       // of course the "game" table but also "participation" and "palette"
       console.log(content.creator_id);
       const preparedQuery = {
-         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2)`,
+         text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *` ,
          values: [content.creator_id, content.creator_id]
       };
 
-      await client.query(preparedQuery);
+      await client.query(preparedQuery);    
+   },
+
+   async findByCreatorId(userId) {
+      const result = await client.query('SELECT * FROM "game" WHERE "creator_id" = $1 ORDER BY "created_at" DESC' , [userId]);
+
+        if (result.rowCount === 0) {
+            return null;
+        }
+        
+        return result.rows[0];
    },
 
    async insertAll(content) {
@@ -38,14 +48,13 @@ const gameDatamapper = {
       return result.rows[0];
   },
 
-  async updateToStartGame(inputData, gameId) {
+  async updateGame(inputData, gameId) {
 
       const fields = Object.keys(inputData).map((prop, index) => `"${prop}" = $${index + 1}`);
       const values = Object.values(inputData);
 
       console.log("fields", fields);
       console.log("values", values);
-
       
       const savedGame = await client.query(
          `UPDATE "game" SET
