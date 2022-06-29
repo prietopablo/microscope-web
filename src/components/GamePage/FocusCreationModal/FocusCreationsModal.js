@@ -21,14 +21,14 @@ function FocusCreationModal() {
       author_id: userId,
     });
 
-    console.log(response);
+    console.log(">>>>>>>>>>>>>>>>>>>><", response);
 
-    if (response.data.message) {
+    if (response.data.focus) {
       dispatch({
         type: "ADD_FOCUS",
         payload: {
           label: newFocus,
-          id: Math.ceil(Math.random() * 100),
+          id: response.data.focus.id,
         },
       });
     }
