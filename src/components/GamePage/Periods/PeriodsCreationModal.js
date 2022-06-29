@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { axiosInstance } from "requests";
 import { Button, Form, Modal } from "semantic-ui-react";
 
 function PeriodsCreationModal() {
@@ -13,13 +15,28 @@ function PeriodsCreationModal() {
   const handleChangePosition = (e) => {
     setNewPosition(e.target.value);
   };
+  const gameId = useSelector((state) => state.game.gameId);
+  const { id } = useParams();
+  const periods = useSelector((state) => state.game.periods);
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const response = await axiosInstance.post(`/game/${gameId || id}/ongoing`, {
+      parentType: "game",
+      cardType: "period",
+      text: newPeriods,
+      // TODO: tone sur toutes les cards
+      tone: false,
+      parentId: gameId || id,
+      previous_card_position: periods.length + 1,
+    });
+
+    console.log("response de la création de periode", response);
+
     dispatch({
       type: "ADD_PERIODS",
       payload: {
         label: newPeriods,
-        id: Math.ceil(Math.random() * 100),
+        id: response.data.card.id,
         events: [],
         position: newPosition,
       },
@@ -27,7 +44,7 @@ function PeriodsCreationModal() {
     setOpen(false);
     setNewPeriods("");
   };
-  console.log("create period text", newPeriods);
+  // console.log("create period text", newPeriods);
 
   return (
     <div className="period-creation">

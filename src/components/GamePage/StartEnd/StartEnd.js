@@ -10,7 +10,9 @@ function StartEnd({ start, startTone, end, endTone }) {
           <Placeholder id="debut">
             <Placeholder.Header>
               <h2>Début:</h2>
-              {start} {startTone}
+              <div>
+                {start} {startTone}
+              </div>
             </Placeholder.Header>
             <Placeholder.Paragraph></Placeholder.Paragraph>
           </Placeholder>
@@ -22,7 +24,9 @@ function StartEnd({ start, startTone, end, endTone }) {
           <Placeholder id="debut">
             <Placeholder.Header>
               <h2>Fin:</h2>
-              {end} {endTone}
+              <div>
+                {end} {endTone}
+              </div>
             </Placeholder.Header>
             <Placeholder.Paragraph></Placeholder.Paragraph>
           </Placeholder>
