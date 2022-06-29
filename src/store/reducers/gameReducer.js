@@ -1,6 +1,7 @@
 import {
   PALETTE,
   PLAYER,
+  UPDATE_GAME_INFO,
   UPDATE_NEW_GAME_FORM,
   UPDATE_PALETTE_NEW_GAME_FORM,
   UPDATE_PLAYERS_NEW_GAME_FORM,
@@ -14,7 +15,7 @@ const initialState = {
   end: "",
   endTone: 0,
 
-  players: [{ playerName: "" }, { playerName: "" }],
+  players: ["", ""],
 
   focus: [],
   periods: [],
@@ -82,31 +83,6 @@ function gameReducer(state = initialState, action) {
         }
         return period;
       });
-      // console.log(" newEventsPeriods", newEventsPeriods);
-      // let foundEventsPeriod = state.periods.find(
-      //   (period) => period.id === action.payload.periodId
-      // );
-
-      // const filteredEventsPeriod = state.periods.filter(
-      //   (period) => period.id !== action.payload.periodId
-      // );
-      // let foundEvent = foundEventsPeriod.events.find(
-      //   (event) => event.id === action.payload.eventId
-      // );
-      // console.log(foundEvent);
-      // foundEvent = {
-      //   ...foundEvent,
-      //   scenes: [...foundEvent.scenes, action.payload],
-      // };
-
-      // const filteredEvents = foundEventsPeriod.events.filter(
-      //   (event) => event.id !== action.payload.eventId
-      // );
-
-      // foundEventsPeriod = {
-      //   ...foundEventsPeriod,
-      //   events: [...filteredEvents, foundEvent],
-      // };
 
       return {
         ...state,
@@ -136,7 +112,7 @@ function gameReducer(state = initialState, action) {
       };
     case UPDATE_PLAYERS_NEW_GAME_FORM:
       const newPlayer = [...state.players];
-      newPlayer[action.payload.index].playerName = action.payload.playerName;
+      newPlayer[action.payload.index] = action.payload.playerName;
       return {
         ...state,
         players: newPlayer,
@@ -144,16 +120,56 @@ function gameReducer(state = initialState, action) {
     case PLAYER:
       return {
         ...state,
-        players: [...state.players, { playerName: "" }],
+        players: [...state.players, ""],
       };
     case PALETTE:
       return {
         ...state,
         palettes: [...state.palettes, { text: "", status: 0 }],
       };
+    case UPDATE_GAME_INFO:
+      console.log(
+        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
+        action.payload.data.game.big_picture
+      );
+      return {
+        ...state,
+        bigPicture: action.payload.data.game.big_picture,
+        start: action.payload.data.game.bookend_start,
+        startTone: action.payload.data.game.bookend_start_tone,
+        end: action.payload.data.game.bookend_end,
+        endTone: action.payload.data.game.bookend_end_tone,
+        palettes: action.payload.data.palette,
+        players: action.payload.data.players,
+      };
 
     default:
       return state;
+    // console.log(" newEventsPeriods", newEventsPeriods);
+    // let foundEventsPeriod = state.periods.find(
+    //   (period) => period.id === action.payload.periodId
+    // );
+
+    // const filteredEventsPeriod = state.periods.filter(
+    //   (period) => period.id !== action.payload.periodId
+    // );
+    // let foundEvent = foundEventsPeriod.events.find(
+    //   (event) => event.id === action.payload.eventId
+    // );
+    // console.log(foundEvent);
+    // foundEvent = {
+    //   ...foundEvent,
+    //   scenes: [...foundEvent.scenes, action.payload],
+    // };
+
+    // const filteredEvents = foundEventsPeriod.events.filter(
+    //   (event) => event.id !== action.payload.eventId
+    // );
+
+    // foundEventsPeriod = {
+    //   ...foundEventsPeriod,
+    //   events: [...filteredEvents, foundEvent],
+    // };
   }
 }
 

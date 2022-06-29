@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateNewGameForm } from "../../../actions/gameActions";
 
 function BigPicture() {
-  const content = useSelector((state) => state.game.BigPicture);
+  const content = useSelector((state) => state.game.bigPicture);
   const dispatch = useDispatch();
   return (
     <div className="players">

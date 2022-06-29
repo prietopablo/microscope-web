@@ -8,6 +8,7 @@
   margin-top: 25px;
   margin-bottom: 25px;
   justify-content: space-between;
+  list-style-type: none;
 }
 
 .game-title {
@@ -29,4 +30,8 @@
 .period-creation {
   text-align: center;
   margin-top: 25px;
+}
+
+.ui.modal > .content {
+  color: black;
 }

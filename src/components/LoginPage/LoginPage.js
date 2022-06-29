@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { sendLogin, updateLoginForm } from "../../actions/loginActions";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
 import "./LoginPage.css";
 import { useEffect } from "react";
 import Header from "components/Header/Header";
@@ -12,6 +12,7 @@ function LoginPage() {
   const username = useSelector((state) => state.user.username);
   const password = useSelector((state) => state.user.password);
   const isConnected = useSelector((state) => state.user.isConnected);
+  const error = useSelector((state) => state.user.error);
   const navigate = useNavigate();
   console.log("username vide ", username);
 
@@ -30,11 +31,7 @@ function LoginPage() {
           dispatch(sendLogin());
         }}
       >
-        {/* <Message
-          error
-          header="Action Forbidden"
-          content="You can only sign up for an account once with a given e-mail address."
-        /> */}
+        <Message error header="Action Forbidden" content={error} />
         <Form.Input
           // error={{
           //   content: "Please enter a valid email username",

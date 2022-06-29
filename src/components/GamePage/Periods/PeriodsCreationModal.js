@@ -25,6 +25,7 @@ function PeriodsCreationModal() {
       },
     });
     setOpen(false);
+    setNewPeriods("");
   };
   console.log("create period text", newPeriods);
 
@@ -55,6 +56,7 @@ function PeriodsCreationModal() {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={handleClick}>Valider la période</Button>
+          <Button onClick={() => setOpen(false)}>Anuler</Button>
         </Modal.Actions>
       </Modal>
     </div>

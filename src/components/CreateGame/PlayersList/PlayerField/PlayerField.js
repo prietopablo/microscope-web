@@ -9,7 +9,7 @@ function PlayerField({ player, index }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(updatePlayersNewGameForm(localPlayer.playerName, index));
+    dispatch(updatePlayersNewGameForm(localPlayer, index));
   }, [localPlayer]);
   return (
     <div className="player--field">
@@ -17,12 +17,10 @@ function PlayerField({ player, index }) {
         <Grid.Column width={14}>
           <Input
             fluid
+            value={localPlayer}
             placeholder={`Joueur ${index + 1}`}
             onChange={(event) => {
-              setLocalPlayer({
-                ...localPlayer,
-                playerName: event.target.value,
-              });
+              setLocalPlayer(event.target.value);
             }}
           />
         </Grid.Column>

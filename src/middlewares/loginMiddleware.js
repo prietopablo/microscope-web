@@ -1,5 +1,6 @@
 import {
   actionSaveUser,
+  loginError,
   LOGOUT,
   SAVE_USER,
   SEND_LOGIN,
@@ -28,6 +29,9 @@ const loginMiddleware = (store) => (next) => async (action) => {
         console.log(
           "je dispatch SAVE_USER avec les infos de l'utilisateur connecté"
         );
+        if (data.errorMessage) {
+          return store.dispatch(loginError(data.errorMessage));
+        }
         localStorage.setItem("token", data.token);
         store.dispatch(actionSaveUser(data.username, data.token, data.userId));
       } catch (err) {

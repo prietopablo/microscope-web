@@ -16,4 +16,5 @@
 .ui.card {
   margin: 1em 0;
   width: 100%;
+  word-wrap: break-word;
 }
