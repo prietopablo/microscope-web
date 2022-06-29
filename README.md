@@ -1,32 +1,91 @@
-Protéger datamapper contre injection
-nous avons un problème sur lorsque l'on passe une value pour désigner la table de la requête. c'est un problème de simple / double quote
+# Manuel d'utilisation de Microscope-Web - Version Back
 
-Requêtes SQL
-SELECT * FROM "game";
-SELECT * FROM "period" ORDER BY position;
-SELECT * FROM "event";
-SELECT * FROM "scene";
+Vous trouverez ci-dessous les étapes, pour mettre en place les éléments nécessaires, afin d'utiliser le Back de cette application :
 
+---
 
-SELECT game.big_picture, game.bookend_start, game.bookend_start_tone, game.bookend_end, game.bookend_end_tone, game.current_user_id, 
-"participation".player_id AS player_partipating, 
-"period".text AS period_text, "period".tone AS period_tone, "period".position AS period_position,
-"event".*
-FROM "game" 
-JOIN "participation" ON "game".id = "participation".game_id
-JOIN "period" ON "game".id = "period".game_id
-JOIN "event" ON "period".id = "event".period_id
-WHERE "game".id = 1;
+## Installation des dépendances
+Pour utiliser correctement l'application, vous aurez besoin d'installer des dépendances, par le biais de NPM, voici comment faire :
+```
+npm i
+```
+Cette commande va installer les dépendances enregistrer dans le dossier **package.json**
 
-SELECT *
-FROM "game", "period", "participation"
-WHERE "game".id = 1;
+Vérifier tout de même que vous avez bien de présent les dépendances suivantes, dans le dossier :
+- bcrypt
+- cors
+- dotenv
+- express
+- express-flash
+- express-session
+- heroku
+- http
+- jsonwebtoken
+- node-dev
+- nodemon
+- passport
+- passport-local
+- pg
 
-SELECT *
-FROM "period"
-WHERE game_id = 1; 
+---
 
-SELECT *
-FROM "period"
-JOIN "event" ON "period".id = "event".period_id
-WHERE "period".game_id = 1;
+## Création d'une Database
+Le Back utilise une Base de Donnée PostgreSQL, vous aurez donc besoin d'installer **postgres** et **psql** sur votre machine, afin de créer le BDD et de vous en servir avec l'application. Une fois cela fait, vous devrez suivre la procédure ci-dessous, afin de mettre en place votre BDD.
+
+- Connectez vous à la base **psql** en tant que super utilisateur
+    ```
+    sudo -i -u postgres psql
+    ```
+- Créez ensuite un utilisateur 
+    ```
+    CREATE USER microscope LOGIN WITH PASSWORD ENCRYPTED 'microscope';
+    ```
+- Créez la BDD
+    ```
+    CREATE DATABASE microscope OWNER microscope
+    ```
+- Déconnectez-vous de la base de donnée
+    ```
+    Ctrl + D ou \q
+    ```
+- Vérifiez la connexion à la base de donnée
+    ```
+    psql -U microscope -d microscope
+    ```
+
+Voilà, vous venez de créer la BDD nécessaire à l'utilisation de l'application. Il vous reste maintenant le déploiement du SQL dans cette dernière.
+
+---
+
+## Déploiement de la Base de Donnée
+Pour déployer votre SQL dans le BDD, vous aurez besoin d'installer **sqitch** sur votre machine.
+
+Vous pouvez trouver à la racine, dans l'application, un dossier nommé **squich.conf**. Ce dernier contient toutes les informations nécessaires pour le déploiement du SQL dans le BDD (si vous avez nommé votre BDD comme dans la procédure de création. Sinon, vous devrez changer les termes "microscope" par le nom de l'utilisateur, de la database et du mot de passe.).
+*Exemple :* 
+```
+uri = db:pg://<nom de l'utilisateur>:<mot de passe>@localhost:<PORT CHOISI>/<nom de la database>
+```
+
+Une fois cela fait, vous n'aurez qu'a faire la commande suivante, pour déployer le SQL dans le BDD et ainsi pouvoir vous servir de l'application :
+
+```
+sqitch deploy origin
+```
+ ---
+
+## Utilisation de l'application
+Maintenant que vous avez réalisé toutes les étapes précédentes, vous pouvez passer à l'utilisation de l'application.
+
+Pour commencer, vous pouvez lancer le serveur en local avec la commande suivante :
+```
+npm run dev
+```
+Cette commande permet d'actualiser le serveur à chaque modification de code que vous pourriez faire sur l'application.
+
+---
+
+## Liens Utiles
+Programmes à installer :
+- 
+- 
+- 
