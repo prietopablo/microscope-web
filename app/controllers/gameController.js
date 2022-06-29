@@ -128,28 +128,41 @@ const gameController = {
    async endGame (request, response) {
 
       try {
+
          const gameToArchive = request.params.id;
          await gameDatamapper.updateGame({ state: "archived"}, gameToArchive);
          return response.json({Message: "Success ! Game Archived !"});
 
       } catch (err){
          response.json({ errorType: err.message });
+      }      
+   },
+
+   async getAll (_, response) {
+
+      try {
+
+         const gameList = await gameDatamapper.findAll();
+         return response.json({ gameList });
+
+      } catch (err){
+         response.json({ errorType: err.message });
       }
-      
    },
 
    async getAllArchived (_, response) {
 
-      try { 
+      try {
+
          const archivedList = await gameDatamapper.findAllArchived();
          return response.json({ archivedList });
 
-     } catch (err){
+      } catch (err){
          response.json({ errorType: err.message });
-     }
+      }
    },
 
-   async getOneArchived (request, response) {
+   async getOneArchived (request, response) {      
       // This method will retrieve a game as an all, which every data connected to the a game
       // It will be used to display ongoing games and archived ones
       try {

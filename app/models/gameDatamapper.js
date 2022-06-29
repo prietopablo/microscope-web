@@ -3,10 +3,8 @@ const client = require('./client');
 const gameDatamapper = {
 
    async insertCreator(content) {
-
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"
-      console.log(content.creator_id);
       const preparedQuery = {
          text: `INSERT INTO "game" ("creator_id", "current_user_id") VALUES ($1, $2) RETURNING *` ,
          values: [content.creator_id, content.creator_id]
@@ -26,7 +24,6 @@ const gameDatamapper = {
    },
 
    async insertAll(content) {
-
       // We need to insert data for each starting game relations
       // of course the "game" table but also "participation" and "palette"    
       const preparedQuery = {
@@ -66,6 +63,17 @@ const gameDatamapper = {
 
       return savedGame.rows[0];
    },
+
+   async findAll() {
+        
+      const result = await client.query('SELECT * FROM "game";');
+
+      if (result.rowCount === 0) {
+          return null;
+      }
+      
+      return result.rows;
+  },
 
    async findAllArchived() {
         
