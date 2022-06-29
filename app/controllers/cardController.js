@@ -17,9 +17,9 @@ const cardController = {
                         position = 1;
                   }
 
-                  await cardDatamapper.insertFocus(request.body, position, request.params.id);
+                  const focus = await cardDatamapper.insertFocus(request.body, position, request.params.id);
                         
-                  return response.json({ Message: "Focus creation succeed !"});
+                  return response.json({ Message: "Focus creation succeed !", focus});
 
             }
             else {
@@ -32,9 +32,10 @@ const cardController = {
                         }                                    
                   }
                   
-                  await cardDatamapper.insert(request.body);
+                  const card = await cardDatamapper.insert(request.body);
+
                   // Check status code for error            
-                  return response.json({ Message: "Card creation succeed !"});
+                  return response.json({ Message: `${request.body.cardType} creation succeed !`, card});
             } 
       } catch (err) {
             return response.json({errorType: err.message, errorMessage: "Card creation failed"});

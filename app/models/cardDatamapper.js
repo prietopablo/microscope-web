@@ -84,36 +84,38 @@ const cardDatamapper = {
 
       if(data.cardType === "period") {
          preparedQuery = {
-            text: `INSERT INTO "period" ("text", "tone", "position", "game_id") VALUES ($1, $2, $3, $4)`,
+            text: `INSERT INTO "period" ("text", "tone", "position", "game_id") VALUES ($1, $2, $3, $4) RETURNING *`,
             values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
          };
       }
       else if (data.cardType === "event") {
          preparedQuery = {
-            text: `INSERT INTO "event" ("text", "tone", "position", "period_id") VALUES ($1, $2, $3, $4)`,
+            text: `INSERT INTO "event" ("text", "tone", "position", "period_id") VALUES ($1, $2, $3, $4) RETURNING *`,
             values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
          };
       }
       else {
          preparedQuery = {
-            text: `INSERT INTO "scene" ("text", "tone", "position", "event_id") VALUES ($1, $2, $3, $4)`,
+            text: `INSERT INTO "scene" ("text", "tone", "position", "event_id") VALUES ($1, $2, $3, $4) RETURNING *`,
             values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
          };
       }
       
-      await client.query(preparedQuery);
+      const result = await client.query(preparedQuery);
+      return result.rows[0];
    },
       
    async insertFocus (content, position, gameId) {
 
       const preparedQuery = {
-         text: `INSERT INTO "focus" ("text", "author_id", "position", "game_id") VALUES ($1, $2, $3, $4)`,
+         text: `INSERT INTO "focus" ("text", "author_id", "position", "game_id") VALUES ($1, $2, $3, $4) RETURNING *`,
          values: [content.text, content.author_id, position, gameId]
       };
 
       console.log("preparedQueryinsertFocus", preparedQuery)
 
-      await client.query(preparedQuery);
+      const result = await client.query(preparedQuery);
+      return result.rows[0];
    },
 
    async updatePosition (cardType, cardId, newPosition) {
