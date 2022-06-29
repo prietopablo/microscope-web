@@ -10,13 +10,17 @@ const cardController = {
 
                   const focusFound = await cardDatamapper.findFocusByGameId(request.params.id);
 
+                  let position;
+
                   if (focusFound) {
+                        console.log(focusFound);
+                        console.log(focusFound.length);
                         position = focusFound[focusFound.length - 1].position + 1;
                   }
                   else {
                         position = 1;
                   }
-
+                  console.log("position", position);
                   const focus = await cardDatamapper.insertFocus(request.body, position, request.params.id);
                         
                   return response.json({ Message: "Focus creation succeed !", focus});
