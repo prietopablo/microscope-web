@@ -87,7 +87,7 @@ const gameController = {
 
          playersFound.forEach(async (player) => {
             const playerInfo = await userDatamapper.findByPk(player.player_id);
-            players.push({ username: playerInfo.username, position: player.position })
+            players.push({ id: playerInfo.id, username: playerInfo.username, position: player.position })
          });         
 
          const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
