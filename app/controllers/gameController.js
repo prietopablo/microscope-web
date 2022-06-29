@@ -87,7 +87,7 @@ const gameController = {
 
          playersFound.forEach(async (player) => {
             const playerInfo = await userDatamapper.findByPk(player.player_id);
-            players.push({ username: playerInfo.username, position: player.position })
+            players.push({ username: playerInfo.username, position: player.position });
          });         
 
          const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
@@ -136,6 +136,18 @@ const gameController = {
       } catch (err){
          response.json({ errorType: err.message });
       }      
+   },
+
+   async getAll (_, response) {
+
+      try {
+
+         const gameList = await gameDatamapper.findAll();
+         return response.json({ gameList });
+
+      } catch (err){
+         response.json({ errorType: err.message });
+      }
    },
 
    async getAllArchived (_, response) {

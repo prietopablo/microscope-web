@@ -27,7 +27,7 @@ const authenticationController = {
          if (user && passwordVerified) {
             // Create JSON token
             const token =  jwt.sign(
-               { userId: user.id, userName: username },
+               { userId: user.id, userName: username, userRole: user.role },
                process.env.TOKEN_KEY,
                {
                   expiresIn: "6h",
