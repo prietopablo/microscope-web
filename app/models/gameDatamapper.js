@@ -64,6 +64,17 @@ const gameDatamapper = {
       return savedGame.rows[0];
    },
 
+   async findAll() {
+        
+      const result = await client.query('SELECT * FROM "game";');
+
+      if (result.rowCount === 0) {
+          return null;
+      }
+      
+      return result.rows;
+  },
+
    async findAllArchived() {
         
       const result = await client.query('SELECT * FROM "game" WHERE "game".state = archived;');

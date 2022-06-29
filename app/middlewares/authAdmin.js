@@ -7,15 +7,16 @@ module.exports = (request, response, next) => {
       console.log("token", token);
       const decodedToken = jwt.verify(token, process.env.TOKEN_KEY);
 
-      const userId = decodedToken.userId;
+      const userRole = decodedToken.userRole;
 
-      if (request.params.id !== String(userId)) {
+      if ("admin" !== userRole) {
 
-         response.json({ errorMessage: "Invalid User Id" });
+         return response.json({ errorMessage: "Invalid Role" });
       } else {
+         response.json({ message: "Valid Role" });
          next();
       }
    } catch {
-      response.json({ errorMessage: "Unable to match token" });
+      return response.json({ errorMessage: "Unable to match token" });
    }
 }
