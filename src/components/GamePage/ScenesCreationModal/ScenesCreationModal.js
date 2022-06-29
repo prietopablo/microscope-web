@@ -21,6 +21,7 @@ function ScenesCreationModal({ eventId, periodId }) {
       },
     });
     setOpen(false);
+    setNewScene("");
   };
 
   return (

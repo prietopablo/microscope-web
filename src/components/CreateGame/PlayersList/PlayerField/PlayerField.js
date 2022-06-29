@@ -17,6 +17,7 @@ function PlayerField({ player, index }) {
         <Grid.Column width={14}>
           <Input
             fluid
+            value={localPlayer}
             placeholder={`Joueur ${index + 1}`}
             onChange={(event) => {
               setLocalPlayer(event.target.value);

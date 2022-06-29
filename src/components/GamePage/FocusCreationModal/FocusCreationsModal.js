@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInstance } from "requests";
 import { Button, Modal, Form } from "semantic-ui-react";
 
 function FocusCreationModal() {
@@ -10,14 +11,27 @@ function FocusCreationModal() {
   const handleChange = (e) => {
     setNewFocus(e.target.value);
   };
-  const handleClick = () => {
-    dispatch({
-      type: "ADD_FOCUS",
-      payload: {
-        label: newFocus,
-        id: Math.ceil(Math.random() * 100),
-      },
+  const gameId = useSelector((state) => state.game.gameId);
+  const userId = useSelector((state) => state.user.userId);
+
+  const handleClick = async () => {
+    const response = await axiosInstance.post(`/game/${gameId}/ongoing`, {
+      cardType: "focus",
+      text: newFocus,
+      author_id: userId,
     });
+
+    console.log(response);
+
+    if (response.data.message) {
+      dispatch({
+        type: "ADD_FOCUS",
+        payload: {
+          label: newFocus,
+          id: Math.ceil(Math.random() * 100),
+        },
+      });
+    }
 
     setOpen(false);
   };
@@ -45,6 +59,7 @@ function FocusCreationModal() {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={handleClick}>Valider le focus</Button>
+          <Button onClick={() => setOpen(false)}>Anuler</Button>
         </Modal.Actions>
       </Modal>
     </div>

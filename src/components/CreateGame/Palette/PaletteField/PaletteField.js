@@ -21,6 +21,7 @@ function PaletteField({ palette, index }) {
         <Grid.Column width={14}>
           <Input
             fluid
+            value={localPalette.text}
             placeholder={`Couleur ${index + 1}`}
             onChange={(event) => {
               setLocalPalette({ ...localPalette, text: event.target.value });

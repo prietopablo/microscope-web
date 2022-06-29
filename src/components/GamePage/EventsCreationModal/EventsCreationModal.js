@@ -23,6 +23,7 @@ function EventsCreationModal({ periodId }) {
       },
     });
     setOpen(false);
+    setNewEvent("");
   };
 
   return (

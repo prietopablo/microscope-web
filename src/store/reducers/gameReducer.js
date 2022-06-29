@@ -139,6 +139,8 @@ function gameReducer(state = initialState, action) {
         startTone: action.payload.data.game.bookend_start_tone,
         end: action.payload.data.game.bookend_end,
         endTone: action.payload.data.game.bookend_end_tone,
+        palettes: action.payload.data.palette,
+        players: action.payload.data.players,
       };
 
     default:

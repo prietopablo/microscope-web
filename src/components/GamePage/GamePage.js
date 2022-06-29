@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from "requests";
 import { updateGameInfo } from "../../actions/gameActions";
 // import { useDispatch, useSelector } from "react-redux";
-
+import { useParams } from "react-router";
 import Focus from "./Focus/Focus";
 import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
 import "./GamePage.css";
@@ -22,8 +22,11 @@ function GamePage() {
   const startTone = useSelector((state) => state.game.startTone);
   const end = useSelector((state) => state.game.end);
   const endTone = useSelector((state) => state.game.endTone);
+  const isConnected = useSelector((state) => state.user.isConnected);
+  const palettes = useSelector((state) => state.game.palettes);
+  const players = useSelector((state) => state.game.players);
   const dispatch = useDispatch();
-
+  const { id } = useParams();
   // console.log("state", focus);
   // const handleClick = (id) =>
   //   dispatch({
@@ -37,31 +40,34 @@ function GamePage() {
   // }, [])
 
   useEffect(() => {
+    console.log(localStorage.getItem("token"));
     async function fetchGameInfo() {
-      const response = await axiosInstance.get(`/game/${gameId}/ongoing`);
+      const response = await axiosInstance.get(`/game/${gameId || id}/ongoing`);
       dispatch(updateGameInfo(response.data));
-      console.log(
-        "response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-        response.data
-      );
+      console.log("response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", id);
+      console.log(gameId);
+      console.log("response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", response);
     }
-    fetchGameInfo();
-  }, []);
+
+    if (isConnected) fetchGameInfo();
+  }, [isConnected]);
 
   useEffect(() => {
     console.log("verif focus", focus);
   }, [focus]);
 
   return (
-    <div className="">
-      <div className="players-usernames">
-        <div className="player-username">Adlen</div>
-        <div className="player-username">Jeremy</div>
-        <div className="player-username">Victor</div>
-        <div className="player-username">Pablo</div>
-      </div>
+    <div className="players">
+      <ul className="players-usernames">
+        {players[0] &&
+          players.map((player) => (
+            <li key={player.id} className="player-username">
+              {player.username}
+            </li>
+          ))}
+      </ul>
       <div className="focus">
-        <SettingsModal bigPicture={bigPicture} />
+        <SettingsModal palettes={palettes} bigPicture={bigPicture} />
         <Focus />
         <FocusCreationModal />
       </div>

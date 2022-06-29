@@ -3,6 +3,7 @@ import {
   UPDATE_LOGIN_FORM,
   SAVE_USER,
   LOGOUT,
+  LOGIN_ERROR,
 } from "../../actions/loginActions";
 import {
   SIGNUP_SUCCESS,
@@ -21,6 +22,7 @@ const initialState = {
   username: "",
   emailSignup: "",
   passwordSignup: "",
+  error: "",
 };
 
 function userReducer(state = initialState, action = {}) {
@@ -46,6 +48,7 @@ function userReducer(state = initialState, action = {}) {
         password: "", // empty password value (SECURITY)
         userId: action.payload.id,
         currentUser: action.payload.id,
+        error: "",
       };
 
     case LOGOUT:
@@ -84,6 +87,12 @@ function userReducer(state = initialState, action = {}) {
       return {
         ...state,
         isSignedUp: true,
+      };
+
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.payload.error,
       };
 
     default:
