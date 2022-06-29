@@ -71,7 +71,7 @@ const userController = {
             }
 
             await userDatamapper.delete(request.params.id);
-            return response.status(204).json();
+            return response.json({ errorMessage: `User deleted` });
 
         } catch (err) {
             response.json({ errorType: err.message });
@@ -81,6 +81,7 @@ const userController = {
     async update (request, response) {
 
         try {
+
             console.log(request.body);
             const user = await userDatamapper.findByPk(request.params.id);
 
@@ -110,7 +111,7 @@ const userController = {
         } catch (err) {
             response.json({ errorType: err.message });
         }        
-    },
+    }
 };
 
 module.exports = userController;

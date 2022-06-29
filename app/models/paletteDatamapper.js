@@ -2,8 +2,7 @@ const client = require('./client');
 
 const paletteDatamapper = {
 
-   async insert(gameId, content) {
-      
+   async insert(gameId, content) {      
       // if a status get true, it means that the card is on the YES part of the palette
       // if it's false, it's on the NO part
       const preparedQuery = {

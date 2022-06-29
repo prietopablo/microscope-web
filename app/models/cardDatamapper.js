@@ -100,9 +100,20 @@ const cardDatamapper = {
             values: [data.text, data.tone, data.previous_card_position + 1, data.parentId]
          };
       }
-      console.log("prepQ insert carte",preparedQuery)
+      
       await client.query(preparedQuery);
+   },
+      
+   async insertFocus (content, position, gameId) {
 
+      const preparedQuery = {
+         text: `INSERT INTO "focus" ("text", "author_id", "position", "game_id") VALUES ($1, $2, $3, $4)`,
+         values: [content.text, content.author_id, position, gameId]
+      };
+
+      console.log("preparedQueryinsertFocus", preparedQuery)
+
+      await client.query(preparedQuery);
    },
 
    async updatePosition (cardType, cardId, newPosition) {
@@ -118,19 +129,7 @@ const cardDatamapper = {
       const savedCard = await client.query(preparedQuery);
    
       return savedCard.rows[0];
-   },
-   
-   async insertFocus (content, position, gameId) {
-
-      const preparedQuery = {
-         text: `INSERT INTO "focus" ("text", "author_id", "position", "game_id") VALUES ($1, $2, $3, $4)`,
-         values: [content.text, content.author_id, position, gameId]
-      };
-
-      console.log("preparedQueryinsertFocus", preparedQuery)
-
-      await client.query(preparedQuery);
-   },
+   }
 }
 
 module.exports = cardDatamapper;
