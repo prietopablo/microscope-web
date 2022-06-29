@@ -44,8 +44,6 @@ const authenticationController = {
             console.log("in else login");
             return response.json({ errorMessage : "Invalid Credentials" });
          }
-
-
       } catch (err) {
          console.log("in catch login");
          return response.json({errotType: err.message, errorMessage: "Unable to check credentials"});
