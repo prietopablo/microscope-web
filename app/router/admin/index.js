@@ -18,5 +18,5 @@ router.get("/games/:id", authAdmin, gameController.getOne);
 
 router.get("/users", authAdmin, userController.getAll);
 
-router.get("/users", authAdmin, userController.getOne);
+router.get("/users/:id", authAdmin, userController.getOneAdmin);
 module.exports = router;
