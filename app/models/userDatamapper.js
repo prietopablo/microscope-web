@@ -85,25 +85,7 @@ const userDatamapper = {
     },
 
     async isUnique (inputData, userId) {
-        /*
-        const results = {
-            isUniqueUsername: true,
-            isUniqueEmail: true
-        };
-        if (inputData.username) {
-            const result = await client.query('SELECT * FROM "user" WHERE "username"= $1', [inputData.username]);
-            if (result.rows !== 0) {
-                result.isUniqueUsername = false;
-            }
-        }
-        if (inputData.email) {
-            const result = await client.query('SELECT * FROM "user" WHERE "email"= $1', [inputData.email]);
-            if (result.rows !== 0) {
-                result.isUniqueEmail = false;
-            }
-        }
-        return results;
-        */
+   
         const fields = [];
         const values = [];
         // We gather our inputData

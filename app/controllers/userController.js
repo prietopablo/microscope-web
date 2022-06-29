@@ -32,6 +32,23 @@ const userController = {
         }        
     },
 
+    async getOneAdmin (request, response) {
+
+        try { 
+            console.log(request.params.id);
+            const user = await userDatamapper.findByPk(request.params.id);
+            
+            if (!user) {
+                return response.json({ errorMessage: "no user found"});
+            }
+    
+            return response.json(user);
+
+        } catch (err) {
+            response.json({ errorType: err.message });
+        }        
+    },
+
     async create (request, response) {
 
         try {
@@ -71,7 +88,7 @@ const userController = {
             }
 
             await userDatamapper.delete(request.params.id);
-            return response.status(204).json();
+            return response.json({ errorMessage: `User deleted` });
 
         } catch (err) {
             response.json({ errorType: err.message });
@@ -81,6 +98,7 @@ const userController = {
     async update (request, response) {
 
         try {
+
             console.log(request.body);
             const user = await userDatamapper.findByPk(request.params.id);
 
@@ -110,7 +128,7 @@ const userController = {
         } catch (err) {
             response.json({ errorType: err.message });
         }        
-    },
+    }
 };
 
 module.exports = userController;
