@@ -13,8 +13,8 @@ module.exports = (request, response, next) => {
 
          return response.json({ errorMessage: "Invalid Role" });
       } else {
-         response.json({ message: "Valid Role" });
-         next();
+         console.log("Valid Role");
+         next();   
       }
    } catch {
       return response.json({ errorMessage: "Unable to match token" });

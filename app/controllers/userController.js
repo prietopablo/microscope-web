@@ -32,6 +32,23 @@ const userController = {
         }        
     },
 
+    async getOneAdmin (request, response) {
+
+        try { 
+            console.log(request.params.id);
+            const user = await userDatamapper.findByPk(request.params.id);
+            
+            if (!user) {
+                return response.json({ errorMessage: "no user found"});
+            }
+    
+            return response.json(user);
+
+        } catch (err) {
+            response.json({ errorType: err.message });
+        }        
+    },
+
     async create (request, response) {
 
         try {
