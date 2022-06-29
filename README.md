@@ -30,7 +30,7 @@ Vérifier tout de même que vous avez bien de présent les dépendances suivante
 ---
 
 ## Création d'une Database
-Le Back utilise une Base de Donnée PostgreSQL, vous aurez donc besoin d'installer **postgres** et **psql** sur votre machine, afin de créer le BDD et de vous en servir avec l'application. Une fois cela fait, vous devrez suivre la procédure ci-dessous, afin de mettre en place votre BDD.
+Le Back utilise une Base de Donnée PostgreSQL, vous aurez donc besoin d'installer **postgresql** sur votre machine, afin de créer le BDD et de vous en servir avec l'application. Une fois cela fait, vous devrez suivre la procédure ci-dessous, afin de mettre en place votre BDD.
 
 - Connectez vous à la base **psql** en tant que super utilisateur
     ```
@@ -86,6 +86,9 @@ Cette commande permet d'actualiser le serveur à chaque modification de code que
 
 ## Liens Utiles
 Programmes à installer :
-- 
-- 
-- 
+- Postgresql : https://www.postgresql.org/download/
+- Sqitch : https://sqitch.org/download/
+
+Documentation :
+- Postgresql : https://www.postgresql.org/docs/
+- Sqitch : https://sqitch.org/docs/
