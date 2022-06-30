@@ -17,4 +17,10 @@
   margin: 1em 0;
   width: 100%;
   word-wrap: break-word;
+  box-shadow: none;
+}
+
+.ui.card > .content > .description,
+.ui.cards > .card > .content > .description {
+  color: rgb(247, 239, 239, 68%);
 }

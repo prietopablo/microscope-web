@@ -13,6 +13,7 @@ import PeriodsCreationModal from "./Periods/PeriodsCreationModal";
 
 import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
+import HomeNav from "./HomeNav/HomeNav";
 
 function GamePage() {
   // const focus = useSelector((state) => state.game.focus);
@@ -60,6 +61,7 @@ function GamePage() {
 
   return (
     <div className="game">
+      <HomeNav />
       <ul className="players-usernames">
         {players &&
           players.map(

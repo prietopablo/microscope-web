@@ -53,7 +53,11 @@ function PeriodsCreationModal() {
         centered={false}
         open={open}
         onOpen={() => setOpen(true)}
-        trigger={<Button>Editer période</Button>}
+        trigger={
+          <Button inverted className="nav--link">
+            Créer une période
+          </Button>
+        }
       >
         <Modal.Header>Description de la période</Modal.Header>
         <Modal.Content>
@@ -73,8 +77,12 @@ function PeriodsCreationModal() {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={handleClick}>Valider la période</Button>
-          <Button onClick={() => setOpen(false)}>Anuler</Button>
+          <Button color="black" onClick={handleClick}>
+            Valider la période
+          </Button>
+          <Button color="black" onClick={() => setOpen(false)}>
+            Anuler
+          </Button>
         </Modal.Actions>
       </Modal>
     </div>

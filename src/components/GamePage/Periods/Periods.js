@@ -17,7 +17,7 @@ function Periods() {
         {periods &&
           periods.map((p, i) => (
             <Grid.Column key={i} style={{ background: "black" }}>
-              <Card style={{ background: "rgb(196, 207, 217)" }}>
+              <Card style={{ background: "rgb(35, 33, 61)" }}>
                 <Card.Content>
                   <Card.Description> {p.text} </Card.Description>
                 </Card.Content>
@@ -36,10 +36,8 @@ function Periods() {
                       <Grid.Column verticalAlign="middle">
                         {/* CARTE EVENEMENT */}
 
-                        <Card style={{ background: "rgb(45, 118, 103)" }}>
+                        <Card style={{ background: "rgb(86, 83, 114)" }}>
                           <Card.Content>
-                            <Card.Header>EVENEMENT 1</Card.Header>
-
                             <Card.Description>{e.label}</Card.Description>
                           </Card.Content>
                           <Card.Content extra>
@@ -62,16 +60,11 @@ function Periods() {
                           e.scenes.map((s, i) => (
                             <Card
                               key={i}
-                              style={{ background: "rgb(77, 92, 106)" }}
+                              style={{ background: "rgb(115, 113, 135)" }}
                             >
                               <Card.Content>
-                                <Card.Header>SCENE 1</Card.Header>
-                                <Card.Meta>
-                                  <span className="date">Joined in 2015</span>
-                                </Card.Meta>
                                 <Card.Description>{s.label}</Card.Description>
                               </Card.Content>
-                              <Card.Content extra></Card.Content>
                             </Card>
                           ))}
                         {/* FIN CARTE SCENE */}

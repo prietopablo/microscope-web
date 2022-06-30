@@ -48,7 +48,11 @@ function EventsCreationModal({ periodId }) {
       open={open}
       // onClose={() => setOpen(false)}   {() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button>Editer évènement</Button>}
+      trigger={
+        <Button inverted className="nav--link-center">
+          Créer un évènement
+        </Button>
+      }
     >
       <Modal.Header>Description évènement</Modal.Header>
       <Modal.Content>
@@ -62,7 +66,9 @@ function EventsCreationModal({ periodId }) {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={handleClick}>Valider évènement</Button>
+        <Button color="black" onClick={handleClick}>
+          Valider évènement
+        </Button>
       </Modal.Actions>
     </Modal>
   );

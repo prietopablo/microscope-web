@@ -46,7 +46,11 @@ function ScenesCreationModal({ eventId, periodId }) {
         open={open}
         // onClose={() => setOpen(false)}   {() => setOpen(false)}
         onOpen={() => setOpen(true)}
-        trigger={<Button>Editer Scène</Button>}
+        trigger={
+          <Button size="tiny" inverted>
+            Créer une scène
+          </Button>
+        }
       >
         <Modal.Header>Description de la scène</Modal.Header>
         <Modal.Content>
@@ -60,7 +64,9 @@ function ScenesCreationModal({ eventId, periodId }) {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={handleClick}>Valider la scène</Button>
+          <Button small color="black" onClick={handleClick}>
+            Valider la scène
+          </Button>
         </Modal.Actions>
       </Modal>
     </div>
