@@ -19,8 +19,7 @@ function Periods() {
             <Grid.Column key={i} style={{ background: "black" }}>
               <Card style={{ background: "rgb(196, 207, 217)" }}>
                 <Card.Content>
-                  <Card.Header>Période n°</Card.Header>
-                  <Card.Description> {p.label} </Card.Description>
+                  <Card.Description> {p.text} </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <EventsCreationModal periodId={p.id} />

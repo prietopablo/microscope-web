@@ -6,7 +6,7 @@ import { updateGameInfo } from "../../actions/gameActions";
 // import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import Focus from "./Focus/Focus";
-import FocusCreationModal from "./FocusCreationModal/FocusCreationsModal";
+import FocusCreationModal from "./FocusCreationModal/FocusCreationModal";
 import "./GamePage.css";
 import Periods from "./Periods/Periods";
 import PeriodsCreationModal from "./Periods/PeriodsCreationModal";
@@ -59,7 +59,7 @@ function GamePage() {
   // }, [focus]);
 
   return (
-    <div className="players">
+    <div className="game">
       <ul className="players-usernames">
         {players &&
           players.map((player) => (
@@ -68,7 +68,7 @@ function GamePage() {
             </li>
           ))}
       </ul>
-      <div className="focus">
+      <div className="settings-section">
         <SettingsModal palettes={palettes} bigPicture={bigPicture} />
         <Focus />
         <FocusCreationModal />

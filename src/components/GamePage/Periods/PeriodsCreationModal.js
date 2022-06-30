@@ -19,6 +19,7 @@ function PeriodsCreationModal() {
   const { id } = useParams();
   const periods = useSelector((state) => state.game.periods);
 
+  console.log("period.lenght >>>>>>>>>>>>>>>>>>", periods);
   const handleClick = async () => {
     const response = await axiosInstance.post(`/game/${gameId || id}/ongoing`, {
       parentType: "game",
@@ -35,7 +36,7 @@ function PeriodsCreationModal() {
     dispatch({
       type: "ADD_PERIODS",
       payload: {
-        label: newPeriods,
+        text: newPeriods,
         id: response.data.card.id,
         events: [],
         position: newPosition,

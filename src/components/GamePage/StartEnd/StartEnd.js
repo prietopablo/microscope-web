@@ -4,31 +4,29 @@ import "./StartEnd.css";
 
 function StartEnd({ start, startTone, end, endTone }) {
   return (
-    <Grid columns={2}>
-      <Grid.Column>
-        <Segment id="start-end">
-          <Placeholder id="debut">
+    <Grid columns={2} className="bookends">
+      <Grid.Column className="bookends--column">
+        <Segment className="bookends--card">
+          <Placeholder className="bookends--content">
             <Placeholder.Header>
-              <h2>Début:</h2>
+              <h2 className="bookends--title">Début:</h2>
               <div>
                 {start} {startTone}
               </div>
             </Placeholder.Header>
-            <Placeholder.Paragraph></Placeholder.Paragraph>
           </Placeholder>
         </Segment>
       </Grid.Column>
 
-      <Grid.Column>
-        <Segment id="start-end">
-          <Placeholder id="debut">
+      <Grid.Column className="bookends--column">
+        <Segment className="bookends--card">
+          <Placeholder className="bookends--content">
             <Placeholder.Header>
-              <h2>Fin:</h2>
+              <h2 className="bookends--title">Fin:</h2>
               <div>
                 {end} {endTone}
               </div>
             </Placeholder.Header>
-            <Placeholder.Paragraph></Placeholder.Paragraph>
           </Placeholder>
         </Segment>
       </Grid.Column>

@@ -1,2 +1,15 @@
 .focus {
+  display: flex;
+  height: 100% !important;
+}
+
+.focus--card {
+  margin: 0 0.6rem !important;
+  min-width: 10rem !important;
+  min-height: 6rem !important;
+}
+
+.focus--card-username {
+  margin-bottom: 4px !important;
+  font-size: medium !important;
 }
