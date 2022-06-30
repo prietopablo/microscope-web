@@ -1,4 +1,5 @@
 const userDatamapper = require('../models/userDatamapper');
+const gameDatamapper = require('../models/gameDatamapper');
 const bcrypt = require('bcrypt');
 
 const userController = {
@@ -18,14 +19,27 @@ const userController = {
     async getOne (request, response) {
 
         try { 
-            console.log(request.params.id);
+            
             const user = await userDatamapper.findByPk(request.params.id);
             
             if (!user) {
                 return response.json({ errorMessage: "no user found"});
             }
+
+            // We need to query for games where the user participate
+            const userGames = await userDatamapper.findByPlayerId(user.id);
+            // Let's retrieve game data
+            const gameList = [];
+
+            if (userGames) {
+
+                for (const game of userGames) {
+                    const gameData = await gameDatamapper.findByPk(game.game_id);
+                    gameList.push({ id: gameData.id, bigPicture: gameData.big_picture, state: gameData.state });
+                }
+            }
     
-            return response.json({ username: user.username, email: user.email, userId: user.id });
+            return response.json({ username: user.username, email: user.email, userId: user.id, gameList });
 
         } catch (err) {
             response.json({ errorType: err.message });
