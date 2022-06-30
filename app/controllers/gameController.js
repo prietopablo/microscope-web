@@ -62,7 +62,9 @@ const gameController = {
          const paletteArray = request.body.palette;
 
          paletteArray.forEach(async (paletteCard) => {
-            paletteDatamapper.insert(gameId, paletteCard);         
+            if (paletteCard) {
+               paletteDatamapper.insert(gameId, paletteCard);
+            }        
          });
       
          return response.json({ Message: "game deployed successfully !" });
