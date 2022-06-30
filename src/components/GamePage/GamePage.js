@@ -62,11 +62,14 @@ function GamePage() {
     <div className="game">
       <ul className="players-usernames">
         {players &&
-          players.map((player) => (
-            <li key={player.id} className="player-username">
-              {player.username}
-            </li>
-          ))}
+          players.map(
+            (player) =>
+              player?.id && (
+                <li key={player.id} className="player-username">
+                  {player.username}
+                </li>
+              )
+          )}
       </ul>
       <div className="settings-section">
         <SettingsModal palettes={palettes} bigPicture={bigPicture} />

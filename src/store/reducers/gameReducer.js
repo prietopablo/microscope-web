@@ -1,4 +1,5 @@
 import {
+  CLEAR_GAME,
   PALETTE,
   PLAYER,
   UPDATE_GAME_INFO,
@@ -139,10 +140,37 @@ function gameReducer(state = initialState, action) {
         startTone: action.payload.data.game.bookend_start_tone,
         end: action.payload.data.game.bookend_end,
         endTone: action.payload.data.game.bookend_end_tone,
-        palettes: action.payload.data.palette,
+        palettes: action.payload.data.palette
+          ? action.payload.data.palette
+          : [],
         players: action.payload.data.players,
-        periods: action.payload.data.periods,
-        focus: action.payload.data.focuses,
+        periods: action.payload.data.periods ? action.payload.data.periods : [],
+        focus: action.payload.data.focuses ? action.payload.data.focuses : [],
+      };
+    case CLEAR_GAME:
+      return {
+        ...state,
+        bigPicture: "",
+        gameState: "",
+        start: "",
+        startTone: 0,
+        end: "",
+        endTone: 0,
+
+        players: ["", ""],
+
+        focus: [],
+        periods: [],
+        events: [],
+        scenes: [],
+        periodId: [],
+        position: [],
+
+        palettes: [
+          { text: "", status: 0 },
+          { text: "", status: 0 },
+          { text: "", status: 0 },
+        ],
       };
 
     default:

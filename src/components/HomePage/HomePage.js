@@ -9,6 +9,7 @@ import ScrollDown from "../../assets/ScrollDown.svg";
 import "./HomePage.css";
 import { actionLogout } from "../../actions/loginActions";
 import { requestGameId } from "requests";
+import { clearGame } from "actions/gameActions";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ function HomePage() {
   // const gameId = useSelector((state) => state.game.gameId);
 
   const handleCreatelobby = async () => {
+    dispatch(clearGame());
+
     const result = await requestGameId(userId);
 
     console.log(result);

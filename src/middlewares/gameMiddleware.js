@@ -19,6 +19,20 @@ const gameMiddleware = (store) => (next) => async (action) => {
         palettes,
       } = state.game;
       // console.log("STATE GAME ", state.game);
+      const playersToString = players.map((player) => {
+        if (player.username) return player.username;
+        return player;
+      });
+
+      const palettesToSend = palettes.map((palette) => {
+        if (palette.text) return palette;
+        return;
+      });
+      const filterPalettes = palettesToSend.filter(
+        (palette) => palette !== undefined
+      );
+
+      console.log("filterPalettes", filterPalettes);
 
       try {
         const data = await requestCreateGame(
@@ -29,11 +43,11 @@ const gameMiddleware = (store) => (next) => async (action) => {
           end,
           endTone,
           gameId,
-          players,
-          palettes
+          playersToString,
+          palettesToSend
         );
         console.log(
-          "la requete  de création de partie est terminé et j'ai récupéré:",
+          "la requete de création de partie est terminé et j'ai récupéré:",
           data
         );
       } catch (err) {

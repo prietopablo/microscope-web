@@ -8,8 +8,9 @@ import PlayersList from "./PlayersList/PlayersList";
 import StartEnd from "./StartEnd/StartEnd";
 
 import "./CreateGame.css";
-import { createGame } from "../../actions/gameActions";
+import { clearGame, createGame } from "../../actions/gameActions";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function CreateGame() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function CreateGame() {
   // const palettes = useSelector((state) => state.game.palette);
   const gameId = useSelector((state) => state.game.gameId);
   // console.log(palettes);
+  useEffect(() => {
+    dispatch(clearGame());
+  }, []);
 
   return (
     <div className="lobby">
