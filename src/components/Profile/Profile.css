@@ -1,3 +1,8 @@
+.profile {
+  width: 60%;
+  margin: 0 auto;
+}
+
 .profile--form {
   margin: 4rem auto;
   display: flex;

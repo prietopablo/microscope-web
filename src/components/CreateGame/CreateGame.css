@@ -1,3 +1,8 @@
+.lobby {
+  width: 60%;
+  margin: 0 auto;
+}
+
 .lobby--form {
   margin: 0 auto !important;
   display: flex;
@@ -15,4 +20,5 @@
 .lobby--submit.ui.button.button {
   margin-bottom: 3rem;
   text-align: right;
+  margin-right: 2rem;
 }

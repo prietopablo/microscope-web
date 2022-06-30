@@ -44,6 +44,15 @@ function CreateGame() {
           <Button inverted size="large" className="lobby--submit" type="submit">
             Lancer la partie
           </Button>
+          <Button
+            onClick={() => navigate(`/`)}
+            inverted
+            size="large"
+            className="lobby--submit"
+            type="button"
+          >
+            Annuler
+          </Button>
         </div>
       </Form>
       {/* {isMobile &&
