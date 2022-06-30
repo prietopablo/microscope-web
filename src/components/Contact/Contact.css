@@ -1,3 +1,8 @@
+.contact {
+  width: 60%;
+  margin: 0 auto;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;

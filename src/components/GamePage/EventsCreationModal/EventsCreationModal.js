@@ -14,9 +14,9 @@ function EventsCreationModal({ periodId }) {
   };
   const gameId = useSelector((state) => state.game.gameId);
   const { id } = useParams();
-  const periods = useSelector((state) => state.game.periods);
+  // const periods = useSelector((state) => state.game.periods);
   // const periodId = useSelector((state) => state.game.periodId);
-  const actualPeriod = periods.find((period) => period.id === periodId);
+  // const actualPeriod = periods.find((period) => period.id === periodId);
 
   const handleClick = async () => {
     const response = await axiosInstance.post(`/game/${gameId || id}/ongoing`, {
@@ -25,7 +25,7 @@ function EventsCreationModal({ periodId }) {
       text: newEvent,
       tone: false,
       parentId: periodId,
-      previous_card_position: actualPeriod.events.length + 1,
+      previous_card_position: 1,
     });
     console.log("response de la création de evenement", response);
 

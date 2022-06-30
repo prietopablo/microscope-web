@@ -1,3 +1,8 @@
+.game {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .players-usernames {
   justify-content: center;
   display: flex;

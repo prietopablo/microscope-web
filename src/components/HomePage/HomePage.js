@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "semantic-ui-react";
 import { useMediaQuery } from "react-responsive";
@@ -6,10 +7,14 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import HomePageLinks from "./HomePageLinks/HomePageLinks";
 import ScrollDown from "../../assets/ScrollDown.svg";
-import "./HomePage.css";
 import { actionLogout } from "../../actions/loginActions";
 import { requestGameId } from "requests";
 import { clearGame } from "actions/gameActions";
+import { useEffect } from "react";
+import "./HomePage.css";
+import shadow from "../../assets/parallax/Shadow.svg";
+import space from "../../assets/parallax/space2.svg";
+// import moon from "../../assets/parallax/Moon.svg";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -19,6 +24,34 @@ function HomePage() {
   const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
   const isConnected = useSelector((state) => state.user.isConnected);
   // const gameId = useSelector((state) => state.game.gameId);
+
+  //parallax
+  useEffect(() => {
+    (function () {
+      // Add event listener
+      document.addEventListener("mousemove", parallax);
+      const elem = document.querySelector(".home");
+      // Magic happens here
+      function parallax(e) {
+        let _w = window.innerWidth / 2;
+        let _h = window.innerHeight / 2;
+        let _mouseX = e.clientX;
+        let _mouseY = e.clientY;
+        let _depth1 = `${50 - (_mouseX - _w) * -0.01}% ${
+          50 - (_mouseY - _h) * -0.01
+        }%`;
+        let _depth2 = `${30 - (_mouseX - _w) * 0.01}% ${
+          30 - (_mouseY - _h) * 0.01
+        }%`;
+        let _depth3 = `${30 - (_mouseX - _w) * 0.02}% ${
+          30 - (_mouseY - _h) * 0.02
+        }%`;
+        let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+        // console.log(x);
+        elem.style.backgroundPosition = x;
+      }
+    })();
+  }, []);
 
   const handleCreatelobby = async () => {
     dispatch(clearGame());
@@ -110,75 +143,141 @@ function HomePage() {
             />
           </div>
         )}
+        {/* <img className="homepage--moon" src={moon} /> */}
+        <img className="homepage--shadow" src={shadow} />
+        <img className="homepage--bg" src={space} />
       </div>
 
       <div className="rules">
         <h2 className="rules--main">Règles du jeu</h2>
-        <h3 className="rules--sub">Lorem ipsum dolor</h3>
+        <h3 className="rules--sub">
+          Bienvenue sur l’application microscope web. Cette dernière vise à
+          adapter Microscope, un jeu d’écriture collaboratif publié pour la
+          première fois en 2011 aux Etats-Unis.
+        </h3>
         <p className="rules--text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
-          molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
-          finibus arcu vel consequat. Duis tincidunt ac felis vel ullamcorper.
-          Maecenas venenatis scelerisque elit. Nullam non tristique massa.
-          Aenean semper enim imperdiet viverra porttitor. Integer rhoncus felis
-          pulvinar mauris tincidunt aliquet. Etiam cursus non orci luctus
-          consectetur. Aenean at sapien sapien. Etiam at ipsum tincidunt, semper
-          sem in, tincidunt justo. Fusce congue neque purus, at viverra metus
-          ullamcorper et. Vestibulum vitae lectus tempus, ultricies nisi ut,
-          lobortis erat. Aliquam a justo mauris. Curabitur ut consectetur augue.
-          Nulla vel condimentum nisi.
+          Ce jeu a pour objectif, grâce à un système de carte, de permettre
+          l’écriture d’un récit de manière non-linéaire.
+          <br />
+          <br /> Ainsi, le premier joueur pourrait s'intéresser à la conclusion
+          de l’histoire et le suivant pourrait se concentrer sur une période
+          antérieure.
+          <br />
+          <br /> Le premier objectif d’une partie est d’incarner un simple
+          spectateur lors du tour des autres joueurs, puis de devenir l’auteur
+          d’une partie de l’histoire quand vient son tour, sans l’influence des
+          autres participants.
+          <br />
+          <br /> Grâce à sa structure morcelée, les parties sont capables de
+          générer des coups de théâtres et autres rebonds transformant une
+          simple anecdotes en instant narratif majeur.
+          <br />
+          <br />
         </p>
-        <br />
-        <h3 className="rules--sub">Lorem ipsum dolor</h3>
-        <p className="rules--text">
-          Suspendisse ut diam sit amet dolor tristique pharetra et at eros. Sed
-          quis mattis enim. Curabitur nulla felis, efficitur ut nisi ac, posuere
-          pretium risus. Sed eget eleifend diam. In hac habitasse platea
-          dictumst. Quisque eros magna, ornare in ligula sed, interdum euismod
-          sem. Cras eget leo a massa malesuada efficitur eu ut magna. Curabitur
-          vulputate est ac euismod lacinia. Phasellus tristique nulla quis augue
-          mattis interdum. Proin posuere velit in diam finibus bibendum.
-        </p>
-        <br />
-        <h3 className="rules--sub">Lorem ipsum dolor</h3>
-        <p className="rules--text">
-          Vestibulum tempus, nunc in rutrum elementum, elit lorem malesuada
-          ante, id ullamcorper lectus nulla eget sapien. Etiam elementum
-          efficitur nibh, eget volutpat libero pharetra vitae. Praesent sit amet
-          nunc ac metus molestie ullamcorper sed quis tellus. Sed eget vehicula
-          mauris, sit amet euismod urna. Sed nunc lacus, euismod non feugiat
-          vitae, rutrum mattis nisi. Praesent gravida neque vel nibh pulvinar
-          vehicula. Quisque nec lacus a augue interdum rhoncus. Nam ultricies,
-          tellus vel molestie suscipit, velit dolor convallis mauris, id
-          molestie erat nibh eget nisl. Duis at lorem eleifend nisl porttitor
-          imperdiet. Praesent lobortis cursus sem ac venenatis. Nam sed lectus
-          vitae tortor hendrerit venenatis id sit amet leo. Sed eleifend
-          accumsan elit. Curabitur vestibulum porta vulputate. Ut volutpat,
-          felis a elementum rhoncus, lacus elit feugiat eros, ut maximus diam
-          neque consectetur lectus. In varius odio vel quam rhoncus, ac pretium
-          lectus lobortis. Proin ornare facilisis magna faucibus imperdiet.
-        </p>
-        <br />
-        <p className="rules--text">
-          Etiam eget eros metus. Aliquam tempus ex ut massa tincidunt, tempus
-          dignissim neque laoreet. Morbi commodo magna vel tellus tincidunt
-          lacinia. Curabitur eu ipsum tortor. In rutrum faucibus massa quis
-          tincidunt. Etiam dui odio, sagittis sit amet lacus quis, suscipit
-          placerat ante. Proin dictum dictum sapien, a mollis ligula tempus vel.
-          Nullam ante nisl, efficitur sed feugiat nec, tempus ultrices orci.
-          Donec venenatis congue dolor. Curabitur justo nisi, vehicula eget
-          accumsan a, rutrum ut nisl. Nam interdum pulvinar felis, et tempor
-          nunc.
-        </p>
-        <br />
-        <h3 className="rules--sub">Lorem ipsum dolor</h3>
-        <p className="rules--text">
-          Sed ut posuere diam, ut vestibulum lacus. Fusce faucibus viverra dui
-          at fermentum. Etiam feugiat lacus id ligula tristique semper a quis
-          erat. Mauris sit amet consectetur quam. Orci varius natoque penatibus
-          et magnis dis parturient montes, nascetur ridiculus mus. Nulla at
-          libero quis diam finibus semper. Duis ultricies sapien at mauris
-          convallis, sit amet efficitur orci placerat.
+        <h3 className="rules--sub">Plus de détails :</h3>
+        <ul className="rules--text">
+          Une partie a besoin de quatre élément pour démarrer:
+          <li className="rules--text">
+            Une <strong>Vue d’Ensemble</strong>
+          </li>
+          <p className="spacing">
+            <i>
+              - Exemple :<br /> Un Empire tyrannique chute grâce à la un
+              mouvement rebelle
+            </i>
+          </p>
+          <li className="rules--text">
+            Le <strong>Début</strong> et la <strong>Fin</strong> de l’histoire
+            jouée
+          </li>
+          <p className="spacing">
+            <i>
+              - Exemples :<br /> L’Empire met au point une station pouvant
+              détruire des planètes entières.
+              <br />
+              L’Empereur est vaincu et ses soldats fuient à travers la galaxie.
+            </i>
+          </p>
+          <li className="rules--text">
+            Une <strong>Palette</strong> réunissant des thématiques à faire
+            figurées ou à proscrire de la partie
+          </li>
+          <p className="spacing">
+            <i>
+              - Exemples :<br /> <strong>OUI :</strong> Ordre de chevalier,
+              Magie
+              <br />
+              <strong>NON :</strong> Espace Réaliste
+            </i>
+          </p>
+          <li className="rules--text">
+            Une <strong>Première Passe</strong> de cartes{" "}
+            <strong>Périodes</strong> et <strong>Evénements</strong>
+          </li>
+          <p className="spacing">
+            <i>
+              - Exemples :<br /> Carte Période, Le seigneur Vador tend un piège
+              à la Résistance sur la planète Bespin
+              <br />
+              Carte Période, La Résistance planifie et détruit l'Etoile Noire
+              <br />
+              Carte Événement, Le jeune fermier Luke trouve un contrebandier
+              pour échapper au blocus de la planète Tatooine
+              <br />
+            </i>
+          </p>
+        </ul>
+        <h3 className="rules--sub">
+          Il existe trois échelles narratives dans le jeu :
+        </h3>
+        <p className="spacing">
+          Des <strong>Périodes</strong> définissant les grands arcs narratifs
+          <br />
+          <i>
+            - Exemple : un jeune fermier rejoint la résistance et en devient le
+            héros.
+            <br />
+          </i>
+          <br />
+          Des <strong>Evénements</strong> ponctuant les périodes en cours
+          <br />
+          <i>
+            - Exemple : un vaisseau transportant des informations critiques à
+            l’existence de la résistance est poursuivi par l’empire.
+            <br />
+          </i>
+          <br />
+          Et enfin les <strong>Scènes</strong> (qui ne sont pas permises pour la{" "}
+          <strong>Première Passe</strong>) qui permettent de questionner et de
+          résoudre le déroulement des événements
+          <br />
+          <i>
+            - Exemple : la jeune diplomate, secrètement membre de la résistance,
+            arrivera-t-elle à fuir son vaisseau ?
+            <br />
+          </i>
+          <br />
+          Notre application permet également de produire des cartes
+          <strong> Focus</strong> !
+          <br />
+          <br />
+          Elles permettent de définir une thématique ou un point d’intérêt pour
+          le tour de table.
+          <br />
+          <i>
+            - Exemples: le côté obscur de la force, le personnage du jeune
+            fermier, les voyages à travers les étoiles, etc.…
+            <br />
+          </i>
+          D’autres fonctionnalités seront ajoutées à notre application pour
+          s’adapter à la vision de son auteur Ben Robbins. :)
+          <br />
+          <br />
+          Nous avons prévu d’ajouter les cartes Héritages, mais surtout la
+          régulation des tours de jeu afin de permettre aux joueurs de se
+          concentrer sur l’aspect créatif. Pour le moment, le livre Microscope
+          est nécessaire pour mener à bien une partie, mais l’objectif serait de
+          faire évoluer l’application vers un modèle complètement indépendant.
         </p>
       </div>
 

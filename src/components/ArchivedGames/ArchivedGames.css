@@ -1,14 +1,18 @@
+.archived-games {
+  width: 60%;
+  margin: 0 auto;
+}
 
 .archived-title {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 .archived-input {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
-.ui.divided.list>.item:first-child {
-    width: 80%;
-    text-align: left;
-    margin: 0 auto;
+.ui.divided.list > .item:first-child {
+  width: 80%;
+  text-align: left;
+  margin: 0 auto;
 }
