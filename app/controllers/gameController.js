@@ -59,7 +59,7 @@ const gameController = {
          });
 
          // A similar loop is needed for inserting every palette shade i.e. themes to include or exclude from the game
-         const paletteArray = Object.values(request.body.palette);
+         const paletteArray = request.body.palette;
 
          paletteArray.forEach(async (paletteCard) => {
             paletteDatamapper.insert(gameId, paletteCard);         
