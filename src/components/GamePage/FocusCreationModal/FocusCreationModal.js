@@ -49,7 +49,9 @@ function FocusCreationModal() {
         // onClose={() => setOpen(false)}   {() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button className="create-focus--button">Créer un focus</Button>
+          <Button inverted className="nav--link">
+            Créer un focus
+          </Button>
         }
       >
         <Modal.Header>Description du focus</Modal.Header>
@@ -64,8 +66,12 @@ function FocusCreationModal() {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={handleClick}>Valider le focus</Button>
-          <Button onClick={() => setOpen(false)}>Anuler</Button>
+          <Button color="black" onClick={handleClick}>
+            Valider le focus
+          </Button>
+          <Button color="black" onClick={() => setOpen(false)}>
+            Anuler
+          </Button>
         </Modal.Actions>
       </Modal>
     </div>
