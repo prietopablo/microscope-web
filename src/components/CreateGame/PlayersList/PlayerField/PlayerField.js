@@ -7,6 +7,8 @@ import { updatePlayersNewGameForm } from "actions/gameActions";
 function PlayerField({ player, index }) {
   const [localPlayer, setLocalPlayer] = useState(player);
   const dispatch = useDispatch();
+  console.log("localPlayer", localPlayer);
+  const username = localPlayer.username ? localPlayer.username : localPlayer;
 
   useEffect(() => {
     dispatch(updatePlayersNewGameForm(localPlayer, index));
@@ -17,7 +19,7 @@ function PlayerField({ player, index }) {
         <Grid.Column width={14}>
           <Input
             fluid
-            value={localPlayer}
+            value={username}
             placeholder={`Joueur ${index + 1}`}
             onChange={(event) => {
               setLocalPlayer(event.target.value);

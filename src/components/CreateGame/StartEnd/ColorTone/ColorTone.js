@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateNewGameForm } from "../../../../actions/gameActions";
 import { Checkbox, Form } from "semantic-ui-react";
@@ -43,10 +44,10 @@ function ColorSlider({ tone, isStartOrEnd }) {
   );
 }
 
-ColorSlider.propTypes = {
-  tone: PropTypes.number,
-  isStartOrEnd: PropTypes.string,
-};
+// ColorSlider.propTypes = {
+//   tone: PropTypes.boolean,
+//   isStartOrEnd: PropTypes.string,
+// };
 
 // == Export
 export default ColorSlider;

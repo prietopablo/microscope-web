@@ -11,6 +11,10 @@ function PaletteField({ palette, index }) {
   // console.log("localPalette : ", localPalette);
 
   useEffect(() => {
+    setLocalPalette({ ...localPalette, text: "" });
+  }, []);
+
+  useEffect(() => {
     dispatch(
       updatePaletteNewGameForm(localPalette.status, localPalette.text, index)
     );

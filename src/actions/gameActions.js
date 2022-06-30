@@ -53,3 +53,8 @@ export const updateGameInfo = (data) => ({
     data,
   },
 });
+
+export const CLEAR_GAME = "CLEAR_GAME";
+export const clearGame = () => ({
+  type: CLEAR_GAME,
+});
