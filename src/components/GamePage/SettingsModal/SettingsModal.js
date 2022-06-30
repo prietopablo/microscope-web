@@ -5,7 +5,7 @@
 
 import React from "react";
 import { Button, Modal } from "semantic-ui-react";
-import "./SettingsModal";
+import "./SettingsModal.css";
 
 function SettingsModal({ bigPicture, palettes }) {
   const [open, setOpen] = React.useState(false);
@@ -16,32 +16,40 @@ function SettingsModal({ bigPicture, palettes }) {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      trigger={<Button>Paramètre de la partie</Button>}
+      trigger={
+        <Button className="settings--button">Paramètres de la partie</Button>
+      }
     >
-      <Modal.Header>Paramètres</Modal.Header>
       <Modal.Content>
-        <h2>Vue d'ensemble</h2> {bigPicture}
-        <h2>Palettes</h2>
-        <h3>Oui :</h3>
-        <ul>
-          {palettes &&
-            palettes.map(
-              (palette) =>
-                palette.status && (
-                  <li key={"oui" + palette.id}> {palette.text}</li>
-                )
-            )}
-        </ul>
-        <h3>Non :</h3>
-        <ul>
-          {palettes &&
-            palettes.map(
-              (palette) =>
-                !palette.status && (
-                  <li key={"non" + palette.id}> {palette.text}</li>
-                )
-            )}
-        </ul>
+        <div className="settings">
+          <div className="settings--big-picture">
+            <h2>Vue d'ensemble</h2>
+            <p>{bigPicture}</p>
+          </div>
+          <div className="settings--palettes">
+            <h2>Palettes</h2>
+            <h3>Oui :</h3>
+            <ul>
+              {palettes &&
+                palettes.map(
+                  (palette) =>
+                    palette.status && (
+                      <li key={"oui" + palette.id}> {palette.text}</li>
+                    )
+                )}
+            </ul>
+            <h3>Non :</h3>
+            <ul>
+              {palettes &&
+                palettes.map(
+                  (palette) =>
+                    !palette.status && (
+                      <li key={"non" + palette.id}> {palette.text}</li>
+                    )
+                )}
+            </ul>
+          </div>
+        </div>
       </Modal.Content>
       <Modal.Actions>
         <Button onClick={() => setOpen(false)}>OK</Button>

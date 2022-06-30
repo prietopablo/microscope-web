@@ -1,15 +1,28 @@
-#debut {
-    color: black;
-    text-decoration:underline;
-
+.bookends {
+  display: flex;
+  justify-content: space-between;
 }
-.column{width:100%}
 
-#start-end {
-    width: 100%;
-   
+.bookends--content {
+  color: black;
+  padding: 1rem;
+}
+.bookends--card {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.bookends--column {
+  width: 25% !important;
+}
+
+.bookends--title {
+  font-size: large;
+  margin-bottom: 0.5rem !important;
+}
+.start-end {
+  width: 100%;
 }
 #grid-start-end {
-    justify-content: space-between;
+  justify-content: space-between;
 }
-

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "requests";
 import { Button, Modal, Form } from "semantic-ui-react";
+import "./FocusCreationModal.css";
 
 function FocusCreationModal() {
   const [open, setOpen] = React.useState(false);
@@ -41,13 +42,15 @@ function FocusCreationModal() {
   console.log("create focus text", newFocus);
 
   return (
-    <div className="focus">
+    <div className="create-focus">
       <Modal
         centered={false}
         open={open}
         // onClose={() => setOpen(false)}   {() => setOpen(false)}
         onOpen={() => setOpen(true)}
-        trigger={<Button>Editer focus</Button>}
+        trigger={
+          <Button className="create-focus--button">Créer un focus</Button>
+        }
       >
         <Modal.Header>Description du focus</Modal.Header>
         <Modal.Content>

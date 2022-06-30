@@ -1,0 +1,23 @@
+ul {
+  list-style-type: none !important;
+  padding: 0;
+}
+
+.settings--button {
+  color: black !important;
+  padding: 1.2rem !important;
+  max-height: 4rem !important;
+}
+
+.settings {
+  display: flex;
+  padding: 1.2rem;
+}
+
+.settings--big-picture {
+  width: 50%;
+}
+
+.settings--palettes {
+  width: 50%;
+}
