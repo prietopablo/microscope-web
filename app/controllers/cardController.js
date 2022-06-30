@@ -13,8 +13,7 @@ const cardController = {
                   let position;
 
                   if (focusFound) {
-                        console.log(focusFound);
-                        console.log(focusFound.length);
+                        
                         position = focusFound[focusFound.length - 1].position + 1;
                   }
                   else {
