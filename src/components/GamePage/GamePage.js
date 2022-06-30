@@ -15,7 +15,7 @@ import SettingsModal from "./SettingsModal/SettingsModal";
 import StartEnd from "./StartEnd/StartEnd";
 
 function GamePage() {
-  const focus = useSelector((state) => state.game.focus);
+  // const focus = useSelector((state) => state.game.focus);
   const gameId = useSelector((state) => state.game.gameId);
   const bigPicture = useSelector((state) => state.game.bigPicture);
   const start = useSelector((state) => state.game.start);
@@ -44,22 +44,24 @@ function GamePage() {
     async function fetchGameInfo() {
       const response = await axiosInstance.get(`/game/${gameId || id}/ongoing`);
       dispatch(updateGameInfo(response.data));
-      console.log("response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", id);
-      console.log(gameId);
-      console.log("response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", response);
+
+      console.log(
+        "response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
+        response.data
+      );
     }
 
     if (isConnected) fetchGameInfo();
   }, [isConnected]);
 
-  useEffect(() => {
-    console.log("verif focus", focus);
-  }, [focus]);
+  // useEffect(() => {
+  //   console.log("verif focus", focus);
+  // }, [focus]);
 
   return (
     <div className="players">
       <ul className="players-usernames">
-        {players[0] &&
+        {players &&
           players.map((player) => (
             <li key={player.id} className="player-username">
               {player.username}

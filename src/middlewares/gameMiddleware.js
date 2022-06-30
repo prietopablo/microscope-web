@@ -18,7 +18,7 @@ const gameMiddleware = (store) => (next) => async (action) => {
         players,
         palettes,
       } = state.game;
-      console.log("STATE GAME ", state.game);
+      // console.log("STATE GAME ", state.game);
 
       try {
         const data = await requestCreateGame(

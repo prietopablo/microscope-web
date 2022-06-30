@@ -75,7 +75,7 @@ function gameReducer(state = initialState, action) {
             }
             return event;
           });
-          console.log(newEvents);
+          // console.log(newEvents);
           return {
             ...period,
             events: [...newEvents],
@@ -102,7 +102,7 @@ function gameReducer(state = initialState, action) {
       };
 
     case UPDATE_PALETTE_NEW_GAME_FORM:
-      console.log("actionpayload", action.payload);
+      // console.log("actionpayload", action.payload);
       const newPalette = [...state.palettes];
       newPalette[action.payload.index].status = action.payload.status;
       newPalette[action.payload.index].text = action.payload.text;
@@ -128,10 +128,10 @@ function gameReducer(state = initialState, action) {
         palettes: [...state.palettes, { text: "", status: 0 }],
       };
     case UPDATE_GAME_INFO:
-      console.log(
-        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-        action.payload.data.game.big_picture
-      );
+      // console.log(
+      //   ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
+      //   action.payload.data.game.big_picture
+      // );
       return {
         ...state,
         bigPicture: action.payload.data.game.big_picture,
@@ -141,6 +141,8 @@ function gameReducer(state = initialState, action) {
         endTone: action.payload.data.game.bookend_end_tone,
         palettes: action.payload.data.palette,
         players: action.payload.data.players,
+        periods: action.payload.data.periods,
+        focus: action.payload.data.focuses,
       };
 
     default:

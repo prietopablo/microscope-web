@@ -6,7 +6,7 @@ import "./Periods.css";
 
 function Periods() {
   const periods = useSelector((state) => state.game.periods);
-  console.log("state period", periods);
+  // console.log("state period", periods);
   const periode = [Grid.Column.length];
   // const events = useSelector((state) => state.game.events);
   // const scenes = useSelector((state) => state.game.scenes);

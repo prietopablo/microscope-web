@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { axiosInstance } from "requests";
 import { Button, Modal, Form } from "semantic-ui-react";
 
@@ -13,22 +14,24 @@ function FocusCreationModal() {
   };
   const gameId = useSelector((state) => state.game.gameId);
   const userId = useSelector((state) => state.user.userId);
+  const { id } = useParams();
 
   const handleClick = async () => {
-    const response = await axiosInstance.post(`/game/${gameId}/ongoing`, {
+    const response = await axiosInstance.post(`/game/${gameId || id}/ongoing`, {
       cardType: "focus",
       text: newFocus,
       author_id: userId,
     });
 
-    console.log(">>>>>>>>>>>>>>>>>>>><", response);
+    console.log("response de la création de focus", response);
 
     if (response.data.focus) {
       dispatch({
         type: "ADD_FOCUS",
         payload: {
-          label: newFocus,
+          text: newFocus,
           id: response.data.focus.id,
+          author_id: response.data.focus.author_id,
         },
       });
     }

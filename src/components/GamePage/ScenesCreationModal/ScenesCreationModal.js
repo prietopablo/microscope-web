@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { axiosInstance } from "requests";
 import { Button, Form, Modal } from "semantic-ui-react";
 
 // eslint-disable-next-line react/prop-types
@@ -10,12 +12,25 @@ function ScenesCreationModal({ eventId, periodId }) {
   const handleChange = (e) => {
     setNewScene(e.target.value);
   };
-  const handleClick = () => {
+  const gameId = useSelector((state) => state.game.gameId);
+  const { id } = useParams();
+
+  const handleClick = async () => {
+    const response = await axiosInstance.post(`/game/${gameId || id}/ongoing`, {
+      parentType: "event",
+      cardType: "scene",
+      text: newScene,
+      tone: false,
+      parentId: eventId,
+      previous_card_position: 0,
+    });
+    console.log("response de la création de evenement", response);
+
     dispatch({
       type: "ADD_SCENES",
       payload: {
         label: newScene,
-        id: Math.ceil(Math.random() * 100),
+        id: response.data.card.id,
         eventId,
         periodId,
       },
