@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -54,11 +55,11 @@ function EventsCreationModal({ periodId }) {
         </Button>
       }
     >
-      <Modal.Header>Description évènement</Modal.Header>
+      <Modal.Header>Description de l'évènement</Modal.Header>
       <Modal.Content>
         <Form>
           <input
-            placeholder="Description évènement"
+            placeholder="Description de l'évènement"
             value={newEvent || ""}
             onChange={(e) => handleChange(e)}
             type="text"

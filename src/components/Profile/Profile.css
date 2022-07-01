@@ -9,6 +9,14 @@
   flex-direction: column;
   color: white;
 }
+.profile--game-card {
+  box-shadow: none !important;
+}
+
+.ui.card > .content > .header,
+.ui.cards > .card > .content > .header {
+  color: white;
+}
 
 .profile--form-input {
   width: 50%;
@@ -25,9 +33,18 @@
 }
 
 .profile--gamesSection {
-  margin: 3rem 0;
+  margin: 3rem auto;
+  width: 90%;
 }
 
 .profile--title {
   margin: 2rem auto;
+  width: 90%;
+}
+
+@media (max-width: 769px) {
+  .profile {
+    width: 100%;
+    margin: 0 auto;
+  }
 }

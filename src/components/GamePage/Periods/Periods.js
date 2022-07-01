@@ -19,7 +19,9 @@ function Periods() {
             <Grid.Column key={i} style={{ background: "black" }}>
               <Card style={{ background: "rgb(35, 33, 61)" }}>
                 <Card.Content>
-                  <Card.Description> {p.text} </Card.Description>
+                  <Card.Description style={{ color: "#fff" }}>
+                    {p.text}
+                  </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <EventsCreationModal periodId={p.id} />
@@ -38,7 +40,9 @@ function Periods() {
 
                         <Card style={{ background: "rgb(86, 83, 114)" }}>
                           <Card.Content>
-                            <Card.Description>{e.label}</Card.Description>
+                            <Card.Description style={{ color: "#fff" }}>
+                              {e.label}
+                            </Card.Description>
                           </Card.Content>
                           <Card.Content extra>
                             <ScenesCreationModal
@@ -60,10 +64,12 @@ function Periods() {
                           e.scenes.map((s, i) => (
                             <Card
                               key={i}
-                              style={{ background: "rgb(115, 113, 135)" }}
+                              style={{ background: "rgb(150, 150, 180)" }}
                             >
                               <Card.Content>
-                                <Card.Description>{s.label}</Card.Description>
+                                <Card.Description style={{ color: "#fff" }}>
+                                  {s.label}
+                                </Card.Description>
                               </Card.Content>
                             </Card>
                           ))}

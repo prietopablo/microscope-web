@@ -12,6 +12,18 @@
   /* z-index: 90; */
 }
 
+@media (max-width: 769px) {
+  .home {
+    background-size: 400%;
+  }
+}
+
+/* @media (min-width: 1200px) {
+  .home {
+    background-size: 200%;
+  }
+} */
+
 /* .homepage--moon {
   position: fixed;
   top: 70%;
@@ -112,10 +124,10 @@ h1 {
 }
 
 .rules {
-  width: 60%;
+  padding: 3rem 20%;
+  width: 100%;
   text-align: left;
-  margin: 3rem auto;
-  z-index: 10;
+  margin: 0 auto;
 }
 
 .scroll {
