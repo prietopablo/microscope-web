@@ -29,7 +29,7 @@ function ScenesCreationModal({ eventId, periodId }) {
     dispatch({
       type: "ADD_SCENES",
       payload: {
-        label: newScene,
+        text: newScene,
         id: response.data.card.id,
         eventId,
         periodId,
