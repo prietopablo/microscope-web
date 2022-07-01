@@ -41,7 +41,7 @@ function Periods() {
                         <Card style={{ background: "rgb(86, 83, 114)" }}>
                           <Card.Content>
                             <Card.Description style={{ color: "#fff" }}>
-                              {e.label}
+                              {e.text}
                             </Card.Description>
                           </Card.Content>
                           <Card.Content extra>
@@ -68,7 +68,7 @@ function Periods() {
                             >
                               <Card.Content>
                                 <Card.Description style={{ color: "#fff" }}>
-                                  {s.label}
+                                  {s.text}
                                 </Card.Description>
                               </Card.Content>
                             </Card>

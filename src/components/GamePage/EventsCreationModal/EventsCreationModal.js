@@ -33,7 +33,7 @@ function EventsCreationModal({ periodId }) {
     dispatch({
       type: "ADD_EVENTS",
       payload: {
-        label: newEvent,
+        text: newEvent,
         id: response.data.card.id,
         periodId,
         scenes: [],
@@ -50,7 +50,7 @@ function EventsCreationModal({ periodId }) {
       // onClose={() => setOpen(false)}   {() => setOpen(false)}
       onOpen={() => setOpen(true)}
       trigger={
-        <Button inverted className="nav--link-center">
+        <Button size="tiny" inverted className="nav--link-center">
           Créer un évènement
         </Button>
       }

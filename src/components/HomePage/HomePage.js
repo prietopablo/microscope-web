@@ -178,6 +178,8 @@ function HomePage() {
         <h3 className="rules--sub">Plus de détails :</h3>
         <ul className="rules--text">
           Une partie a besoin de quatre élément pour démarrer:
+          <br />
+          <br />
           <li className="rules--text">
             Une <strong>Vue d’Ensemble</strong>
           </li>
