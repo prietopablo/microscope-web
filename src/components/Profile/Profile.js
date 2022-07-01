@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import { Button, Card, Divider, Input } from "semantic-ui-react";
 import Header from "../Header/Header";
 import "./Profile.css";
@@ -6,6 +7,7 @@ import "./Profile.css";
 function Profile() {
   const username = useSelector((state) => state.user.username);
   const email = useSelector((state) => state.user.email);
+  const isDesktop = useMediaQuery({ query: "(min-width: 769px)" });
 
   return (
     <div className="profile">
@@ -47,17 +49,29 @@ function Profile() {
       <Divider inverted />
       <h2 className="profile--title">Parties en cours</h2>
       <div className="profile--gamesSection">
-        <Card.Group itemsPerRow={4}>
-          <Card>
-            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+        <Card.Group itemsPerRow={isDesktop ? 4 : 1}>
+          <Card
+            style={{ background: "rgb(35, 33, 61)" }}
+            className="profile--game-card"
+          >
+            <Card.Content
+              className="profile--game-card-header"
+              header="Work In Progress"
+            />
             <Card.Content
               description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
           molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
           finibus arcu vel consequat."
             />
           </Card>
-          <Card>
-            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+          <Card
+            style={{ background: "rgb(35, 33, 61)" }}
+            className="profile--game-card"
+          >
+            <Card.Content
+              className="profile--game-card-header"
+              header="Work In Progress"
+            />
             <Card.Content
               description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
           molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
@@ -68,25 +82,43 @@ function Profile() {
       </div>
       <h2 className="profile--title">Parties archivées</h2>
       <div className="profile--gamesSection">
-        <Card.Group itemsPerRow={4}>
-          <Card>
-            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+        <Card.Group itemsPerRow={isDesktop ? 4 : 1}>
+          <Card
+            style={{ background: "rgb(35, 33, 61)" }}
+            className="profile--game-card"
+          >
+            <Card.Content
+              className="profile--game-card-header"
+              header="Work In Progress"
+            />
             <Card.Content
               description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
           molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
           finibus arcu vel consequat."
             />
           </Card>
-          <Card>
-            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+          <Card
+            style={{ background: "rgb(35, 33, 61)" }}
+            className="profile--game-card"
+          >
+            <Card.Content
+              className="profile--game-card-header"
+              header="Work In Progress"
+            />
             <Card.Content
               description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
           molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum
           finibus arcu vel consequat."
             />
           </Card>
-          <Card>
-            <Card.Content header="Joueur 1 - joueur 2 - joueur 3" />
+          <Card
+            style={{ background: "rgb(35, 33, 61)" }}
+            className="profile--game-card"
+          >
+            <Card.Content
+              className="profile--game-card-header"
+              header="Work In Progress"
+            />
             <Card.Content
               description="Big picture de la partie ici : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at
           molestie nisl. Phasellus sit amet sollicitudin justo. Fusce bibendum

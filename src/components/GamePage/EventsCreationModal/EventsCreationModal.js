@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -32,7 +33,7 @@ function EventsCreationModal({ periodId }) {
     dispatch({
       type: "ADD_EVENTS",
       payload: {
-        label: newEvent,
+        text: newEvent,
         id: response.data.card.id,
         periodId,
         scenes: [],
@@ -49,16 +50,16 @@ function EventsCreationModal({ periodId }) {
       // onClose={() => setOpen(false)}   {() => setOpen(false)}
       onOpen={() => setOpen(true)}
       trigger={
-        <Button inverted className="nav--link-center">
+        <Button size="tiny" inverted className="nav--link-center">
           Créer un évènement
         </Button>
       }
     >
-      <Modal.Header>Description évènement</Modal.Header>
+      <Modal.Header>Description de l'évènement</Modal.Header>
       <Modal.Content>
         <Form>
           <input
-            placeholder="Description évènement"
+            placeholder="Description de l'évènement"
             value={newEvent || ""}
             onChange={(e) => handleChange(e)}
             type="text"

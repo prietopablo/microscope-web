@@ -1,51 +1,50 @@
 body {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 h1 {
-    margin: 0 auto;
-    width: 11em;
-    text-align: center;
-    display: block;    
-    font-size: 2rem;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  font-size: 2rem;
 }
 .App-logo {
-    width: 10em;
-    margin: 2rem auto;
+  width: 10em;
+  margin: 2rem auto;
 }
 
 .container-header {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 769px) {
+  .app-header {
+    margin-left: -6rem;
+    display: flex;
+    flex-direction: row;
+  }
 
-    .app-header{
-        margin-left: -6rem;
-        display: flex;
-        flex-direction: row;   
-    }
+  .App-logo {
+    width: 9em;
+  }
 
-    .App-logo{
-        width: 9em;
-    }
+  .container-header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+  }
 
-    .container-header{
-        text-align: center;
-        display: flex;
-        flex-direction: row;
-    }
+  .link-header {
+    width: 50%;
+  }
 
-    .link-header{
-        width: 50%;
-    }
-
-    h1{
-        margin: 0 auto;
-        margin-top: 1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    
-    }    
-
+  h1 {
+    width: 11em;
+    margin: 0 auto;
+    margin-top: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }

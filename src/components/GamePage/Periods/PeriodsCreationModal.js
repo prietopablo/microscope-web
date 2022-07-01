@@ -8,13 +8,13 @@ function PeriodsCreationModal() {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const [newPeriods, setNewPeriods] = useState();
-  const [newPosition, setNewPosition] = useState();
+  // const [newPosition, setNewPosition] = useState();
   const handleChangePeriod = (e) => {
     setNewPeriods(e.target.value);
   };
-  const handleChangePosition = (e) => {
-    setNewPosition(e.target.value);
-  };
+  // const handleChangePosition = (e) => {
+  //   setNewPosition(e.target.value);
+  // };
   const gameId = useSelector((state) => state.game.gameId);
   const { id } = useParams();
   const periods = useSelector((state) => state.game.periods);
@@ -39,7 +39,7 @@ function PeriodsCreationModal() {
         text: newPeriods,
         id: response.data.card.id,
         events: [],
-        position: newPosition,
+        // position: newPosition,
       },
     });
     setOpen(false);
@@ -63,17 +63,17 @@ function PeriodsCreationModal() {
         <Modal.Content>
           <Form>
             <input
-              placeholder="Tell us more"
+              placeholder="Description de la période"
               value={newPeriods || ""}
               onChange={(e) => handleChangePeriod(e)}
               type="text"
             />
-            <input
+            {/* <input
               placeholder="Position de la période"
               value={newPosition || ""}
               onChange={(e) => handleChangePosition(e)}
               type="number"
-            />
+            /> */}
           </Form>
         </Modal.Content>
         <Modal.Actions>

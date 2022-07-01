@@ -5,6 +5,10 @@ body {
   color: white;
 }
 
+.ui.inverted.button {
+  box-shadow: 0 0 0 1px #fff inset !important;
+}
+
 @media (max-width: 768px) {
   body {
     width: 100%;

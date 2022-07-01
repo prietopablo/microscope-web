@@ -33,3 +33,11 @@
     margin-top: 15rem;
   }
 }
+
+@media (max-width: 769px) {
+  .signup {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

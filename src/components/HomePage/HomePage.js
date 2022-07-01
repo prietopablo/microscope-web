@@ -12,8 +12,8 @@ import { requestGameId } from "requests";
 import { clearGame } from "actions/gameActions";
 import { useEffect } from "react";
 import "./HomePage.css";
-import shadow from "../../assets/parallax/Shadow.svg";
-import space from "../../assets/parallax/space2.svg";
+// import shadow from "../../assets/parallax/Shadow.svg";
+// import space from "../../assets/parallax/space2.svg";
 // import moon from "../../assets/parallax/Moon.svg";
 
 function HomePage() {
@@ -27,30 +27,31 @@ function HomePage() {
 
   //parallax
   useEffect(() => {
-    (function () {
-      // Add event listener
-      document.addEventListener("mousemove", parallax);
-      const elem = document.querySelector(".home");
-      // Magic happens here
-      function parallax(e) {
-        let _w = window.innerWidth / 2;
-        let _h = window.innerHeight / 2;
-        let _mouseX = e.clientX;
-        let _mouseY = e.clientY;
-        let _depth1 = `${50 - (_mouseX - _w) * -0.01}% ${
-          50 - (_mouseY - _h) * -0.01
-        }%`;
-        let _depth2 = `${30 - (_mouseX - _w) * 0.01}% ${
-          30 - (_mouseY - _h) * 0.01
-        }%`;
-        let _depth3 = `${30 - (_mouseX - _w) * 0.02}% ${
-          30 - (_mouseY - _h) * 0.02
-        }%`;
-        let x = `${_depth3}, ${_depth2}, ${_depth1}`;
-        // console.log(x);
-        elem.style.backgroundPosition = x;
-      }
-    })();
+    isDesktop &&
+      (function () {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector(".home");
+        // Magic happens here
+        function parallax(e) {
+          let _w = window.innerWidth / 2;
+          let _h = window.innerHeight / 2;
+          let _mouseX = e.clientX;
+          let _mouseY = e.clientY;
+          let _depth1 = `${50 - (_mouseX - _w) * -0.01}% ${
+            50 - (_mouseY - _h) * -0.01
+          }%`;
+          let _depth2 = `${30 - (_mouseX - _w) * 0.01}% ${
+            30 - (_mouseY - _h) * 0.01
+          }%`;
+          let _depth3 = `${30 - (_mouseX - _w) * 0.02}% ${
+            30 - (_mouseY - _h) * 0.02
+          }%`;
+          let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+          // console.log(x);
+          elem.style.backgroundPosition = x;
+        }
+      })();
   }, []);
 
   const handleCreatelobby = async () => {
@@ -144,8 +145,8 @@ function HomePage() {
           </div>
         )}
         {/* <img className="homepage--moon" src={moon} /> */}
-        <img className="homepage--shadow" src={shadow} />
-        <img className="homepage--bg" src={space} />
+        {/* <img className="homepage--shadow" src={shadow} />
+        <img className="homepage--bg" src={space} /> */}
       </div>
 
       <div className="rules">
@@ -177,6 +178,8 @@ function HomePage() {
         <h3 className="rules--sub">Plus de détails :</h3>
         <ul className="rules--text">
           Une partie a besoin de quatre élément pour démarrer:
+          <br />
+          <br />
           <li className="rules--text">
             Une <strong>Vue d’Ensemble</strong>
           </li>
