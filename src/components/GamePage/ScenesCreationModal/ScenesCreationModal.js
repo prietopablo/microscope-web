@@ -64,7 +64,7 @@ function ScenesCreationModal({ eventId, periodId }) {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Button small color="black" onClick={handleClick}>
+          <Button size="small" color="black" onClick={handleClick}>
             Valider la scène
           </Button>
         </Modal.Actions>
