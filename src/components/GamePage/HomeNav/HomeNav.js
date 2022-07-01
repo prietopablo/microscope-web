@@ -10,10 +10,10 @@ function HomeNav() {
       onClick={() => navigate("/")}
       inverted
       size="tiny"
-      className="lobby--submit game"
+      className="lobby--home-button"
       type="button"
     >
-      Retourner à l'acceuil
+      Retourner à l'accueil
     </Button>
   );
 }
