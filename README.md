@@ -1,3 +1,4 @@
+
 # Manuel d'utilisation de Microscope-Web - Version Back
 
 Vous trouverez ci-dessous les étapes, pour mettre en place les éléments nécessaires, afin d'utiliser le Back de cette application :
@@ -92,3 +93,6 @@ Programmes à installer :
 Documentation :
 - Postgresql : https://www.postgresql.org/docs/
 - Sqitch : https://sqitch.org/docs/
+=======
+# microscope-web
+a web adaptation of the collaborative game Microscope by Ben Robbins
