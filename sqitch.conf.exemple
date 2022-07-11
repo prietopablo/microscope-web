@@ -1,0 +1,12 @@
+[core]
+	engine = pg
+	top_dir = migrations
+	# plan_file = migrations\sqitch.plan
+[engine "pg"]
+	target = db:pg:microscope
+	# registry = sqitch
+	# client = psql.exe
+[target "origin"]
+	uri = db:pg://microscope:microscope@localhost:5432/microscope
+[target "heroku"]
+	uri = db:pg://iqlkdqmaynvbnf:e0e695488411f8983725cbbc278352a3cbfec6c23d1e1b22ebd7ca64318f50f2@ec2-52-30-159-47.eu-west-1.compute.amazonaws.com:5432/da8pu1skkff241
