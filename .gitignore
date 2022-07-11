@@ -7,3 +7,6 @@ sqitch.plan
 
 # Dependency directories
 node_modules/
+
+# http test folder
+httpTest/
