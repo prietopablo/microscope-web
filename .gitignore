@@ -1,6 +1,6 @@
 # Sqitch
 sqitch.conf
-sqitch.plan
+
 
 # dotenv environment variables file
 .env
@@ -10,3 +10,6 @@ node_modules/
 
 # http test folder
 httpTest/
+
+# seeding
+data_seeding/
