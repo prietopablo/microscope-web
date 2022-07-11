@@ -1,0 +1,2 @@
+[target "microscope-web"]
+	uri = db:postgres://afotlqexyyxtwb:9b287cff84e5afcf8f38a5b4c2f5b2d1b5696b568a07d92b777c66c49ebb3788@ec2-34-242-8-97.eu-west-1.compute.amazonaws.com:5432/d9t88j2vj8krfd
