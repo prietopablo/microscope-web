@@ -1,8 +1,9 @@
 const gameDatamapper = require('../models/gameDatamapper');
+
 const playerDatamapper = require('../models/playerDatamapper');
 const paletteDatamapper = require('../models/paletteDatamapper');
+
 const userDatamapper = require('../models/userDatamapper');
-const cardDatamapper = require('../models/cardDatamapper');
 
 const periodDatamapper = require('../models/periodDatamapper');
 const eventDatamapper = require('../models/eventDatamapper');
@@ -184,22 +185,22 @@ const gameController = {
          // The player object will retrieve data in the "participation" table
          const players = await userDatamapper.findByGameId(request.params.id);
 
-         const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
+         const focuses = await focusDatamapper.findByGameId(request.params.id);
 
          // The period object is composed of period of our game and each subsequent event which also reach to related scenes
-         const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
+         const periods = await periodDatamapper.findByGameId(request.params.id);
 
          if (periods) {
          
             for (let i = 0; i < periods.length; i++) {
 
-               const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
+               const eventsFound = await eventDatamapper.findByPeriodId(periods[i].id);
 
                if (eventsFound) {
                   
                   for (let j = 0; j < eventsFound.length; j++) {
 
-                     const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
+                     const scenesFound = await sceneDatamapper.findByEventId(eventsFound[j].id);
 
                      if (scenesFound) {
                         eventsFound[j].scenes = scenesFound;
