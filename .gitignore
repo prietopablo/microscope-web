@@ -8,8 +8,5 @@ sqitch.conf
 # Dependency directories
 node_modules/
 
-# http test folder
-httpTest/
-
 # seeding
 data_seeding/

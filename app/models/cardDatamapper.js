@@ -43,39 +43,6 @@ const cardDatamapper = {
       return result.rows; 
    },
 
-   async findPeriodByGameId(gameId) {
-
-      const result = await client.query('SELECT * FROM "period" WHERE "game_id" = $1 ORDER BY "position" ASC', [gameId]);
-
-      if (result.rowCount === 0) {
-          return null;
-      }
-
-      return result.rows;
-  },
-
-   async findEventByPeriodId(periodId) {
-
-      const result = await client.query('SELECT * FROM "event" WHERE "period_id" = $1 ORDER BY "position" ASC', [periodId]);
-
-      if (result.rowCount === 0) {
-         return null;
-      }
-
-      return result.rows;
-   },
-
-   async findSceneByEventId(eventdId) {
-
-      const result = await client.query('SELECT * FROM "scene" WHERE "event_id" = $1 ORDER BY "position" ASC', [eventdId]);
-
-      if (result.rowCount === 0) {
-         return null;
-      }
-
-      return result.rows;
-   },
-
    async insert (data) {
 
       console.log("datainsert", data);

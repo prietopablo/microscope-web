@@ -4,6 +4,11 @@ const paletteDatamapper = require('../models/paletteDatamapper');
 const userDatamapper = require('../models/userDatamapper');
 const cardDatamapper = require('../models/cardDatamapper');
 
+const periodDatamapper = require('../models/periodDatamapper');
+const eventDatamapper = require('../models/eventDatamapper');
+const sceneDatamapper = require('../models/sceneDatamapper');
+const focusDatamapper = require('../models/focusDatamapper');
+
 
 const gameController = {
 
@@ -92,25 +97,25 @@ const gameController = {
             players.push({ id: playerInfo.id, username: playerInfo.username, position: player.position })
          });         
 
-         const focuses = await cardDatamapper.findFocusByGameId(request.params.id);
+         const focuses = await focusDatamapper.findByGameId(request.params.id);
 
          // We also need to retrieve the palette colors
          const palette = await paletteDatamapper.findByGameId(request.params.id);
 
          // The period object is composed of period of our game and each subsequent event which also reach to related scenes
-         const periods = await cardDatamapper.findPeriodByGameId(request.params.id);
+         const periods = await periodDatamapper.findByGameId(request.params.id);
 
          if (periods) {
          
             for (let i = 0; i < periods.length; i++) {
 
-               const eventsFound = await cardDatamapper.findEventByPeriodId(periods[i].id);
+               const eventsFound = await eventDatamapper.findByPeriodId(periods[i].id);
 
                if (eventsFound) {
                   
                   for (let j = 0; j < eventsFound.length; j++) {
 
-                     const scenesFound = await cardDatamapper.findSceneByEventId(eventsFound[j].id);
+                     const scenesFound = await sceneDatamapper.findByEventId(eventsFound[j].id);
 
                      if (scenesFound) {
                         eventsFound[j].scenes = scenesFound;
