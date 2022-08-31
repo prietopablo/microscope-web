@@ -13,8 +13,8 @@ The original game :
 - https://www.lamemage.com/microscope/
 
 Backend dev:
-- https://github.com/Victor-Alexandre-Ferreira?tab=following
-- myself
+- https://github.com/Victor-Alexandre-Ferreira
+- [myself](https://github.com/PrietoPablo)
 
 Frontend dev:
 - https://github.com/jrMM93
